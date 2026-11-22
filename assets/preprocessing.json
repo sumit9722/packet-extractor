@@ -1,0 +1,168 @@
+{
+  "version": 1,
+  "raw_columns": [
+    "IN_BYTES",
+    "OUT_BYTES",
+    "FLOW_DURATION_MILLISECONDS",
+    "MIN_TTL",
+    "MAX_IP_PKT_LEN",
+    "MIN_IP_PKT_LEN",
+    "TCP_WIN_MAX_IN",
+    "TCP_WIN_MAX_OUT"
+  ],
+  "entries": [
+    {
+      "raw_column": "IN_BYTES",
+      "kind": "numeric",
+      "offset": 0,
+      "encoding": "numeric",
+      "median": 1684.0,
+      "log1p": true,
+      "anchor_lower": 2.302585092994046,
+      "anchor_upper": 10.549254824049264,
+      "clip_lower": -5.944084638061171,
+      "clip_upper": 35.28926401721491,
+      "scale": 8.246669731055217,
+      "output_names": [
+        "IN_BYTES"
+      ]
+    },
+    {
+      "raw_column": "OUT_BYTES",
+      "kind": "numeric",
+      "offset": 1,
+      "encoding": "numeric",
+      "median": 2512.0,
+      "log1p": true,
+      "anchor_lower": 0.0,
+      "anchor_upper": 14.136080491484366,
+      "clip_lower": -14.136080491484366,
+      "clip_upper": 56.54432196593746,
+      "scale": 14.136080491484366,
+      "output_names": [
+        "OUT_BYTES"
+      ]
+    },
+    {
+      "raw_column": "FLOW_DURATION_MILLISECONDS",
+      "kind": "numeric",
+      "offset": 2,
+      "encoding": "numeric",
+      "median": 29.0,
+      "log1p": true,
+      "anchor_lower": 0.0,
+      "anchor_upper": 10.358222189262587,
+      "clip_lower": -10.358222189262587,
+      "clip_upper": 41.43288875705035,
+      "scale": 10.358222189262587,
+      "output_names": [
+        "FLOW_DURATION_MILLISECONDS"
+      ]
+    },
+    {
+      "raw_column": "MIN_TTL",
+      "kind": "numeric",
+      "offset": 3,
+      "encoding": "numeric",
+      "median": 31.0,
+      "log1p": false,
+      "anchor_lower": 0.0,
+      "anchor_upper": 31.0,
+      "clip_lower": -31.0,
+      "clip_upper": 124.0,
+      "scale": 31.0,
+      "output_names": [
+        "MIN_TTL"
+      ]
+    },
+    {
+      "raw_column": "MAX_IP_PKT_LEN",
+      "kind": "numeric",
+      "offset": 4,
+      "encoding": "numeric",
+      "median": 510.0,
+      "log1p": false,
+      "anchor_lower": 73.0,
+      "anchor_upper": 1500.0,
+      "clip_lower": -1354.0,
+      "clip_upper": 5781.0,
+      "scale": 1427.0,
+      "output_names": [
+        "MAX_IP_PKT_LEN"
+      ]
+    },
+    {
+      "raw_column": "MIN_IP_PKT_LEN",
+      "kind": "numeric",
+      "offset": 5,
+      "encoding": "numeric",
+      "median": 52.0,
+      "log1p": false,
+      "anchor_lower": 0.0,
+      "anchor_upper": 80.0,
+      "clip_lower": -80.0,
+      "clip_upper": 320.0,
+      "scale": 80.0,
+      "output_names": [
+        "MIN_IP_PKT_LEN"
+      ]
+    },
+    {
+      "raw_column": "TCP_WIN_MAX_IN",
+      "kind": "numeric",
+      "offset": 6,
+      "encoding": "numeric",
+      "median": 13032.0,
+      "log1p": false,
+      "anchor_lower": 0.0,
+      "anchor_upper": 65160.0,
+      "clip_lower": -65160.0,
+      "clip_upper": 260640.0,
+      "scale": 65160.0,
+      "output_names": [
+        "TCP_WIN_MAX_IN"
+      ]
+    },
+    {
+      "raw_column": "TCP_WIN_MAX_OUT",
+      "kind": "numeric",
+      "offset": 7,
+      "encoding": "numeric",
+      "median": 13032.0,
+      "log1p": false,
+      "anchor_lower": 0.0,
+      "anchor_upper": 65160.0,
+      "clip_lower": -65160.0,
+      "clip_upper": 260640.0,
+      "scale": 65160.0,
+      "output_names": [
+        "TCP_WIN_MAX_OUT"
+      ]
+    }
+  ],
+  "output_names": [
+    "IN_BYTES",
+    "OUT_BYTES",
+    "FLOW_DURATION_MILLISECONDS",
+    "MIN_TTL",
+    "MAX_IP_PKT_LEN",
+    "MIN_IP_PKT_LEN",
+    "TCP_WIN_MAX_IN",
+    "TCP_WIN_MAX_OUT"
+  ],
+  "input_dimension": 8,
+  "dtype": "float32",
+  "fit_population": "normal training only",
+  "fit_rows": 97010,
+  "clip_quantile": 0.999,
+  "numeric_formula": "x=median if invalid; z=log1p(x) if configured else x; (clip(z,clip_lower,clip_upper)-anchor_lower)/scale",
+  "numeric_output_range": [
+    -1.0,
+    4.0
+  ],
+  "clipping_policy": "Training normal q0.001/q0.999 are scale anchors. Saturation extends one anchor-span below and three above that interval to retain bounded out-of-normal contrast.",
+  "invalid_behavior": "Absent required column: error. Malformed/nonfinite/negative/out-of-domain: missing. Numeric: training median; category: per-entry other or all-zero; flags: zero mask.",
+  "out_of_range": "Numeric values saturate at saved training-derived bounds, output [-1,4]; values beyond normal quantile anchors retain bounded contrast. Unknown categories follow per-entry other/all-zero rule. No refitting.",
+  "extra_columns": "Ignored; never used to infer order or inputs",
+  "flow_direction": "nProbe exported orientation; IN=src->dst, OUT=dst->src; do not reorder endpoints"
+}

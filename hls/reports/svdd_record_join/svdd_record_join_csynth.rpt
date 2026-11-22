@@ -1,0 +1,223 @@
+
+
+================================================================
+== Vitis HLS Report for 'svdd_record_join'
+================================================================
+* Date:           Sun Nov 22 23:16:35 2026
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        prj_svdd_record_join
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  7.317 ns|     2.00 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |       42|       62|  0.420 us|  0.620 us|   43|   63|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        +------------------------------------------------------+-------------------------------------------+---------+---------+-----------+-----------+-----+-----+---------+
+        |                                                      |                                           |  Latency (cycles) |   Latency (absolute)  |  Interval | Pipeline|
+        |                       Instance                       |                   Module                  |   min   |   max   |    min    |    max    | min | max |   Type  |
+        +------------------------------------------------------+-------------------------------------------+---------+---------+-----------+-----------+-----+-----+---------+
+        |grp_svdd_record_join_Pipeline_read_meta_fu_361        |svdd_record_join_Pipeline_read_meta        |       18|       18|   0.180 us|   0.180 us|   18|   18|       no|
+        |grp_svdd_record_join_Pipeline_read_codes_fu_390       |svdd_record_join_Pipeline_read_codes       |       10|       10|   0.100 us|   0.100 us|   10|   10|       no|
+        |grp_svdd_record_join_Pipeline_VITIS_LOOP_35_1_fu_403  |svdd_record_join_Pipeline_VITIS_LOOP_35_1  |        6|        6|  60.000 ns|  60.000 ns|    6|    6|       no|
+        |grp_svdd_record_join_Pipeline_write_record_fu_416     |svdd_record_join_Pipeline_write_record     |       18|       18|   0.180 us|   0.180 us|   18|   18|       no|
+        +------------------------------------------------------+-------------------------------------------+---------+---------+-----------+-----------+-----+-----+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-----+--------+-------+-----+
+|       Name      | BRAM_18K| DSP |   FF   |  LUT  | URAM|
++-----------------+---------+-----+--------+-------+-----+
+|DSP              |        -|    -|       -|      -|    -|
+|Expression       |        -|    -|       0|    256|    -|
+|FIFO             |        -|    -|       -|      -|    -|
+|Instance         |        -|    -|    1438|    388|    -|
+|Memory           |        0|    -|      64|      4|    0|
+|Multiplexer      |        -|    -|       -|    309|    -|
+|Register         |        -|    -|     961|      -|    -|
++-----------------+---------+-----+--------+-------+-----+
+|Total            |        0|    0|    2463|    957|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Available        |      280|  220|  106400|  53200|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Utilization (%)  |        0|    0|       2|      1|    0|
++-----------------+---------+-----+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +------------------------------------------------------+-------------------------------------------+---------+----+------+-----+-----+
+    |                       Instance                       |                   Module                  | BRAM_18K| DSP|  FF  | LUT | URAM|
+    +------------------------------------------------------+-------------------------------------------+---------+----+------+-----+-----+
+    |grp_svdd_record_join_Pipeline_VITIS_LOOP_35_1_fu_403  |svdd_record_join_Pipeline_VITIS_LOOP_35_1  |        0|   0|   264|  101|    0|
+    |grp_svdd_record_join_Pipeline_read_codes_fu_390       |svdd_record_join_Pipeline_read_codes       |        0|   0|     6|   64|    0|
+    |grp_svdd_record_join_Pipeline_read_meta_fu_361        |svdd_record_join_Pipeline_read_meta        |        0|   0|  1095|   65|    0|
+    |grp_svdd_record_join_Pipeline_write_record_fu_416     |svdd_record_join_Pipeline_write_record     |        0|   0|    73|  158|    0|
+    +------------------------------------------------------+-------------------------------------------+---------+----+------+-----+-----+
+    |Total                                                 |                                           |        0|   0|  1438|  388|    0|
+    +------------------------------------------------------+-------------------------------------------+---------+----+------+-----+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    +-------+-----------------+---------+----+----+-----+------+-----+------+-------------+
+    | Memory|      Module     | BRAM_18K| FF | LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
+    +-------+-----------------+---------+----+----+-----+------+-----+------+-------------+
+    |c_U    |c_RAM_AUTO_1R1W  |        0|  64|   4|    0|     8|   32|     1|          256|
+    +-------+-----------------+---------+----+----+-----+------+-----+------+-------------+
+    |Total  |                 |        0|  64|   4|    0|     8|   32|     1|          256|
+    +-------+-----------------+---------+----+----+-----+------+-----+------+-------------+
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------------------------------------------------------+----------+----+---+----+------------+------------+
+    |                          Variable Name                          | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------------------------------------------------------+----------+----+---+----+------------+------------+
+    |add_ln38_fu_584_p2                                               |         +|   0|  0|  23|          16|           1|
+    |grp_svdd_record_join_Pipeline_write_record_fu_416_m_axis_TREADY  |       and|   0|  0|   2|           1|           1|
+    |close_fu_619_p2                                                  |      icmp|   0|  0|  23|          16|           9|
+    |icmp_ln27_fu_507_p2                                              |      icmp|   0|  0|  15|           8|           5|
+    |icmp_ln37_1_fu_531_p2                                            |      icmp|   0|  0|  71|          64|          23|
+    |icmp_ln37_fu_517_p2                                              |      icmp|   0|  0|  71|          64|          23|
+    |or_ln37_1_fu_566_p2                                              |        or|   0|  0|  25|          25|          25|
+    |or_ln37_fu_551_p2                                                |        or|   0|  0|  26|          26|          26|
+    +-----------------------------------------------------------------+----------+----+---+----+------------+------------+
+    |Total                                                            |          |   0|  0| 256|         220|         113|
+    +-----------------------------------------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------------------+----+-----------+-----+-----------+
+    |               Name               | LUT| Input Size| Bits| Total Bits|
+    +----------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                         |  65|         12|    1|         12|
+    |ap_phi_mux_w_22_phi_fu_266_p4     |   9|          2|   64|        128|
+    |ap_phi_mux_w_23_phi_fu_257_p4     |   9|          2|   64|        128|
+    |ap_phi_mux_w_24_phi_fu_248_p4     |   9|          2|   64|        128|
+    |ap_phi_mux_w_25_phi_fu_239_p4     |   9|          2|   64|        128|
+    |ap_phi_mux_w_26_phi_fu_230_p4     |   9|          2|   64|        128|
+    |ap_phi_mux_w_27_phi_fu_221_p4     |   9|          2|   64|        128|
+    |c_address0                        |  14|          3|    3|          9|
+    |c_ce0                             |  14|          3|    1|          3|
+    |c_ce1                             |   9|          2|    1|          2|
+    |c_we0                             |   9|          2|    1|          2|
+    |s_axis_codes_TREADY_int_regslice  |   9|          2|    1|          2|
+    |s_axis_meta_TREADY_int_regslice   |   9|          2|    1|          2|
+    |s_axis_score_TDATA_blk_n          |   9|          2|    1|          2|
+    |storemerge_reg_350                |   9|          2|   16|         32|
+    |w_22_reg_263                      |   9|          2|   64|        128|
+    |w_23_reg_254                      |   9|          2|   64|        128|
+    |w_24_reg_245                      |   9|          2|   64|        128|
+    |w_25_reg_236                      |   9|          2|   64|        128|
+    |w_26_reg_227                      |   9|          2|   64|        128|
+    |w_27_reg_218                      |   9|          2|   64|        128|
+    |w_28_reg_327                      |   9|          2|   64|        128|
+    |w_29_reg_316                      |   9|          2|   64|        128|
+    |w_30_reg_305                      |   9|          2|   64|        128|
+    |w_31_reg_294                      |   9|          2|   64|        128|
+    |w_32_reg_283                      |   9|          2|   64|        128|
+    |w_33_reg_272                      |   9|          2|   64|        128|
+    +----------------------------------+----+-----------+-----+-----------+
+    |Total                             | 309|         66| 1178|       2370|
+    +----------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------------------------------------------------+----+----+-----+-----------+
+    |                                Name                               | FF | LUT| Bits| Const Bits|
+    +-------------------------------------------------------------------+----+----+-----+-----------+
+    |add_ln38_reg_832                                                   |  16|   0|   16|          0|
+    |ap_CS_fsm                                                          |  11|   0|   11|          0|
+    |close_0317_reg_338                                                 |   1|   0|    1|          0|
+    |group_r                                                            |  16|   0|   16|          0|
+    |grp_svdd_record_join_Pipeline_VITIS_LOOP_35_1_fu_403_ap_start_reg  |   1|   0|    1|          0|
+    |grp_svdd_record_join_Pipeline_read_codes_fu_390_ap_start_reg       |   1|   0|    1|          0|
+    |grp_svdd_record_join_Pipeline_read_meta_fu_361_ap_start_reg        |   1|   0|    1|          0|
+    |grp_svdd_record_join_Pipeline_write_record_fu_416_ap_start_reg     |   1|   0|    1|          0|
+    |icmp_ln27_reg_807                                                  |   1|   0|    1|          0|
+    |or_ln37_1_reg_822                                                  |  25|   0|   25|          0|
+    |sc_reg_811                                                         |  64|   0|   64|          0|
+    |storemerge_reg_350                                                 |  16|   0|   16|          0|
+    |tmp_1_reg_827                                                      |   1|   0|    1|          0|
+    |tmp_reg_817                                                        |  38|   0|   38|          0|
+    |w_22_reg_263                                                       |  64|   0|   64|          0|
+    |w_23_reg_254                                                       |  64|   0|   64|          0|
+    |w_24_reg_245                                                       |  64|   0|   64|          0|
+    |w_25_reg_236                                                       |  64|   0|   64|          0|
+    |w_26_reg_227                                                       |  64|   0|   64|          0|
+    |w_27_reg_218                                                       |  64|   0|   64|          0|
+    |w_28_reg_327                                                       |  64|   0|   64|          0|
+    |w_29_reg_316                                                       |  64|   0|   64|          0|
+    |w_30_reg_305                                                       |  64|   0|   64|          0|
+    |w_31_reg_294                                                       |  64|   0|   64|          0|
+    |w_32_reg_283                                                       |  64|   0|   64|          0|
+    |w_33_reg_272                                                       |  64|   0|   64|          0|
+    +-------------------------------------------------------------------+----+----+-----+-----------+
+    |Total                                                              | 961|   0|  961|          0|
+    +-------------------------------------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------+-----+-----+--------------+-----------------------+--------------+
+|      RTL Ports      | Dir | Bits|   Protocol   |     Source Object     |    C Type    |
++---------------------+-----+-----+--------------+-----------------------+--------------+
+|ap_clk               |   in|    1|  ap_ctrl_none|       svdd_record_join|  return value|
+|ap_rst_n             |   in|    1|  ap_ctrl_none|       svdd_record_join|  return value|
+|s_axis_meta_TDATA    |   in|   64|          axis|   s_axis_meta_V_data_V|       pointer|
+|s_axis_meta_TVALID   |   in|    1|          axis|   s_axis_meta_V_last_V|       pointer|
+|s_axis_meta_TREADY   |  out|    1|          axis|   s_axis_meta_V_last_V|       pointer|
+|s_axis_meta_TLAST    |   in|    1|          axis|   s_axis_meta_V_last_V|       pointer|
+|s_axis_meta_TKEEP    |   in|    8|          axis|   s_axis_meta_V_keep_V|       pointer|
+|s_axis_meta_TSTRB    |   in|    8|          axis|   s_axis_meta_V_strb_V|       pointer|
+|s_axis_codes_TDATA   |   in|   32|          axis|  s_axis_codes_V_data_V|       pointer|
+|s_axis_codes_TVALID  |   in|    1|          axis|  s_axis_codes_V_last_V|       pointer|
+|s_axis_codes_TREADY  |  out|    1|          axis|  s_axis_codes_V_last_V|       pointer|
+|s_axis_codes_TLAST   |   in|    1|          axis|  s_axis_codes_V_last_V|       pointer|
+|s_axis_codes_TKEEP   |   in|    4|          axis|  s_axis_codes_V_keep_V|       pointer|
+|s_axis_codes_TSTRB   |   in|    4|          axis|  s_axis_codes_V_strb_V|       pointer|
+|s_axis_score_TDATA   |   in|   64|          axis|  s_axis_score_V_data_V|       pointer|
+|s_axis_score_TVALID  |   in|    1|          axis|  s_axis_score_V_last_V|       pointer|
+|s_axis_score_TREADY  |  out|    1|          axis|  s_axis_score_V_last_V|       pointer|
+|s_axis_score_TLAST   |   in|    1|          axis|  s_axis_score_V_last_V|       pointer|
+|s_axis_score_TKEEP   |   in|    8|          axis|  s_axis_score_V_keep_V|       pointer|
+|s_axis_score_TSTRB   |   in|    8|          axis|  s_axis_score_V_strb_V|       pointer|
+|m_axis_TDATA         |  out|   64|          axis|        m_axis_V_data_V|       pointer|
+|m_axis_TVALID        |  out|    1|          axis|        m_axis_V_last_V|       pointer|
+|m_axis_TREADY        |   in|    1|          axis|        m_axis_V_last_V|       pointer|
+|m_axis_TLAST         |  out|    1|          axis|        m_axis_V_last_V|       pointer|
+|m_axis_TKEEP         |  out|    8|          axis|        m_axis_V_keep_V|       pointer|
+|m_axis_TSTRB         |  out|    8|          axis|        m_axis_V_strb_V|       pointer|
++---------------------+-----+-----+--------------+-----------------------+--------------+
+

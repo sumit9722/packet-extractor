@@ -1,0 +1,150 @@
+
+
+================================================================
+== Vitis HLS Report for 'emit_records_Pipeline_feature_words'
+================================================================
+* Date:           Sun Nov 22 23:15:14 2026
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        prj_svdd_flow_extract
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  4.911 ns|     2.00 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |       10|       10|  0.100 us|  0.100 us|   10|   10|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-----------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                 |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |    Loop Name    |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-----------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- feature_words  |        8|        8|         2|          1|          1|     8|       yes|
+        +-----------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-----+--------+-------+-----+
+|       Name      | BRAM_18K| DSP |   FF   |  LUT  | URAM|
++-----------------+---------+-----+--------+-------+-----+
+|DSP              |        -|    -|       -|      -|    -|
+|Expression       |        -|    -|       0|     45|    -|
+|FIFO             |        -|    -|       -|      -|    -|
+|Instance         |        -|    -|       -|      -|    -|
+|Memory           |        -|    -|       -|      -|    -|
+|Multiplexer      |        -|    -|       -|     45|    -|
+|Register         |        -|    -|       8|      -|    -|
++-----------------+---------+-----+--------+-------+-----+
+|Total            |        0|    0|       8|     90|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Available        |      280|  220|  106400|  53200|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Utilization (%)  |        0|    0|      ~0|     ~0|    0|
++-----------------+---------+-----+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------------+----------+----+---+----+------------+------------+
+    |       Variable Name       | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |add_ln739_fu_112_p2        |         +|   0|  0|  13|           4|           1|
+    |ap_block_pp0_stage0_01001  |       and|   0|  0|   2|           1|           1|
+    |ap_block_pp0_stage0_11001  |       and|   0|  0|   2|           1|           1|
+    |b_last_fu_123_p2           |      icmp|   0|  0|  13|           4|           3|
+    |icmp_ln739_fu_106_p2       |      icmp|   0|  0|  13|           4|           5|
+    |ap_enable_pp0              |       xor|   0|  0|   2|           1|           2|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |Total                      |          |   0|  0|  45|          15|          13|
+    +---------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-----------------------------+----+-----------+-----+-----------+
+    |             Name            | LUT| Input Size| Bits| Total Bits|
+    +-----------------------------+----+-----------+-----+-----------+
+    |ap_done_int                  |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1      |   9|          2|    1|          2|
+    |ap_sig_allocacmp_i           |   9|          2|    4|          8|
+    |i_3_fu_58                    |   9|          2|    4|          8|
+    |m_axis_features_TDATA_blk_n  |   9|          2|    1|          2|
+    +-----------------------------+----+-----------+-----+-----------+
+    |Total                        |  45|         10|   11|         22|
+    +-----------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------+---+----+-----+-----------+
+    |           Name          | FF| LUT| Bits| Const Bits|
+    +-------------------------+---+----+-----+-----------+
+    |ap_CS_fsm                |  1|   0|    1|          0|
+    |ap_done_reg              |  1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1  |  1|   0|    1|          0|
+    |b_last_reg_149           |  1|   0|    1|          0|
+    |i_3_fu_58                |  4|   0|    4|          0|
+    +-------------------------+---+----+-----+-----------+
+    |Total                    |  8|   0|    8|          0|
+    +-------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++------------------------+-----+-----+------------+-------------------------------------+--------------+
+|        RTL Ports       | Dir | Bits|  Protocol  |            Source Object            |    C Type    |
++------------------------+-----+-----+------------+-------------------------------------+--------------+
+|ap_clk                  |   in|    1|  ap_ctrl_hs|  emit_records_Pipeline_feature_words|  return value|
+|ap_rst                  |   in|    1|  ap_ctrl_hs|  emit_records_Pipeline_feature_words|  return value|
+|ap_start                |   in|    1|  ap_ctrl_hs|  emit_records_Pipeline_feature_words|  return value|
+|ap_done                 |  out|    1|  ap_ctrl_hs|  emit_records_Pipeline_feature_words|  return value|
+|ap_idle                 |  out|    1|  ap_ctrl_hs|  emit_records_Pipeline_feature_words|  return value|
+|ap_ready                |  out|    1|  ap_ctrl_hs|  emit_records_Pipeline_feature_words|  return value|
+|m_axis_features_TREADY  |   in|    1|        axis|             m_axis_features_V_data_V|       pointer|
+|m_axis_features_TDATA   |  out|   32|        axis|             m_axis_features_V_data_V|       pointer|
+|raw_address0            |  out|    3|   ap_memory|                                  raw|         array|
+|raw_ce0                 |  out|    1|   ap_memory|                                  raw|         array|
+|raw_q0                  |   in|   32|   ap_memory|                                  raw|         array|
+|m_axis_features_TVALID  |  out|    1|        axis|             m_axis_features_V_last_V|       pointer|
+|m_axis_features_TLAST   |  out|    1|        axis|             m_axis_features_V_last_V|       pointer|
+|m_axis_features_TKEEP   |  out|    4|        axis|             m_axis_features_V_keep_V|       pointer|
+|m_axis_features_TSTRB   |  out|    4|        axis|             m_axis_features_V_strb_V|       pointer|
+|m_axis_features_TUSER   |  out|    1|        axis|             m_axis_features_V_user_V|       pointer|
++------------------------+-----+-----+------------+-------------------------------------+--------------+
+

@@ -1,0 +1,1626 @@
+Vitis HLS (cosim) in /home/chilsu/.cache/svdd_pl_hls with a 3G memory cap. Log: /home/chilsu/.cache/svdd_pl_hls/vitis_hls.log
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.2 (64-bit)
+  **** SW Build 4023990 on Oct 11 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /home/chilsu/tools/Vitis_HLS/2023.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/home/chilsu/tools/Vitis_HLS/2023.2/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'chilsu' on host 'chilsu' (Linux_x86_64 version 6.18.60-1-lts) on Sun Nov 22 23:17:18 IST 2026
+INFO: [HLS 200-10] On os "Arch Linux"
+INFO: [HLS 200-10] In directory '/home/chilsu/.cache/svdd_pl_hls'
+INFO: [HLS 200-2053] The vitis_hls executable is being deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'src/synth.tcl'
+INFO: [HLS 200-1510] Running: open_project prj_svdd_flow_extract 
+INFO: [HLS 200-10] Opening project '/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract'.
+INFO: [HLS 200-1510] Running: set_top svdd_flow_extract 
+INFO: [HLS 200-1510] Running: add_files /home/chilsu/.cache/svdd_pl_hls/src/extract.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding design file '/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/tb_svdd_pl.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/tb_svdd_pl.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/core/inference_axis.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/core/inference_axis.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/join.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/join.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 -flow_target vivado 
+INFO: [HLS 200-10] Opening solution '/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 2ns.
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2023.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1464] Running solution command: config_rtl -reset=control
+INFO: [HLS 200-1464] Running solution command: config_rtl -reset_level=low
+INFO: [HLS 200-1464] Running solution command: config_export -display_name {SVDD feature extraction (pcap -> 8 raw words)}
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -ipname=svdd_flow_extract
+INFO: [HLS 200-1464] Running solution command: config_export -library=hls
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1464] Running solution command: config_export -vendor=bits.edu
+INFO: [HLS 200-1464] Running solution command: config_export -version=1.0
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: set_clock_uncertainty 2 
+INFO: [HLS 200-1510] Running: config_rtl -reset control -reset_level low 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog -vendor bits.edu -library hls -version 1.0 -display_name SVDD feature extraction (pcap -> 8 raw words) -ipname svdd_flow_extract 
+INFO: [HLS 200-1510] Running: cosim_design -ldflags -B/usr/bin/ -argv stream /home/chilsu/.cache/svdd_pl_hls/src/tb_data/small_stream.bin /home/chilsu/.cache/svdd_pl_hls/src/tb_data/small_out.bin -trace_level none 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "/home/chilsu/tools/Vitis_HLS/2023.2/tps/lnx64/gcc-8.3.0/bin/g++"
+   Compiling apatb_svdd_flow_extract.cpp
+   Compiling apatb_svdd_flow_extract_util.cpp
+   Compiling extract.cpp_pre.cpp.tb.cpp
+   Compiling inference_axis.cpp_pre.cpp.tb.cpp
+   Compiling join.cpp_pre.cpp.tb.cpp
+   Compiling preprocess.cpp_pre.cpp.tb.cpp
+   Compiling tb_svdd_pl.cpp_pre.cpp.tb.cpp
+   Compiling apatb_svdd_flow_extract_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+log1p_u32: 270225 inputs, 33 differ by 1 ulp from libm, 0 by more
+6 chunks -> 304 records, 298 feature records (0 beats breaking the spec framing)
+all testbench checks passed
+INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 8196
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /home/chilsu/tools/Vivado/2023.2/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_svdd_flow_extract_top glbl -Oenable_linking_all_libraries -prj svdd_flow_extract.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_1_16 -L floating_point_v7_0_21 --lib ieee_proposed=./ieee_proposed -s svdd_flow_extract 
+Multi-threading is on. Using 16 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_svdd_flow_extract_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/AESL_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/AESL_axi_s_s_axis.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_s_axis
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/AESL_axi_s_m_axis_features.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_m_axis_features
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/AESL_axi_s_m_axis_meta.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_m_axis_meta
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/AESL_deadlock_detection_unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_detect_unit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/AESL_deadlock_report_unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_report_unit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/AESL_deadlock_detector.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_detector
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/AESL_deadlock_kernel_monitor_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_kernel_monitor_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/AESL_deadlock_idx0_monitor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_idx0_monitor
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/AESL_deadlock_idx1_monitor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_idx1_monitor
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/AESL_deadlock_idx6_monitor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_idx6_monitor
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_parse_Pipeline_header.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_parse_Pipeline_header
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_parse_Pipeline_drain_bad.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_parse_Pipeline_drain_bad
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_parse_Pipeline_data.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_parse_Pipeline_data
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_p_anonymous_namespace_finish_frame.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_p_anonymous_namespace_finish_frame
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_parse_Pipeline_drain_long.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_parse_Pipeline_drain_long
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_parse.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_parse
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_flow_table.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_flow_table
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_emit_records_Pipeline_VITIS_LOOP_727_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_emit_records_Pipeline_VITIS_LOOP_727_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_emit_records_Pipeline_feature_words.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_emit_records_Pipeline_feature_words
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_emit_records_Pipeline_meta_words.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_emit_records_Pipeline_meta_words
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_emit_records_Pipeline_meta_words1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_emit_records_Pipeline_meta_words1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_emit_records.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_emit_records
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_flow_control_loop_pipe_sequential_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_flow_control_loop_pipe_sequential_init
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_regslice_both.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_regslice_both
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_regslice_both_w1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_sparsemux_17_3_8_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_sparsemux_17_3_8_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_mul_32ns_21ns_52_2_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_mul_32ns_21ns_52_2_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_mul_32ns_34ns_65_2_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_mul_32ns_34ns_65_2_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_parse_w_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_parse_w_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_mul_25s_24ns_25_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_mul_25s_24ns_25_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_sparsemux_17_3_1_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_sparsemux_17_3_1_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_sparsemux_17_3_32_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_sparsemux_17_3_32_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_sparsemux_17_3_16_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_sparsemux_17_3_16_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_sparsemux_17_3_64_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_sparsemux_17_3_64_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_sparsemux_17_3_48_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_sparsemux_17_3_48_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_RAM_2P_BRAbkb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_RAM_2P_BRAbkb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_sparsemux_33_4_64_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_sparsemux_33_4_64_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_sparsemux_33_4_32_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_sparsemux_33_4_32_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_mul_65s_67ns_131_5_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_mul_65s_67ns_131_5_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_emit_records_wide_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_emit_records_wide_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_emit_records_raw_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_emit_records_raw_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_fifo_w420_d16_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_fifo_w420_d16_S
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_fifo_w420_d16_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_fifo_w764_d16_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_fifo_w764_d16_S
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_fifo_w764_d16_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_start_for_flow_table_U0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_start_for_flow_table_U0
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_start_for_flow_table_U0_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_start_for_emit_records_U0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_start_for_emit_records_U0
+INFO: [VRFC 10-311] analyzing module svdd_flow_extract_start_for_emit_records_U0_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-5021] port 'reset' is not connected on this instance [/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_fifo_w420_d16_S.v:49]
+WARNING: [VRFC 10-5021] port 'reset' is not connected on this instance [/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_fifo_w764_d16_S.v:49]
+WARNING: [VRFC 10-5021] port 'reset' is not connected on this instance [/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_start_for_flow_table_U0.v:46]
+WARNING: [VRFC 10-5021] port 'reset' is not connected on this instance [/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract_start_for_emit_records_U0.v:46]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.svdd_flow_extract_parse_w_RAM_AU...
+Compiling module xil_defaultlib.svdd_flow_extract_flow_control_l...
+Compiling module xil_defaultlib.svdd_flow_extract_parse_Pipeline...
+Compiling module xil_defaultlib.svdd_flow_extract_parse_Pipeline...
+Compiling module xil_defaultlib.svdd_flow_extract_sparsemux_17_3...
+Compiling module xil_defaultlib.svdd_flow_extract_parse_Pipeline...
+Compiling module xil_defaultlib.svdd_flow_extract_p_anonymous_na...
+Compiling module xil_defaultlib.svdd_flow_extract_parse_Pipeline...
+Compiling module xil_defaultlib.svdd_flow_extract_mul_32ns_21ns_...
+Compiling module xil_defaultlib.svdd_flow_extract_mul_32ns_34ns_...
+Compiling module xil_defaultlib.svdd_flow_extract_regslice_both(...
+Compiling module xil_defaultlib.svdd_flow_extract_regslice_both(...
+Compiling module xil_defaultlib.svdd_flow_extract_regslice_both(...
+Compiling module xil_defaultlib.svdd_flow_extract_parse
+Compiling module xil_defaultlib.svdd_flow_extract_flow_table_flo...
+Compiling module xil_defaultlib.svdd_flow_extract_mul_25s_24ns_2...
+Compiling module xil_defaultlib.svdd_flow_extract_sparsemux_17_3...
+Compiling module xil_defaultlib.svdd_flow_extract_sparsemux_17_3...
+Compiling module xil_defaultlib.svdd_flow_extract_sparsemux_17_3...
+Compiling module xil_defaultlib.svdd_flow_extract_sparsemux_17_3...
+Compiling module xil_defaultlib.svdd_flow_extract_sparsemux_17_3...
+Compiling module xil_defaultlib.svdd_flow_extract_flow_table
+Compiling module xil_defaultlib.svdd_flow_extract_emit_records_w...
+Compiling module xil_defaultlib.svdd_flow_extract_emit_records_r...
+Compiling module xil_defaultlib.svdd_flow_extract_sparsemux_33_4...
+Compiling module xil_defaultlib.svdd_flow_extract_emit_records_P...
+Compiling module xil_defaultlib.svdd_flow_extract_emit_records_P...
+Compiling module xil_defaultlib.svdd_flow_extract_emit_records_P...
+Compiling module xil_defaultlib.svdd_flow_extract_sparsemux_33_4...
+Compiling module xil_defaultlib.svdd_flow_extract_emit_records_P...
+Compiling module xil_defaultlib.svdd_flow_extract_mul_65s_67ns_1...
+Compiling module xil_defaultlib.svdd_flow_extract_regslice_both
+Compiling module xil_defaultlib.svdd_flow_extract_regslice_both(...
+Compiling module xil_defaultlib.svdd_flow_extract_emit_records
+Compiling module xil_defaultlib.svdd_flow_extract_fifo_w420_d16_...
+Compiling module xil_defaultlib.svdd_flow_extract_fifo_w420_d16_...
+Compiling module xil_defaultlib.svdd_flow_extract_fifo_w764_d16_...
+Compiling module xil_defaultlib.svdd_flow_extract_fifo_w764_d16_...
+Compiling module xil_defaultlib.svdd_flow_extract_start_for_flow...
+Compiling module xil_defaultlib.svdd_flow_extract_start_for_flow...
+Compiling module xil_defaultlib.svdd_flow_extract_start_for_emit...
+Compiling module xil_defaultlib.svdd_flow_extract_start_for_emit...
+Compiling module xil_defaultlib.svdd_flow_extract
+Compiling module xil_defaultlib.fifo(DEPTH=8196,WIDTH=64)
+Compiling module xil_defaultlib.fifo(DEPTH=8196)
+Compiling module xil_defaultlib.fifo(DEPTH=8196,WIDTH=1)
+Compiling module xil_defaultlib.AESL_axi_s_s_axis
+Compiling module xil_defaultlib.fifo(DEPTH=2288,WIDTH=32)
+Compiling module xil_defaultlib.fifo(DEPTH=2288,WIDTH=4)
+Compiling module xil_defaultlib.fifo(DEPTH=2288,WIDTH=1)
+Compiling module xil_defaultlib.AESL_axi_s_m_axis_features
+Compiling module xil_defaultlib.fifo(DEPTH=4592,WIDTH=64)
+Compiling module xil_defaultlib.fifo(DEPTH=4592)
+Compiling module xil_defaultlib.fifo(DEPTH=4592,WIDTH=1)
+Compiling module xil_defaultlib.AESL_axi_s_m_axis_meta
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_report_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_detector_1
+Compiling module xil_defaultlib.AESL_deadlock_idx1_monitor
+Compiling module xil_defaultlib.AESL_deadlock_idx6_monitor
+Compiling module xil_defaultlib.AESL_deadlock_idx0_monitor
+Compiling module xil_defaultlib.AESL_deadlock_kernel_monitor_top...
+Compiling module xil_defaultlib.df_fifo_intf
+Compiling module xil_defaultlib.df_process_intf
+Compiling module xil_defaultlib.nodf_module_intf
+Compiling module xil_defaultlib.pp_loop_intf(FSM_WIDTH=5)
+Compiling module xil_defaultlib.seq_loop_intf(FSM_WIDTH=37)
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=1)
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_svdd_flow_extract_top
+Compiling module work.glbl
+Built simulation snapshot svdd_flow_extract
+
+****** xsim v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/svdd_flow_extract/xsim_script.tcl
+# xsim {svdd_flow_extract} -autoloadwcfg -tclbatch {svdd_flow_extract.tcl}
+Time resolution is 1 ps
+source svdd_flow_extract.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 8 [n/a] @ "125000"
+// RTL Simulation : 1 / 8 [n/a] @ "495000"
+// RTL Simulation : 2 / 8 [n/a] @ "267115000"
+// RTL Simulation : 3 / 8 [n/a] @ "815105000"
+// RTL Simulation : 4 / 8 [n/a] @ "1373125000"
+// RTL Simulation : 5 / 8 [n/a] @ "1898585000"
+// RTL Simulation : 6 / 8 [n/a] @ "2155105000"
+// RTL Simulation : 7 / 8 [n/a] @ "2320005000"
+// RTL Simulation : 8 / 8 [n/a] @ "2736365000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 2736425 ns : File "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/sim/verilog/svdd_flow_extract.autotb.v" Line 316
+run: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:07 . Memory (MB): peak = 1239.969 ; gain = 0.000 ; free physical = 230 ; free virtual = 4243
+## quit
+INFO: [Common 17-206] Exiting xsim at Sun Nov 22 23:19:06 2026...
+INFO: [COSIM 212-316] Starting C post checking ...
+log1p_u32: 270225 inputs, 33 differ by 1 ulp from libm, 0 by more
+6 chunks -> 304 records, 298 feature records (0 beats breaking the spec framing)
+all testbench checks passed
+INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 8196
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [HLS 200-111] Finished Command cosim_design CPU user time: 184.75 seconds. CPU system time: 6.44 seconds. Elapsed time: 168.71 seconds; current allocated memory: 18.719 MB.
+INFO: [HLS 200-1510] Running: close_project 
+INFO: [HLS 200-1510] Running: open_project prj_svdd_preprocess 
+INFO: [HLS 200-10] Opening project '/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess'.
+INFO: [HLS 200-1510] Running: set_top svdd_preprocess 
+INFO: [HLS 200-1510] Running: add_files /home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding design file '/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/tb_svdd_pl.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/tb_svdd_pl.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/core/inference_axis.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/core/inference_axis.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/extract.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/join.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/join.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 -flow_target vivado 
+INFO: [HLS 200-10] Opening solution '/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 2ns.
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2023.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1464] Running solution command: config_rtl -reset=control
+INFO: [HLS 200-1464] Running solution command: config_rtl -reset_level=low
+INFO: [HLS 200-1464] Running solution command: config_export -display_name {SVDD preprocessing (raw words -> Q24 codes)}
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -ipname=svdd_preprocess
+INFO: [HLS 200-1464] Running solution command: config_export -library=hls
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1464] Running solution command: config_export -vendor=bits.edu
+INFO: [HLS 200-1464] Running solution command: config_export -version=1.0
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: set_clock_uncertainty 2 
+INFO: [HLS 200-1510] Running: config_rtl -reset control -reset_level low 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog -vendor bits.edu -library hls -version 1.0 -display_name SVDD preprocessing (raw words -> Q24 codes) -ipname svdd_preprocess 
+INFO: [HLS 200-1510] Running: cosim_design -ldflags -B/usr/bin/ -argv stream /home/chilsu/.cache/svdd_pl_hls/src/tb_data/small_stream.bin /home/chilsu/.cache/svdd_pl_hls/src/tb_data/small_out.bin -trace_level none 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "/home/chilsu/tools/Vitis_HLS/2023.2/tps/lnx64/gcc-8.3.0/bin/g++"
+   Compiling apatb_svdd_preprocess.cpp
+   Compiling apatb_svdd_preprocess_util.cpp
+   Compiling extract.cpp_pre.cpp.tb.cpp
+   Compiling inference_axis.cpp_pre.cpp.tb.cpp
+   Compiling join.cpp_pre.cpp.tb.cpp
+   Compiling preprocess.cpp_pre.cpp.tb.cpp
+   Compiling tb_svdd_pl.cpp_pre.cpp.tb.cpp
+   Compiling apatb_svdd_preprocess_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+log1p_u32: 270225 inputs, 33 differ by 1 ulp from libm, 0 by more
+6 chunks -> 304 records, 298 feature records (0 beats breaking the spec framing)
+all testbench checks passed
+INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 8196
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_vivado_gen_ip.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/chilsu/tools/Vivado/2023.2/data/ip'.
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'svdd_preprocess_fptrunc_64ns_32_2_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'svdd_preprocess_fptrunc_64ns_32_2_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'svdd_preprocess_dsub_64ns_64ns_64_7_full_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'svdd_preprocess_dsub_64ns_64ns_64_7_full_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'svdd_preprocess_ddiv_64ns_64ns_64_45_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'svdd_preprocess_ddiv_64ns_64ns_64_45_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'svdd_preprocess_dcmp_64ns_64ns_1_2_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'svdd_preprocess_dcmp_64ns_64ns_1_2_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'svdd_preprocess_uitodp_32ns_64_6_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'svdd_preprocess_uitodp_32ns_64_6_no_dsp_1_ip'...
+INFO: [Common 17-206] Exiting Vivado at Sun Nov 22 23:21:58 2026...
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /home/chilsu/tools/Vivado/2023.2/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_svdd_preprocess_top glbl -Oenable_linking_all_libraries -prj svdd_preprocess.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_1_16 -L floating_point_v7_0_21 --lib ieee_proposed=./ieee_proposed -s svdd_preprocess 
+Multi-threading is on. Using 16 slave threads.
+Determining compilation order of HDL files.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/ip/xil_defaultlib/svdd_preprocess_fptrunc_64ns_32_2_no_dsp_1_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_fptrunc_64ns_32_2_no_dsp_1_ip
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/ip/xil_defaultlib/svdd_preprocess_dsub_64ns_64ns_64_7_full_dsp_1_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_dsub_64ns_64ns_64_7_full_dsp_1_ip
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/ip/xil_defaultlib/svdd_preprocess_ddiv_64ns_64ns_64_45_no_dsp_1_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_ddiv_64ns_64ns_64_45_no_dsp_1_ip
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/ip/xil_defaultlib/svdd_preprocess_dcmp_64ns_64ns_1_2_no_dsp_1_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_dcmp_64ns_64ns_1_2_no_dsp_1_ip
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/ip/xil_defaultlib/svdd_preprocess_uitodp_32ns_64_6_no_dsp_1_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_uitodp_32ns_64_6_no_dsp_1_ip
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_svdd_preprocess_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/AESL_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/AESL_axi_s_s_axis_raw.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_s_axis_raw
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/AESL_axi_s_m_axis_q24.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_m_axis_q24
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/AESL_axi_s_m_axis_codes.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_m_axis_codes
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/AESL_deadlock_kernel_monitor_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_kernel_monitor_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/AESL_deadlock_idx0_monitor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_idx0_monitor
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/AESL_deadlock_idx2_monitor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_idx2_monitor
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_svdd_preprocess_Pipeline_drain.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_svdd_preprocess_Pipeline_drain
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_preprocess_Pipeline_cordic.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_preprocess_Pipeline_cordic
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_preprocess.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_preprocess
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_svdd_preprocess_Pipeline_write_codes.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_svdd_preprocess_Pipeline_write_codes
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_flow_control_loop_pipe_sequential_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_flow_control_loop_pipe_sequential_init
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_regslice_both.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_regslice_both
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_regslice_both_w1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_preprocess_Pipeline_cordic_svpl_CORDIC_SHIFT_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_preprocess_Pipeline_cordic_svpl_CORDIC_SHIFT_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_preprocess_Pipeline_cordic_svpl_CORDIC_ATANH_HI_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_preprocess_Pipeline_cordic_svpl_CORDIC_ATANH_HI_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_preprocess_Pipeline_cordic_svpl_CORDIC_ATANH_LO_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_preprocess_Pipeline_cordic_svpl_CORDIC_ATANH_LO_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_fptrunc_64ns_32_2_no_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_fptrunc_64ns_32_2_no_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_dsub_64ns_64ns_64_7_full_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_dsub_64ns_64ns_64_7_full_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_ddiv_64ns_64ns_64_45_no_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_ddiv_64ns_64ns_64_45_no_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_dcmp_64ns_64ns_1_2_no_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_dcmp_64ns_64ns_1_2_no_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_uitodp_32ns_64_6_no_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_uitodp_32ns_64_6_no_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_mul_32s_67ns_72_5_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_mul_32s_67ns_72_5_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_preprocess_svpl_PRE_MEDIAN_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_preprocess_svpl_PRE_MEDIAN_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_preprocess_svpl_PRE_LOG1P_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_preprocess_svpl_PRE_LOG1P_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_preprocess_svpl_PRE_CLIP_LO_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_preprocess_svpl_PRE_CLIP_LO_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_preprocess_svpl_PRE_CLIP_HI_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_preprocess_svpl_PRE_CLIP_HI_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_preprocess_svpl_PRE_ANCHOR_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_preprocess_svpl_PRE_ANCHOR_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_preprocess_svpl_PRE_SCALE_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_preprocess_svpl_PRE_SCALE_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_raw_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_raw_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_unknown_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_unknown_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_codes_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_preprocess_codes_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess_ap_rst_n_if.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'svdd_preprocess_ap_rst_n_if'
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package floating_point_v7_1_16.floating_point_v7_1_16_viv_comp
+Compiling package ieee.numeric_std
+Compiling package xbip_utils_v3_0_11.xbip_utils_v3_0_11_pkg
+Compiling package axi_utils_v2_0_7.axi_utils_v2_0_7_pkg
+Compiling package floating_point_v7_1_16.floating_point_v7_1_16_consts
+Compiling package ieee.math_real
+Compiling package floating_point_v7_1_16.floating_point_v7_1_16_exp_table...
+Compiling package mult_gen_v12_0_19.mult_gen_v12_0_19_pkg
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_signed
+Compiling package floating_point_v7_1_16.floating_point_v7_1_16_pkg
+Compiling package floating_point_v7_1_16.flt_utils
+Compiling package unisim.vcomponents
+Compiling package xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv_comp
+Compiling package ieee.vital_timing
+Compiling package ieee.vital_primitives
+Compiling package unisim.vpkg
+Compiling package floating_point_v7_1_16.vt2mutils
+Compiling package floating_point_v7_1_16.vt2mcomps
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.svdd_preprocess_raw_RAM_AUTO_1R1...
+Compiling module xil_defaultlib.svdd_preprocess_unknown_RAM_AUTO...
+Compiling module xil_defaultlib.svdd_preprocess_codes_RAM_AUTO_1...
+Compiling module xil_defaultlib.svdd_preprocess_flow_control_loo...
+Compiling module xil_defaultlib.svdd_preprocess_svdd_preprocess_...
+Compiling module xil_defaultlib.svdd_preprocess_preprocess_svpl_...
+Compiling module xil_defaultlib.svdd_preprocess_preprocess_svpl_...
+Compiling module xil_defaultlib.svdd_preprocess_preprocess_svpl_...
+Compiling module xil_defaultlib.svdd_preprocess_preprocess_svpl_...
+Compiling module xil_defaultlib.svdd_preprocess_preprocess_svpl_...
+Compiling module xil_defaultlib.svdd_preprocess_preprocess_svpl_...
+Compiling module xil_defaultlib.svdd_preprocess_preprocess_Pipel...
+Compiling module xil_defaultlib.svdd_preprocess_preprocess_Pipel...
+Compiling module xil_defaultlib.svdd_preprocess_preprocess_Pipel...
+Compiling module xil_defaultlib.svdd_preprocess_preprocess_Pipel...
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=5,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity floating_point_v7_1_16.compare_ne_im [\compare_ne_im(c_xdevicefamily="...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=24,length=0)\]
+Compiling architecture xorcy_v of entity unisim.XORCY [xorcy_default]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=12,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=14,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=25,length=0,fast_in...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=3,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=2,length=0,fast_inp...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture rtl of entity floating_point_v7_1_16.flt_round_bit [\flt_round_bit(c_xdevicefamily="...]
+Compiling architecture rtl of entity floating_point_v7_1_16.renorm_and_round_logic [\renorm_and_round_logic(c_xdevic...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=4,length=0,fast_inp...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=8,length=0)\]
+Compiling architecture muxcy_v of entity unisim.MUXCY [muxcy_default]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=9,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="ki...]
+Compiling architecture synth of entity floating_point_v7_1_16.compare_eq_im [\compare_eq_im(c_xdevicefamily="...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(length=0,fast_input=true)...]
+Compiling architecture rtl of entity floating_point_v7_1_16.special_detect [\special_detect(a_w=64,a_fw=53,o...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=2,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_16.flt_to_flt_conv_exp [\flt_to_flt_conv_exp(a_w=64,a_ew...]
+Compiling architecture synth of entity floating_point_v7_1_16.flt_dec_op [\flt_dec_op(c_xdevicefamily="zyn...]
+Compiling architecture rtl of entity floating_point_v7_1_16.flt_to_flt_conv [\flt_to_flt_conv(c_xdevicefamily...]
+Compiling module unisims_ver.x_lut1_mux2
+Compiling module unisims_ver.LUT1
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=32,length=0)\]
+Compiling architecture xilinx of entity floating_point_v7_1_16.floating_point_v7_1_16_viv [\floating_point_v7_1_16_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_16.floating_point_v7_1_16 [\floating_point_v7_1_16(c_xdevic...]
+Compiling module xil_defaultlib.svdd_preprocess_fptrunc_64ns_32_...
+Compiling module xil_defaultlib.svdd_preprocess_fptrunc_64ns_32_...
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=52)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [delay_default]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=3,fast_input=true)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=54,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=11,length=0,fast_in...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=16,length=0)\]
+Compiling architecture muxf7_v of entity unisim.MUXF7 [muxf7_default]
+Compiling architecture muxf8_v of entity unisim.MUXF8 [muxf8_default]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=16)\]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity floating_point_v7_1_16.compare_eq_im [\compare_eq_im(c_xdevicefamily="...]
+Compiling architecture rtl of entity floating_point_v7_1_16.zero_det_sel [\zero_det_sel(c_xdevicefamily="z...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=55,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=55)\]
+Compiling architecture rtl of entity floating_point_v7_1_16.shift_msb_first [\shift_msb_first(a_width=54,regi...]
+Compiling architecture rtl of entity floating_point_v7_1_16.alignment [\alignment(c_xdevicefamily="zynq...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(fast_input=true)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=47,length=0)\]
+Compiling architecture dsp48e1_v of entity unisim.DSP48E1 [\DSP48E1(adreg=0,alumodereg=0,ca...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=7,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=4,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=30,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=18,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=25,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_16.dsp48e1_wrapper [\dsp48e1_wrapper(a_width=30,b_wi...]
+Compiling architecture dsp48e1_v of entity unisim.DSP48E1 [\DSP48E1(acascreg=0,adreg=0,alum...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=48,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_16.dsp48e1_wrapper [\dsp48e1_wrapper(a_width=30,b_wi...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=9)\]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=56,length=0)\]
+Compiling architecture synth of entity floating_point_v7_1_16.addsub_dsp [\addsub_dsp(c_xdevicefamily="zyn...]
+Compiling architecture rtl of entity floating_point_v7_1_16.addsub [\addsub(c_xdevicefamily="zynq",c...]
+Compiling architecture rtl of entity floating_point_v7_1_16.align_add [\align_add(c_xdevicefamily="zynq...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=6,length=0,fast_inp...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture rtl of entity floating_point_v7_1_16.mux4 [\mux4(c_xdevicefamily="zynq",wid...]
+Compiling architecture rtl of entity floating_point_v7_1_16.mux4 [\mux4(c_xdevicefamily="zynq",wid...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=2)\]
+Compiling architecture rtl of entity floating_point_v7_1_16.mux4 [\mux4(c_xdevicefamily="zynq",wid...]
+Compiling architecture rtl of entity floating_point_v7_1_16.mux4 [\mux4(c_xdevicefamily="zynq",wid...]
+Compiling architecture fdre_v of entity unisim.FDRE [fdre_default]
+Compiling architecture fde_v of entity unisim.FDE [fde_default]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=8,length=0,fast_inp...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture rtl of entity floating_point_v7_1_16.lead_zero_encode [\lead_zero_encode(c_xdevicefamil...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=56)\]
+Compiling architecture rtl of entity floating_point_v7_1_16.shift_msb_first [\shift_msb_first(a_width=56,resu...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(length=2)\]
+Compiling architecture rtl of entity floating_point_v7_1_16.dsp48e1_wrapper [\dsp48e1_wrapper(b_width=18,c_wi...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=19,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=28,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=29,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_16.renorm_and_round_logic [\renorm_and_round_logic(c_xdevic...]
+Compiling architecture rtl of entity floating_point_v7_1_16.norm_and_round_logic [\norm_and_round_logic(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(length=3)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=12,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=12,length=3)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=2,length=2)\]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity floating_point_v7_1_16.compare_eq_im [\compare_eq_im(c_xdevicefamily="...]
+Compiling architecture rtl of entity floating_point_v7_1_16.special_detect [\special_detect(c_xdevicefamily=...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity floating_point_v7_1_16.compare_gt [\compare_gt(c_xdevicefamily="zyn...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=11,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity floating_point_v7_1_16.compare_eq [\compare_eq(c_xdevicefamily="zyn...]
+Compiling architecture synth of entity floating_point_v7_1_16.compare [\compare(c_xdevicefamily="zynq",...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=11)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=12)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=2,length=3,fast_inp...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(length=3,fast_input=true)...]
+Compiling architecture rtl of entity floating_point_v7_1_16.flt_add_exp [\flt_add_exp(c_xdevicefamily="zy...]
+Compiling architecture synth of entity floating_point_v7_1_16.flt_dec_op [\flt_dec_op(c_xdevicefamily="zyn...]
+Compiling architecture rtl of entity floating_point_v7_1_16.flt_add_logic [\flt_add_logic(c_xdevicefamily="...]
+Compiling architecture rtl of entity floating_point_v7_1_16.flt_add [\flt_add(c_xdevicefamily="zynq",...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=64,length=0)\]
+Compiling architecture xilinx of entity floating_point_v7_1_16.floating_point_v7_1_16_viv [\floating_point_v7_1_16_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_16.floating_point_v7_1_16 [\floating_point_v7_1_16(c_xdevic...]
+Compiling module xil_defaultlib.svdd_preprocess_dsub_64ns_64ns_6...
+Compiling module xil_defaultlib.svdd_preprocess_dsub_64ns_64ns_6...
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=52,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=54,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity floating_point_v7_1_16.flt_div_mant_addsub [\flt_div_mant_addsub(c_xdevicefa...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=53,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=54,fast_input=true)...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity floating_point_v7_1_16.flt_div_mant_addsub [\flt_div_mant_addsub(c_xdevicefa...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=55,length=15)\]
+Compiling architecture virtex of entity floating_point_v7_1_16.flt_div_mant [\flt_div_mant(c_xdevicefamily="z...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=13,fast_input=true)...]
+Compiling architecture rtl of entity floating_point_v7_1_16.special_detect [\special_detect(c_xdevicefamily=...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(length=42,fast_input=true...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=2,length=2,fast_inp...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(length=2,fast_input=true)...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=4,fast_input=true)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=11,length=41)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(length=40,fast_input=true...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=3,length=40,fast_in...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=4,length=40,fast_in...]
+Compiling architecture rtl of entity floating_point_v7_1_16.flt_div_exp [\flt_div_exp(c_xdevicefamily="no...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=26,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=27,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture rtl of entity floating_point_v7_1_16.flt_round_bit [\flt_round_bit(c_xdevicefamily="...]
+Compiling architecture rtl of entity floating_point_v7_1_16.renorm_and_round_logic [\renorm_and_round_logic(c_xdevic...]
+Compiling architecture synth of entity floating_point_v7_1_16.flt_dec_op_lat [\flt_dec_op_lat(c_xdevicefamily=...]
+Compiling architecture virtex of entity floating_point_v7_1_16.flt_div [\flt_div(c_xdevicefamily="zynq",...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture xilinx of entity floating_point_v7_1_16.floating_point_v7_1_16_viv [\floating_point_v7_1_16_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_16.floating_point_v7_1_16 [\floating_point_v7_1_16(c_xdevic...]
+Compiling module xil_defaultlib.svdd_preprocess_ddiv_64ns_64ns_6...
+Compiling module xil_defaultlib.svdd_preprocess_ddiv_64ns_64ns_6...
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity floating_point_v7_1_16.compare_eq_im [\compare_eq_im(c_xdevicefamily="...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity floating_point_v7_1_16.compare_ne_im [\compare_ne_im(c_xdevicefamily="...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity floating_point_v7_1_16.compare_eq_im [\compare_eq_im(c_xdevicefamily="...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=22,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity floating_point_v7_1_16.compare_eq [\compare_eq(c_xdevicefamily="zyn...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity floating_point_v7_1_16.compare_gt [\compare_gt(c_xdevicefamily="zyn...]
+Compiling architecture rtl of entity floating_point_v7_1_16.fp_cmp [\fp_cmp(c_xdevicefamily="zynq",c...]
+Compiling architecture xilinx of entity floating_point_v7_1_16.floating_point_v7_1_16_viv [\floating_point_v7_1_16_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_16.floating_point_v7_1_16 [\floating_point_v7_1_16(c_xdevic...]
+Compiling module xil_defaultlib.svdd_preprocess_dcmp_64ns_64ns_1...
+Compiling module xil_defaultlib.svdd_preprocess_dcmp_64ns_64ns_1...
+Compiling architecture rtl of entity floating_point_v7_1_16.mux4 [\mux4(c_xdevicefamily="zynq",wid...]
+Compiling architecture rtl of entity floating_point_v7_1_16.mux4 [\mux4(c_xdevicefamily="zynq",wid...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture rtl of entity floating_point_v7_1_16.lead_zero_encode [\lead_zero_encode(c_xdevicefamil...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=32)\]
+Compiling architecture rtl of entity floating_point_v7_1_16.shift_msb_first [\shift_msb_first(a_width=32,dist...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=26)\]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=27)\]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture rtl of entity floating_point_v7_1_16.flt_round_bit [\flt_round_bit(c_xdevicefamily="...]
+Compiling architecture rtl of entity floating_point_v7_1_16.renorm_and_round_logic [\renorm_and_round_logic(c_xdevic...]
+Compiling architecture synth of entity floating_point_v7_1_16.fix_to_flt_conv_exp [\fix_to_flt_conv_exp(c_xdevicefa...]
+Compiling architecture synth of entity floating_point_v7_1_16.flt_dec_op [\flt_dec_op(c_xdevicefamily="zyn...]
+Compiling architecture struct of entity floating_point_v7_1_16.fix_to_flt_conv [\fix_to_flt_conv(c_xdevicefamily...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_latency=...]
+Compiling architecture xilinx of entity floating_point_v7_1_16.floating_point_v7_1_16_viv [\floating_point_v7_1_16_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_16.floating_point_v7_1_16 [\floating_point_v7_1_16(c_xdevic...]
+Compiling module xil_defaultlib.svdd_preprocess_uitodp_32ns_64_6...
+Compiling module xil_defaultlib.svdd_preprocess_uitodp_32ns_64_6...
+Compiling module xil_defaultlib.svdd_preprocess_mul_32s_67ns_72_...
+Compiling module xil_defaultlib.svdd_preprocess_preprocess
+Compiling module xil_defaultlib.svdd_preprocess_svdd_preprocess_...
+Compiling module xil_defaultlib.svdd_preprocess_regslice_both
+Compiling module xil_defaultlib.svdd_preprocess_regslice_both(Da...
+Compiling module xil_defaultlib.svdd_preprocess_regslice_both(Da...
+Compiling module xil_defaultlib.svdd_preprocess
+Compiling module xil_defaultlib.fifo(DEPTH=8,WIDTH=32)
+Compiling module xil_defaultlib.fifo(DEPTH=8,WIDTH=4)
+Compiling module xil_defaultlib.fifo(DEPTH=8,WIDTH=1)
+Compiling module xil_defaultlib.AESL_axi_s_s_axis_raw
+Compiling module xil_defaultlib.AESL_axi_s_m_axis_q24
+Compiling module xil_defaultlib.AESL_axi_s_m_axis_codes
+Compiling module xil_defaultlib.AESL_deadlock_idx2_monitor
+Compiling module xil_defaultlib.AESL_deadlock_idx0_monitor
+Compiling module xil_defaultlib.AESL_deadlock_kernel_monitor_top...
+Compiling module xil_defaultlib.nodf_module_intf
+Compiling module xil_defaultlib.seq_loop_intf(FSM_WIDTH=7)
+Compiling module xil_defaultlib.seq_loop_intf(FSM_WIDTH=80)
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=1)
+Compiling module xil_defaultlib.upc_loop_intf
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_svdd_preprocess_top
+Compiling module work.glbl
+Built simulation snapshot svdd_preprocess
+
+****** xsim v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/svdd_preprocess/xsim_script.tcl
+# xsim {svdd_preprocess} -autoloadwcfg -tclbatch {svdd_preprocess.tcl}
+Time resolution is 1 ps
+source svdd_preprocess.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 300 [n/a] @ "125000"
+// RTL Simulation : 1 / 300 [n/a] @ "10165000"
+// RTL Simulation : 2 / 300 [n/a] @ "17455000"
+// RTL Simulation : 3 / 300 [n/a] @ "27485000"
+// RTL Simulation : 4 / 300 [n/a] @ "37515000"
+// RTL Simulation : 5 / 300 [n/a] @ "47545000"
+// RTL Simulation : 6 / 300 [n/a] @ "57575000"
+// RTL Simulation : 7 / 300 [n/a] @ "67605000"
+// RTL Simulation : 8 / 300 [n/a] @ "77635000"
+// RTL Simulation : 9 / 300 [n/a] @ "87665000"
+// RTL Simulation : 10 / 300 [n/a] @ "97695000"
+// RTL Simulation : 11 / 300 [n/a] @ "107725000"
+// RTL Simulation : 12 / 300 [n/a] @ "117755000"
+// RTL Simulation : 13 / 300 [n/a] @ "127785000"
+// RTL Simulation : 14 / 300 [n/a] @ "137815000"
+// RTL Simulation : 15 / 300 [n/a] @ "147845000"
+// RTL Simulation : 16 / 300 [n/a] @ "156505000"
+// RTL Simulation : 17 / 300 [n/a] @ "165165000"
+// RTL Simulation : 18 / 300 [n/a] @ "175195000"
+// RTL Simulation : 19 / 300 [n/a] @ "185225000"
+// RTL Simulation : 20 / 300 [n/a] @ "195255000"
+// RTL Simulation : 21 / 300 [n/a] @ "203915000"
+// RTL Simulation : 22 / 300 [n/a] @ "213945000"
+// RTL Simulation : 23 / 300 [n/a] @ "222605000"
+// RTL Simulation : 24 / 300 [n/a] @ "232635000"
+// RTL Simulation : 25 / 300 [n/a] @ "241295000"
+// RTL Simulation : 26 / 300 [n/a] @ "251325000"
+// RTL Simulation : 27 / 300 [n/a] @ "259985000"
+// RTL Simulation : 28 / 300 [n/a] @ "270015000"
+// RTL Simulation : 29 / 300 [n/a] @ "278675000"
+// RTL Simulation : 30 / 300 [n/a] @ "287335000"
+// RTL Simulation : 31 / 300 [n/a] @ "295995000"
+// RTL Simulation : 32 / 300 [n/a] @ "304655000"
+// RTL Simulation : 33 / 300 [n/a] @ "313315000"
+// RTL Simulation : 34 / 300 [n/a] @ "321975000"
+// RTL Simulation : 35 / 300 [n/a] @ "332005000"
+// RTL Simulation : 36 / 300 [n/a] @ "342035000"
+// RTL Simulation : 37 / 300 [n/a] @ "352065000"
+// RTL Simulation : 38 / 300 [n/a] @ "362095000"
+// RTL Simulation : 39 / 300 [n/a] @ "370755000"
+// RTL Simulation : 40 / 300 [n/a] @ "380785000"
+// RTL Simulation : 41 / 300 [n/a] @ "390815000"
+// RTL Simulation : 42 / 300 [n/a] @ "399475000"
+// RTL Simulation : 43 / 300 [n/a] @ "409505000"
+// RTL Simulation : 44 / 300 [n/a] @ "418165000"
+// RTL Simulation : 45 / 300 [n/a] @ "426825000"
+// RTL Simulation : 46 / 300 [n/a] @ "436855000"
+// RTL Simulation : 47 / 300 [n/a] @ "446885000"
+// RTL Simulation : 48 / 300 [n/a] @ "455545000"
+// RTL Simulation : 49 / 300 [n/a] @ "464205000"
+// RTL Simulation : 50 / 300 [n/a] @ "472865000"
+// RTL Simulation : 51 / 300 [n/a] @ "482895000"
+// RTL Simulation : 52 / 300 [n/a] @ "492925000"
+// RTL Simulation : 53 / 300 [n/a] @ "501585000"
+// RTL Simulation : 54 / 300 [n/a] @ "511615000"
+// RTL Simulation : 55 / 300 [n/a] @ "520275000"
+// RTL Simulation : 56 / 300 [n/a] @ "528935000"
+// RTL Simulation : 57 / 300 [n/a] @ "537595000"
+// RTL Simulation : 58 / 300 [n/a] @ "547625000"
+// RTL Simulation : 59 / 300 [n/a] @ "557655000"
+// RTL Simulation : 60 / 300 [n/a] @ "566315000"
+// RTL Simulation : 61 / 300 [n/a] @ "576345000"
+// RTL Simulation : 62 / 300 [n/a] @ "585005000"
+// RTL Simulation : 63 / 300 [n/a] @ "593665000"
+// RTL Simulation : 64 / 300 [n/a] @ "603695000"
+// RTL Simulation : 65 / 300 [n/a] @ "612355000"
+// RTL Simulation : 66 / 300 [n/a] @ "621015000"
+// RTL Simulation : 67 / 300 [n/a] @ "629675000"
+// RTL Simulation : 68 / 300 [n/a] @ "639705000"
+// RTL Simulation : 69 / 300 [n/a] @ "648365000"
+// RTL Simulation : 70 / 300 [n/a] @ "658395000"
+// RTL Simulation : 71 / 300 [n/a] @ "667055000"
+// RTL Simulation : 72 / 300 [n/a] @ "675715000"
+// RTL Simulation : 73 / 300 [n/a] @ "684375000"
+// RTL Simulation : 74 / 300 [n/a] @ "693035000"
+// RTL Simulation : 75 / 300 [n/a] @ "701695000"
+// RTL Simulation : 76 / 300 [n/a] @ "710355000"
+// RTL Simulation : 77 / 300 [n/a] @ "720385000"
+// RTL Simulation : 78 / 300 [n/a] @ "729045000"
+// RTL Simulation : 79 / 300 [n/a] @ "737705000"
+// RTL Simulation : 80 / 300 [n/a] @ "747735000"
+// RTL Simulation : 81 / 300 [n/a] @ "756395000"
+// RTL Simulation : 82 / 300 [n/a] @ "766425000"
+// RTL Simulation : 83 / 300 [n/a] @ "775085000"
+// RTL Simulation : 84 / 300 [n/a] @ "785115000"
+// RTL Simulation : 85 / 300 [n/a] @ "793775000"
+// RTL Simulation : 86 / 300 [n/a] @ "802435000"
+// RTL Simulation : 87 / 300 [n/a] @ "812465000"
+// RTL Simulation : 88 / 300 [n/a] @ "821125000"
+// RTL Simulation : 89 / 300 [n/a] @ "829785000"
+// RTL Simulation : 90 / 300 [n/a] @ "838445000"
+// RTL Simulation : 91 / 300 [n/a] @ "847105000"
+// RTL Simulation : 92 / 300 [n/a] @ "855765000"
+// RTL Simulation : 93 / 300 [n/a] @ "864425000"
+// RTL Simulation : 94 / 300 [n/a] @ "873085000"
+// RTL Simulation : 95 / 300 [n/a] @ "881745000"
+// RTL Simulation : 96 / 300 [n/a] @ "890405000"
+// RTL Simulation : 97 / 300 [n/a] @ "899065000"
+// RTL Simulation : 98 / 300 [n/a] @ "909095000"
+// RTL Simulation : 99 / 300 [n/a] @ "919125000"
+// RTL Simulation : 100 / 300 [n/a] @ "929155000"
+// RTL Simulation : 101 / 300 [n/a] @ "939185000"
+// RTL Simulation : 102 / 300 [n/a] @ "947845000"
+// RTL Simulation : 103 / 300 [n/a] @ "957875000"
+// RTL Simulation : 104 / 300 [n/a] @ "966535000"
+// RTL Simulation : 105 / 300 [n/a] @ "976565000"
+// RTL Simulation : 106 / 300 [n/a] @ "986595000"
+// RTL Simulation : 107 / 300 [n/a] @ "995255000"
+// RTL Simulation : 108 / 300 [n/a] @ "1003915000"
+// RTL Simulation : 109 / 300 [n/a] @ "1013945000"
+// RTL Simulation : 110 / 300 [n/a] @ "1023975000"
+// RTL Simulation : 111 / 300 [n/a] @ "1034005000"
+// RTL Simulation : 112 / 300 [n/a] @ "1042665000"
+// RTL Simulation : 113 / 300 [n/a] @ "1052695000"
+// RTL Simulation : 114 / 300 [n/a] @ "1062725000"
+// RTL Simulation : 115 / 300 [n/a] @ "1071385000"
+// RTL Simulation : 116 / 300 [n/a] @ "1080045000"
+// RTL Simulation : 117 / 300 [n/a] @ "1088705000"
+// RTL Simulation : 118 / 300 [n/a] @ "1098735000"
+// RTL Simulation : 119 / 300 [n/a] @ "1107395000"
+// RTL Simulation : 120 / 300 [n/a] @ "1117425000"
+// RTL Simulation : 121 / 300 [n/a] @ "1127455000"
+// RTL Simulation : 122 / 300 [n/a] @ "1137485000"
+// RTL Simulation : 123 / 300 [n/a] @ "1146145000"
+// RTL Simulation : 124 / 300 [n/a] @ "1154805000"
+// RTL Simulation : 125 / 300 [n/a] @ "1164835000"
+// RTL Simulation : 126 / 300 [n/a] @ "1173495000"
+// RTL Simulation : 127 / 300 [n/a] @ "1182155000"
+// RTL Simulation : 128 / 300 [n/a] @ "1192185000"
+// RTL Simulation : 129 / 300 [n/a] @ "1200845000"
+// RTL Simulation : 130 / 300 [n/a] @ "1209505000"
+// RTL Simulation : 131 / 300 [n/a] @ "1219535000"
+// RTL Simulation : 132 / 300 [n/a] @ "1228195000"
+// RTL Simulation : 133 / 300 [n/a] @ "1235485000"
+// RTL Simulation : 134 / 300 [n/a] @ "1245515000"
+// RTL Simulation : 135 / 300 [n/a] @ "1255545000"
+// RTL Simulation : 136 / 300 [n/a] @ "1264205000"
+// RTL Simulation : 137 / 300 [n/a] @ "1272865000"
+// RTL Simulation : 138 / 300 [n/a] @ "1282895000"
+// RTL Simulation : 139 / 300 [n/a] @ "1292925000"
+// RTL Simulation : 140 / 300 [n/a] @ "1302955000"
+// RTL Simulation : 141 / 300 [n/a] @ "1311615000"
+// RTL Simulation : 142 / 300 [n/a] @ "1320275000"
+// RTL Simulation : 143 / 300 [n/a] @ "1328935000"
+// RTL Simulation : 144 / 300 [n/a] @ "1337595000"
+// RTL Simulation : 145 / 300 [n/a] @ "1347625000"
+// RTL Simulation : 146 / 300 [n/a] @ "1357655000"
+// RTL Simulation : 147 / 300 [n/a] @ "1367685000"
+// RTL Simulation : 148 / 300 [n/a] @ "1377715000"
+// RTL Simulation : 149 / 300 [n/a] @ "1386375000"
+// RTL Simulation : 150 / 300 [n/a] @ "1395035000"
+// RTL Simulation : 151 / 300 [n/a] @ "1403695000"
+// RTL Simulation : 152 / 300 [n/a] @ "1413725000"
+// RTL Simulation : 153 / 300 [n/a] @ "1422385000"
+// RTL Simulation : 154 / 300 [n/a] @ "1431045000"
+// RTL Simulation : 155 / 300 [n/a] @ "1441075000"
+// RTL Simulation : 156 / 300 [n/a] @ "1449735000"
+// RTL Simulation : 157 / 300 [n/a] @ "1458395000"
+// RTL Simulation : 158 / 300 [n/a] @ "1467055000"
+// RTL Simulation : 159 / 300 [n/a] @ "1477085000"
+// RTL Simulation : 160 / 300 [n/a] @ "1485745000"
+// RTL Simulation : 161 / 300 [n/a] @ "1495775000"
+// RTL Simulation : 162 / 300 [n/a] @ "1504435000"
+// RTL Simulation : 163 / 300 [n/a] @ "1514465000"
+// RTL Simulation : 164 / 300 [n/a] @ "1524495000"
+// RTL Simulation : 165 / 300 [n/a] @ "1533155000"
+// RTL Simulation : 166 / 300 [n/a] @ "1543185000"
+// RTL Simulation : 167 / 300 [n/a] @ "1553215000"
+// RTL Simulation : 168 / 300 [n/a] @ "1561875000"
+// RTL Simulation : 169 / 300 [n/a] @ "1571905000"
+// RTL Simulation : 170 / 300 [n/a] @ "1581935000"
+// RTL Simulation : 171 / 300 [n/a] @ "1591965000"
+// RTL Simulation : 172 / 300 [n/a] @ "1600625000"
+// RTL Simulation : 173 / 300 [n/a] @ "1609285000"
+// RTL Simulation : 174 / 300 [n/a] @ "1617945000"
+// RTL Simulation : 175 / 300 [n/a] @ "1626605000"
+// RTL Simulation : 176 / 300 [n/a] @ "1635265000"
+// RTL Simulation : 177 / 300 [n/a] @ "1645295000"
+// RTL Simulation : 178 / 300 [n/a] @ "1655325000"
+// RTL Simulation : 179 / 300 [n/a] @ "1663985000"
+// RTL Simulation : 180 / 300 [n/a] @ "1674015000"
+// RTL Simulation : 181 / 300 [n/a] @ "1684045000"
+// RTL Simulation : 182 / 300 [n/a] @ "1692705000"
+// RTL Simulation : 183 / 300 [n/a] @ "1702735000"
+// RTL Simulation : 184 / 300 [n/a] @ "1712765000"
+// RTL Simulation : 185 / 300 [n/a] @ "1722795000"
+// RTL Simulation : 186 / 300 [n/a] @ "1731455000"
+// RTL Simulation : 187 / 300 [n/a] @ "1740115000"
+// RTL Simulation : 188 / 300 [n/a] @ "1748775000"
+// RTL Simulation : 189 / 300 [n/a] @ "1757435000"
+// RTL Simulation : 190 / 300 [n/a] @ "1767465000"
+// RTL Simulation : 191 / 300 [n/a] @ "1777495000"
+// RTL Simulation : 192 / 300 [n/a] @ "1786155000"
+// RTL Simulation : 193 / 300 [n/a] @ "1794815000"
+// RTL Simulation : 194 / 300 [n/a] @ "1804845000"
+// RTL Simulation : 195 / 300 [n/a] @ "1813505000"
+// RTL Simulation : 196 / 300 [n/a] @ "1823535000"
+// RTL Simulation : 197 / 300 [n/a] @ "1832195000"
+// RTL Simulation : 198 / 300 [n/a] @ "1840855000"
+// RTL Simulation : 199 / 300 [n/a] @ "1849515000"
+// RTL Simulation : 200 / 300 [n/a] @ "1858175000"
+// RTL Simulation : 201 / 300 [n/a] @ "1868205000"
+// RTL Simulation : 202 / 300 [n/a] @ "1878235000"
+// RTL Simulation : 203 / 300 [n/a] @ "1886895000"
+// RTL Simulation : 204 / 300 [n/a] @ "1896925000"
+// RTL Simulation : 205 / 300 [n/a] @ "1905585000"
+// RTL Simulation : 206 / 300 [n/a] @ "1914245000"
+// RTL Simulation : 207 / 300 [n/a] @ "1924275000"
+// RTL Simulation : 208 / 300 [n/a] @ "1934305000"
+// RTL Simulation : 209 / 300 [n/a] @ "1944335000"
+// RTL Simulation : 210 / 300 [n/a] @ "1952995000"
+// RTL Simulation : 211 / 300 [n/a] @ "1961655000"
+// RTL Simulation : 212 / 300 [n/a] @ "1970315000"
+// RTL Simulation : 213 / 300 [n/a] @ "1978975000"
+// RTL Simulation : 214 / 300 [n/a] @ "1987635000"
+// RTL Simulation : 215 / 300 [n/a] @ "1996295000"
+// RTL Simulation : 216 / 300 [n/a] @ "2006325000"
+// RTL Simulation : 217 / 300 [n/a] @ "2014985000"
+// RTL Simulation : 218 / 300 [n/a] @ "2025015000"
+// RTL Simulation : 219 / 300 [n/a] @ "2033675000"
+// RTL Simulation : 220 / 300 [n/a] @ "2043705000"
+// RTL Simulation : 221 / 300 [n/a] @ "2052365000"
+// RTL Simulation : 222 / 300 [n/a] @ "2061025000"
+// RTL Simulation : 223 / 300 [n/a] @ "2071055000"
+// RTL Simulation : 224 / 300 [n/a] @ "2081085000"
+// RTL Simulation : 225 / 300 [n/a] @ "2089745000"
+// RTL Simulation : 226 / 300 [n/a] @ "2099775000"
+// RTL Simulation : 227 / 300 [n/a] @ "2109805000"
+// RTL Simulation : 228 / 300 [n/a] @ "2118465000"
+// RTL Simulation : 229 / 300 [n/a] @ "2127125000"
+// RTL Simulation : 230 / 300 [n/a] @ "2137155000"
+// RTL Simulation : 231 / 300 [n/a] @ "2147185000"
+// RTL Simulation : 232 / 300 [n/a] @ "2155845000"
+// RTL Simulation : 233 / 300 [n/a] @ "2165875000"
+// RTL Simulation : 234 / 300 [n/a] @ "2174535000"
+// RTL Simulation : 235 / 300 [n/a] @ "2183195000"
+// RTL Simulation : 236 / 300 [n/a] @ "2191855000"
+// RTL Simulation : 237 / 300 [n/a] @ "2200515000"
+// RTL Simulation : 238 / 300 [n/a] @ "2210545000"
+// RTL Simulation : 239 / 300 [n/a] @ "2220575000"
+// RTL Simulation : 240 / 300 [n/a] @ "2229235000"
+// RTL Simulation : 241 / 300 [n/a] @ "2237895000"
+// RTL Simulation : 242 / 300 [n/a] @ "2246555000"
+// RTL Simulation : 243 / 300 [n/a] @ "2256585000"
+// RTL Simulation : 244 / 300 [n/a] @ "2265245000"
+// RTL Simulation : 245 / 300 [n/a] @ "2275275000"
+// RTL Simulation : 246 / 300 [n/a] @ "2283935000"
+// RTL Simulation : 247 / 300 [n/a] @ "2292595000"
+// RTL Simulation : 248 / 300 [n/a] @ "2302625000"
+// RTL Simulation : 249 / 300 [n/a] @ "2312655000"
+// RTL Simulation : 250 / 300 [n/a] @ "2321315000"
+// RTL Simulation : 251 / 300 [n/a] @ "2329975000"
+// RTL Simulation : 252 / 300 [n/a] @ "2340005000"
+// RTL Simulation : 253 / 300 [n/a] @ "2350035000"
+// RTL Simulation : 254 / 300 [n/a] @ "2358695000"
+// RTL Simulation : 255 / 300 [n/a] @ "2367355000"
+// RTL Simulation : 256 / 300 [n/a] @ "2376015000"
+// RTL Simulation : 257 / 300 [n/a] @ "2384675000"
+// RTL Simulation : 258 / 300 [n/a] @ "2393335000"
+// RTL Simulation : 259 / 300 [n/a] @ "2401995000"
+// RTL Simulation : 260 / 300 [n/a] @ "2412025000"
+// RTL Simulation : 261 / 300 [n/a] @ "2420685000"
+// RTL Simulation : 262 / 300 [n/a] @ "2430715000"
+// RTL Simulation : 263 / 300 [n/a] @ "2439375000"
+// RTL Simulation : 264 / 300 [n/a] @ "2448035000"
+// RTL Simulation : 265 / 300 [n/a] @ "2456695000"
+// RTL Simulation : 266 / 300 [n/a] @ "2466725000"
+// RTL Simulation : 267 / 300 [n/a] @ "2475385000"
+// RTL Simulation : 268 / 300 [n/a] @ "2484045000"
+// RTL Simulation : 269 / 300 [n/a] @ "2494075000"
+// RTL Simulation : 270 / 300 [n/a] @ "2504105000"
+// RTL Simulation : 271 / 300 [n/a] @ "2514135000"
+// RTL Simulation : 272 / 300 [n/a] @ "2524165000"
+// RTL Simulation : 273 / 300 [n/a] @ "2532825000"
+// RTL Simulation : 274 / 300 [n/a] @ "2541485000"
+// RTL Simulation : 275 / 300 [n/a] @ "2548775000"
+// RTL Simulation : 276 / 300 [n/a] @ "2557435000"
+// RTL Simulation : 277 / 300 [n/a] @ "2566095000"
+// RTL Simulation : 278 / 300 [n/a] @ "2574755000"
+// RTL Simulation : 279 / 300 [n/a] @ "2583415000"
+// RTL Simulation : 280 / 300 [n/a] @ "2593445000"
+// RTL Simulation : 281 / 300 [n/a] @ "2603475000"
+// RTL Simulation : 282 / 300 [n/a] @ "2613505000"
+// RTL Simulation : 283 / 300 [n/a] @ "2623535000"
+// RTL Simulation : 284 / 300 [n/a] @ "2633565000"
+// RTL Simulation : 285 / 300 [n/a] @ "2642225000"
+// RTL Simulation : 286 / 300 [n/a] @ "2652255000"
+// RTL Simulation : 287 / 300 [n/a] @ "2662285000"
+// RTL Simulation : 288 / 300 [n/a] @ "2670945000"
+// RTL Simulation : 289 / 300 [n/a] @ "2679605000"
+// RTL Simulation : 290 / 300 [n/a] @ "2688265000"
+// RTL Simulation : 291 / 300 [n/a] @ "2696925000"
+// RTL Simulation : 292 / 300 [n/a] @ "2705585000"
+// RTL Simulation : 293 / 300 [n/a] @ "2715615000"
+// RTL Simulation : 294 / 300 [n/a] @ "2725645000"
+// RTL Simulation : 295 / 300 [n/a] @ "2734305000"
+// RTL Simulation : 296 / 300 [n/a] @ "2744335000"
+// RTL Simulation : 297 / 300 [n/a] @ "2754365000"
+// RTL Simulation : 298 / 300 [n/a] @ "2763025000"
+// RTL Simulation : 299 / 300 [n/a] @ "2773055000"
+// RTL Simulation : 300 / 300 [n/a] @ "2783085000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 2783145 ns : File "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/sim/verilog/svdd_preprocess.autotb.v" Line 316
+run: Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:26 . Memory (MB): peak = 1239.969 ; gain = 0.000 ; free physical = 2052 ; free virtual = 6487
+## quit
+INFO: xsimkernel Simulation Memory Usage: 127092 KB (Peak: 175688 KB), Simulation CPU Usage: 25530 ms
+INFO: [Common 17-206] Exiting xsim at Sun Nov 22 23:22:54 2026...
+INFO: [COSIM 212-316] Starting C post checking ...
+log1p_u32: 270225 inputs, 33 differ by 1 ulp from libm, 0 by more
+6 chunks -> 304 records, 298 feature records (0 beats breaking the spec framing)
+all testbench checks passed
+INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 8196
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [HLS 200-111] Finished Command cosim_design CPU user time: 223.5 seconds. CPU system time: 6.43 seconds. Elapsed time: 224.35 seconds; current allocated memory: 9.809 MB.
+INFO: [HLS 200-1510] Running: close_project 
+INFO: [HLS 200-1510] Running: open_project prj_svdd_record_join 
+INFO: [HLS 200-10] Opening project '/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join'.
+INFO: [HLS 200-1510] Running: set_top svdd_record_join 
+INFO: [HLS 200-1510] Running: add_files /home/chilsu/.cache/svdd_pl_hls/src/join.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding design file '/home/chilsu/.cache/svdd_pl_hls/src/join.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/tb_svdd_pl.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/tb_svdd_pl.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/core/inference_axis.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/core/inference_axis.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/extract.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 -flow_target vivado 
+INFO: [HLS 200-10] Opening solution '/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 2ns.
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2023.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1464] Running solution command: config_rtl -reset=control
+INFO: [HLS 200-1464] Running solution command: config_rtl -reset_level=low
+INFO: [HLS 200-1464] Running solution command: config_export -display_name {SVDD record join (metadata + codes + score)}
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -ipname=svdd_record_join
+INFO: [HLS 200-1464] Running solution command: config_export -library=hls
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1464] Running solution command: config_export -vendor=bits.edu
+INFO: [HLS 200-1464] Running solution command: config_export -version=1.0
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: set_clock_uncertainty 2 
+INFO: [HLS 200-1510] Running: config_rtl -reset control -reset_level low 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog -vendor bits.edu -library hls -version 1.0 -display_name SVDD record join (metadata + codes + score) -ipname svdd_record_join 
+INFO: [HLS 200-1510] Running: cosim_design -ldflags -B/usr/bin/ -argv stream /home/chilsu/.cache/svdd_pl_hls/src/tb_data/small_stream.bin /home/chilsu/.cache/svdd_pl_hls/src/tb_data/small_out.bin -trace_level none 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "/home/chilsu/tools/Vitis_HLS/2023.2/tps/lnx64/gcc-8.3.0/bin/g++"
+   Compiling apatb_svdd_record_join.cpp
+   Compiling apatb_svdd_record_join_util.cpp
+   Compiling extract.cpp_pre.cpp.tb.cpp
+   Compiling inference_axis.cpp_pre.cpp.tb.cpp
+   Compiling join.cpp_pre.cpp.tb.cpp
+   Compiling preprocess.cpp_pre.cpp.tb.cpp
+   Compiling tb_svdd_pl.cpp_pre.cpp.tb.cpp
+   Compiling apatb_svdd_record_join_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+log1p_u32: 270225 inputs, 33 differ by 1 ulp from libm, 0 by more
+6 chunks -> 304 records, 298 feature records (0 beats breaking the spec framing)
+all testbench checks passed
+INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 8196
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /home/chilsu/tools/Vivado/2023.2/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_svdd_record_join_top glbl -Oenable_linking_all_libraries -prj svdd_record_join.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_1_16 -L floating_point_v7_0_21 --lib ieee_proposed=./ieee_proposed -s svdd_record_join 
+Multi-threading is on. Using 16 slave threads.
+Determining compilation order of HDL files.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/svdd_record_join.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_svdd_record_join_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/AESL_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/AESL_axi_s_s_axis_meta.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_s_axis_meta
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/AESL_axi_s_s_axis_codes.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_s_axis_codes
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/AESL_axi_s_s_axis_score.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_s_axis_score
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/AESL_axi_s_m_axis.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_m_axis
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/AESL_deadlock_kernel_monitor_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_kernel_monitor_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/AESL_deadlock_idx0_monitor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_idx0_monitor
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/svdd_record_join_svdd_record_join_Pipeline_read_meta.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_record_join_svdd_record_join_Pipeline_read_meta
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/svdd_record_join_svdd_record_join_Pipeline_read_codes.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_record_join_svdd_record_join_Pipeline_read_codes
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/svdd_record_join_svdd_record_join_Pipeline_VITIS_LOOP_35_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_record_join_svdd_record_join_Pipeline_VITIS_LOOP_35_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/svdd_record_join_svdd_record_join_Pipeline_write_record.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_record_join_svdd_record_join_Pipeline_write_record
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/svdd_record_join.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_record_join
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/svdd_record_join_flow_control_loop_pipe_sequential_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_record_join_flow_control_loop_pipe_sequential_init
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/svdd_record_join_regslice_both.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_record_join_regslice_both
+INFO: [VRFC 10-311] analyzing module svdd_record_join_regslice_both_w1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/svdd_record_join_sparsemux_33_4_64_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_record_join_sparsemux_33_4_64_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/svdd_record_join_c_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module svdd_record_join_c_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/svdd_record_join_ap_rst_n_if.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'svdd_record_join_ap_rst_n_if'
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.svdd_record_join_c_RAM_AUTO_1R1W
+Compiling module xil_defaultlib.svdd_record_join_flow_control_lo...
+Compiling module xil_defaultlib.svdd_record_join_svdd_record_joi...
+Compiling module xil_defaultlib.svdd_record_join_svdd_record_joi...
+Compiling module xil_defaultlib.svdd_record_join_svdd_record_joi...
+Compiling module xil_defaultlib.svdd_record_join_sparsemux_33_4_...
+Compiling module xil_defaultlib.svdd_record_join_svdd_record_joi...
+Compiling module xil_defaultlib.svdd_record_join_regslice_both(D...
+Compiling module xil_defaultlib.svdd_record_join_regslice_both(D...
+Compiling module xil_defaultlib.svdd_record_join_regslice_both(D...
+Compiling module xil_defaultlib.svdd_record_join_regslice_both
+Compiling module xil_defaultlib.svdd_record_join_regslice_both(D...
+Compiling module xil_defaultlib.svdd_record_join
+Compiling module xil_defaultlib.fifo(WIDTH=64)
+Compiling module xil_defaultlib.fifo
+Compiling module xil_defaultlib.fifo(WIDTH=1)
+Compiling module xil_defaultlib.AESL_axi_s_s_axis_meta
+Compiling module xil_defaultlib.fifo(DEPTH=8,WIDTH=32)
+Compiling module xil_defaultlib.fifo(DEPTH=8,WIDTH=4)
+Compiling module xil_defaultlib.fifo(DEPTH=8,WIDTH=1)
+Compiling module xil_defaultlib.AESL_axi_s_s_axis_codes
+Compiling module xil_defaultlib.fifo(DEPTH=2,WIDTH=64)
+Compiling module xil_defaultlib.fifo(DEPTH=2)
+Compiling module xil_defaultlib.fifo(DEPTH=2,WIDTH=1)
+Compiling module xil_defaultlib.AESL_axi_s_s_axis_score
+Compiling module xil_defaultlib.AESL_axi_s_m_axis
+Compiling module xil_defaultlib.AESL_deadlock_idx0_monitor
+Compiling module xil_defaultlib.AESL_deadlock_kernel_monitor_top...
+Compiling module xil_defaultlib.nodf_module_intf
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=1)
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_svdd_record_join_top
+Compiling module work.glbl
+Built simulation snapshot svdd_record_join
+
+****** xsim v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/svdd_record_join/xsim_script.tcl
+# xsim {svdd_record_join} -autoloadwcfg -tclbatch {svdd_record_join.tcl}
+Time resolution is 1 ps
+source svdd_record_join.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 307 [0.00%] @ "125000"
+// RTL Simulation : 1 / 307 [33.87%] @ "515000"
+// RTL Simulation : 2 / 307 [41.94%] @ "1065000"
+// RTL Simulation : 3 / 307 [33.87%] @ "1455000"
+// RTL Simulation : 4 / 307 [33.87%] @ "1845000"
+// RTL Simulation : 5 / 307 [41.94%] @ "2395000"
+// RTL Simulation : 6 / 307 [41.94%] @ "2945000"
+// RTL Simulation : 7 / 307 [41.94%] @ "3495000"
+// RTL Simulation : 8 / 307 [33.87%] @ "3885000"
+// RTL Simulation : 9 / 307 [41.94%] @ "4435000"
+// RTL Simulation : 10 / 307 [41.94%] @ "4985000"
+// RTL Simulation : 11 / 307 [41.94%] @ "5535000"
+// RTL Simulation : 12 / 307 [41.94%] @ "6085000"
+// RTL Simulation : 13 / 307 [41.94%] @ "6635000"
+// RTL Simulation : 14 / 307 [41.94%] @ "7185000"
+// RTL Simulation : 15 / 307 [41.94%] @ "7735000"
+// RTL Simulation : 16 / 307 [33.87%] @ "8125000"
+// RTL Simulation : 17 / 307 [41.94%] @ "8675000"
+// RTL Simulation : 18 / 307 [41.94%] @ "9225000"
+// RTL Simulation : 19 / 307 [33.87%] @ "9615000"
+// RTL Simulation : 20 / 307 [33.87%] @ "10005000"
+// RTL Simulation : 21 / 307 [41.94%] @ "10555000"
+// RTL Simulation : 22 / 307 [41.94%] @ "11105000"
+// RTL Simulation : 23 / 307 [41.94%] @ "11655000"
+// RTL Simulation : 24 / 307 [41.94%] @ "12205000"
+// RTL Simulation : 25 / 307 [41.94%] @ "12755000"
+// RTL Simulation : 26 / 307 [41.94%] @ "13305000"
+// RTL Simulation : 27 / 307 [41.94%] @ "13855000"
+// RTL Simulation : 28 / 307 [41.94%] @ "14405000"
+// RTL Simulation : 29 / 307 [41.94%] @ "14955000"
+// RTL Simulation : 30 / 307 [41.94%] @ "15505000"
+// RTL Simulation : 31 / 307 [41.94%] @ "16055000"
+// RTL Simulation : 32 / 307 [41.94%] @ "16605000"
+// RTL Simulation : 33 / 307 [41.94%] @ "17155000"
+// RTL Simulation : 34 / 307 [41.94%] @ "17705000"
+// RTL Simulation : 35 / 307 [41.94%] @ "18255000"
+// RTL Simulation : 36 / 307 [41.94%] @ "18805000"
+// RTL Simulation : 37 / 307 [41.94%] @ "19355000"
+// RTL Simulation : 38 / 307 [41.94%] @ "19905000"
+// RTL Simulation : 39 / 307 [41.94%] @ "20455000"
+// RTL Simulation : 40 / 307 [41.94%] @ "21005000"
+// RTL Simulation : 41 / 307 [41.94%] @ "21555000"
+// RTL Simulation : 42 / 307 [41.94%] @ "22105000"
+// RTL Simulation : 43 / 307 [41.94%] @ "22655000"
+// RTL Simulation : 44 / 307 [41.94%] @ "23205000"
+// RTL Simulation : 45 / 307 [41.94%] @ "23755000"
+// RTL Simulation : 46 / 307 [41.94%] @ "24305000"
+// RTL Simulation : 47 / 307 [41.94%] @ "24855000"
+// RTL Simulation : 48 / 307 [41.94%] @ "25405000"
+// RTL Simulation : 49 / 307 [41.94%] @ "25955000"
+// RTL Simulation : 50 / 307 [41.94%] @ "26505000"
+// RTL Simulation : 51 / 307 [41.94%] @ "27055000"
+// RTL Simulation : 52 / 307 [41.94%] @ "27605000"
+// RTL Simulation : 53 / 307 [41.94%] @ "28155000"
+// RTL Simulation : 54 / 307 [41.94%] @ "28705000"
+// RTL Simulation : 55 / 307 [41.94%] @ "29255000"
+// RTL Simulation : 56 / 307 [41.94%] @ "29805000"
+// RTL Simulation : 57 / 307 [41.94%] @ "30355000"
+// RTL Simulation : 58 / 307 [41.94%] @ "30905000"
+// RTL Simulation : 59 / 307 [41.94%] @ "31455000"
+// RTL Simulation : 60 / 307 [41.94%] @ "32005000"
+// RTL Simulation : 61 / 307 [41.94%] @ "32555000"
+// RTL Simulation : 62 / 307 [41.94%] @ "33105000"
+// RTL Simulation : 63 / 307 [41.94%] @ "33655000"
+// RTL Simulation : 64 / 307 [41.94%] @ "34205000"
+// RTL Simulation : 65 / 307 [41.94%] @ "34755000"
+// RTL Simulation : 66 / 307 [41.94%] @ "35305000"
+// RTL Simulation : 67 / 307 [41.94%] @ "35855000"
+// RTL Simulation : 68 / 307 [41.94%] @ "36405000"
+// RTL Simulation : 69 / 307 [41.94%] @ "36955000"
+// RTL Simulation : 70 / 307 [41.94%] @ "37505000"
+// RTL Simulation : 71 / 307 [41.94%] @ "38055000"
+// RTL Simulation : 72 / 307 [41.94%] @ "38605000"
+// RTL Simulation : 73 / 307 [41.94%] @ "39155000"
+// RTL Simulation : 74 / 307 [41.94%] @ "39705000"
+// RTL Simulation : 75 / 307 [41.94%] @ "40255000"
+// RTL Simulation : 76 / 307 [41.94%] @ "40805000"
+// RTL Simulation : 77 / 307 [41.94%] @ "41355000"
+// RTL Simulation : 78 / 307 [41.94%] @ "41905000"
+// RTL Simulation : 79 / 307 [41.94%] @ "42455000"
+// RTL Simulation : 80 / 307 [41.94%] @ "43005000"
+// RTL Simulation : 81 / 307 [41.94%] @ "43555000"
+// RTL Simulation : 82 / 307 [41.94%] @ "44105000"
+// RTL Simulation : 83 / 307 [41.94%] @ "44655000"
+// RTL Simulation : 84 / 307 [41.94%] @ "45205000"
+// RTL Simulation : 85 / 307 [41.94%] @ "45755000"
+// RTL Simulation : 86 / 307 [41.94%] @ "46305000"
+// RTL Simulation : 87 / 307 [41.94%] @ "46855000"
+// RTL Simulation : 88 / 307 [41.94%] @ "47405000"
+// RTL Simulation : 89 / 307 [41.94%] @ "47955000"
+// RTL Simulation : 90 / 307 [41.94%] @ "48505000"
+// RTL Simulation : 91 / 307 [41.94%] @ "49055000"
+// RTL Simulation : 92 / 307 [41.94%] @ "49605000"
+// RTL Simulation : 93 / 307 [41.94%] @ "50155000"
+// RTL Simulation : 94 / 307 [41.94%] @ "50705000"
+// RTL Simulation : 95 / 307 [41.94%] @ "51255000"
+// RTL Simulation : 96 / 307 [41.94%] @ "51805000"
+// RTL Simulation : 97 / 307 [41.94%] @ "52355000"
+// RTL Simulation : 98 / 307 [41.94%] @ "52905000"
+// RTL Simulation : 99 / 307 [41.94%] @ "53455000"
+// RTL Simulation : 100 / 307 [41.94%] @ "54005000"
+// RTL Simulation : 101 / 307 [41.94%] @ "54555000"
+// RTL Simulation : 102 / 307 [41.94%] @ "55105000"
+// RTL Simulation : 103 / 307 [41.94%] @ "55655000"
+// RTL Simulation : 104 / 307 [41.94%] @ "56205000"
+// RTL Simulation : 105 / 307 [41.94%] @ "56755000"
+// RTL Simulation : 106 / 307 [41.94%] @ "57305000"
+// RTL Simulation : 107 / 307 [41.94%] @ "57855000"
+// RTL Simulation : 108 / 307 [41.94%] @ "58405000"
+// RTL Simulation : 109 / 307 [41.94%] @ "58955000"
+// RTL Simulation : 110 / 307 [41.94%] @ "59505000"
+// RTL Simulation : 111 / 307 [41.94%] @ "60055000"
+// RTL Simulation : 112 / 307 [41.94%] @ "60605000"
+// RTL Simulation : 113 / 307 [41.94%] @ "61155000"
+// RTL Simulation : 114 / 307 [41.94%] @ "61705000"
+// RTL Simulation : 115 / 307 [41.94%] @ "62255000"
+// RTL Simulation : 116 / 307 [41.94%] @ "62805000"
+// RTL Simulation : 117 / 307 [41.94%] @ "63355000"
+// RTL Simulation : 118 / 307 [41.94%] @ "63905000"
+// RTL Simulation : 119 / 307 [41.94%] @ "64455000"
+// RTL Simulation : 120 / 307 [41.94%] @ "65005000"
+// RTL Simulation : 121 / 307 [41.94%] @ "65555000"
+// RTL Simulation : 122 / 307 [41.94%] @ "66105000"
+// RTL Simulation : 123 / 307 [41.94%] @ "66655000"
+// RTL Simulation : 124 / 307 [41.94%] @ "67205000"
+// RTL Simulation : 125 / 307 [41.94%] @ "67755000"
+// RTL Simulation : 126 / 307 [41.94%] @ "68305000"
+// RTL Simulation : 127 / 307 [41.94%] @ "68855000"
+// RTL Simulation : 128 / 307 [41.94%] @ "69405000"
+// RTL Simulation : 129 / 307 [41.94%] @ "69955000"
+// RTL Simulation : 130 / 307 [41.94%] @ "70505000"
+// RTL Simulation : 131 / 307 [41.94%] @ "71055000"
+// RTL Simulation : 132 / 307 [41.94%] @ "71605000"
+// RTL Simulation : 133 / 307 [41.94%] @ "72155000"
+// RTL Simulation : 134 / 307 [41.94%] @ "72705000"
+// RTL Simulation : 135 / 307 [41.94%] @ "73255000"
+// RTL Simulation : 136 / 307 [41.94%] @ "73805000"
+// RTL Simulation : 137 / 307 [41.94%] @ "74355000"
+// RTL Simulation : 138 / 307 [41.94%] @ "74905000"
+// RTL Simulation : 139 / 307 [41.94%] @ "75455000"
+// RTL Simulation : 140 / 307 [41.94%] @ "76005000"
+// RTL Simulation : 141 / 307 [41.94%] @ "76555000"
+// RTL Simulation : 142 / 307 [41.94%] @ "77105000"
+// RTL Simulation : 143 / 307 [41.94%] @ "77655000"
+// RTL Simulation : 144 / 307 [41.94%] @ "78205000"
+// RTL Simulation : 145 / 307 [41.94%] @ "78755000"
+// RTL Simulation : 146 / 307 [41.94%] @ "79305000"
+// RTL Simulation : 147 / 307 [41.94%] @ "79855000"
+// RTL Simulation : 148 / 307 [41.94%] @ "80405000"
+// RTL Simulation : 149 / 307 [41.94%] @ "80955000"
+// RTL Simulation : 150 / 307 [41.94%] @ "81505000"
+// RTL Simulation : 151 / 307 [41.94%] @ "82055000"
+// RTL Simulation : 152 / 307 [41.94%] @ "82605000"
+// RTL Simulation : 153 / 307 [41.94%] @ "83155000"
+// RTL Simulation : 154 / 307 [41.94%] @ "83705000"
+// RTL Simulation : 155 / 307 [41.94%] @ "84255000"
+// RTL Simulation : 156 / 307 [41.94%] @ "84805000"
+// RTL Simulation : 157 / 307 [41.94%] @ "85355000"
+// RTL Simulation : 158 / 307 [41.94%] @ "85905000"
+// RTL Simulation : 159 / 307 [41.94%] @ "86455000"
+// RTL Simulation : 160 / 307 [41.94%] @ "87005000"
+// RTL Simulation : 161 / 307 [41.94%] @ "87555000"
+// RTL Simulation : 162 / 307 [41.94%] @ "88105000"
+// RTL Simulation : 163 / 307 [41.94%] @ "88655000"
+// RTL Simulation : 164 / 307 [41.94%] @ "89205000"
+// RTL Simulation : 165 / 307 [41.94%] @ "89755000"
+// RTL Simulation : 166 / 307 [41.94%] @ "90305000"
+// RTL Simulation : 167 / 307 [41.94%] @ "90855000"
+// RTL Simulation : 168 / 307 [41.94%] @ "91405000"
+// RTL Simulation : 169 / 307 [41.94%] @ "91955000"
+// RTL Simulation : 170 / 307 [41.94%] @ "92505000"
+// RTL Simulation : 171 / 307 [41.94%] @ "93055000"
+// RTL Simulation : 172 / 307 [41.94%] @ "93605000"
+// RTL Simulation : 173 / 307 [41.94%] @ "94155000"
+// RTL Simulation : 174 / 307 [41.94%] @ "94705000"
+// RTL Simulation : 175 / 307 [41.94%] @ "95255000"
+// RTL Simulation : 176 / 307 [41.94%] @ "95805000"
+// RTL Simulation : 177 / 307 [41.94%] @ "96355000"
+// RTL Simulation : 178 / 307 [41.94%] @ "96905000"
+// RTL Simulation : 179 / 307 [41.94%] @ "97455000"
+// RTL Simulation : 180 / 307 [41.94%] @ "98005000"
+// RTL Simulation : 181 / 307 [41.94%] @ "98555000"
+// RTL Simulation : 182 / 307 [41.94%] @ "99105000"
+// RTL Simulation : 183 / 307 [41.94%] @ "99655000"
+// RTL Simulation : 184 / 307 [41.94%] @ "100205000"
+// RTL Simulation : 185 / 307 [41.94%] @ "100755000"
+// RTL Simulation : 186 / 307 [41.94%] @ "101305000"
+// RTL Simulation : 187 / 307 [41.94%] @ "101855000"
+// RTL Simulation : 188 / 307 [41.94%] @ "102405000"
+// RTL Simulation : 189 / 307 [41.94%] @ "102955000"
+// RTL Simulation : 190 / 307 [41.94%] @ "103505000"
+// RTL Simulation : 191 / 307 [41.94%] @ "104055000"
+// RTL Simulation : 192 / 307 [41.94%] @ "104605000"
+// RTL Simulation : 193 / 307 [41.94%] @ "105155000"
+// RTL Simulation : 194 / 307 [41.94%] @ "105705000"
+// RTL Simulation : 195 / 307 [41.94%] @ "106255000"
+// RTL Simulation : 196 / 307 [41.94%] @ "106805000"
+// RTL Simulation : 197 / 307 [41.94%] @ "107355000"
+// RTL Simulation : 198 / 307 [41.94%] @ "107905000"
+// RTL Simulation : 199 / 307 [41.94%] @ "108455000"
+// RTL Simulation : 200 / 307 [41.94%] @ "109005000"
+// RTL Simulation : 201 / 307 [41.94%] @ "109555000"
+// RTL Simulation : 202 / 307 [41.94%] @ "110105000"
+// RTL Simulation : 203 / 307 [41.94%] @ "110655000"
+// RTL Simulation : 204 / 307 [41.94%] @ "111205000"
+// RTL Simulation : 205 / 307 [41.94%] @ "111755000"
+// RTL Simulation : 206 / 307 [41.94%] @ "112305000"
+// RTL Simulation : 207 / 307 [41.94%] @ "112855000"
+// RTL Simulation : 208 / 307 [41.94%] @ "113405000"
+// RTL Simulation : 209 / 307 [41.94%] @ "113955000"
+// RTL Simulation : 210 / 307 [41.94%] @ "114505000"
+// RTL Simulation : 211 / 307 [41.94%] @ "115055000"
+// RTL Simulation : 212 / 307 [41.94%] @ "115605000"
+// RTL Simulation : 213 / 307 [41.94%] @ "116155000"
+// RTL Simulation : 214 / 307 [41.94%] @ "116705000"
+// RTL Simulation : 215 / 307 [41.94%] @ "117255000"
+// RTL Simulation : 216 / 307 [41.94%] @ "117805000"
+// RTL Simulation : 217 / 307 [41.94%] @ "118355000"
+// RTL Simulation : 218 / 307 [41.94%] @ "118905000"
+// RTL Simulation : 219 / 307 [41.94%] @ "119455000"
+// RTL Simulation : 220 / 307 [41.94%] @ "120005000"
+// RTL Simulation : 221 / 307 [41.94%] @ "120555000"
+// RTL Simulation : 222 / 307 [41.94%] @ "121105000"
+// RTL Simulation : 223 / 307 [41.94%] @ "121655000"
+// RTL Simulation : 224 / 307 [41.94%] @ "122205000"
+// RTL Simulation : 225 / 307 [41.94%] @ "122755000"
+// RTL Simulation : 226 / 307 [41.94%] @ "123305000"
+// RTL Simulation : 227 / 307 [41.94%] @ "123855000"
+// RTL Simulation : 228 / 307 [41.94%] @ "124405000"
+// RTL Simulation : 229 / 307 [41.94%] @ "124955000"
+// RTL Simulation : 230 / 307 [41.94%] @ "125505000"
+// RTL Simulation : 231 / 307 [41.94%] @ "126055000"
+// RTL Simulation : 232 / 307 [41.94%] @ "126605000"
+// RTL Simulation : 233 / 307 [41.94%] @ "127155000"
+// RTL Simulation : 234 / 307 [41.94%] @ "127705000"
+// RTL Simulation : 235 / 307 [41.94%] @ "128255000"
+// RTL Simulation : 236 / 307 [41.94%] @ "128805000"
+// RTL Simulation : 237 / 307 [41.94%] @ "129355000"
+// RTL Simulation : 238 / 307 [41.94%] @ "129905000"
+// RTL Simulation : 239 / 307 [41.94%] @ "130455000"
+// RTL Simulation : 240 / 307 [41.94%] @ "131005000"
+// RTL Simulation : 241 / 307 [41.94%] @ "131555000"
+// RTL Simulation : 242 / 307 [41.94%] @ "132105000"
+// RTL Simulation : 243 / 307 [41.94%] @ "132655000"
+// RTL Simulation : 244 / 307 [41.94%] @ "133205000"
+// RTL Simulation : 245 / 307 [41.94%] @ "133755000"
+// RTL Simulation : 246 / 307 [41.94%] @ "134305000"
+// RTL Simulation : 247 / 307 [41.94%] @ "134855000"
+// RTL Simulation : 248 / 307 [41.94%] @ "135405000"
+// RTL Simulation : 249 / 307 [41.94%] @ "135955000"
+// RTL Simulation : 250 / 307 [41.94%] @ "136505000"
+// RTL Simulation : 251 / 307 [41.94%] @ "137055000"
+// RTL Simulation : 252 / 307 [41.94%] @ "137605000"
+// RTL Simulation : 253 / 307 [41.94%] @ "138155000"
+// RTL Simulation : 254 / 307 [41.94%] @ "138705000"
+// RTL Simulation : 255 / 307 [41.94%] @ "139255000"
+// RTL Simulation : 256 / 307 [41.94%] @ "139805000"
+// RTL Simulation : 257 / 307 [41.94%] @ "140355000"
+// RTL Simulation : 258 / 307 [41.94%] @ "140905000"
+// RTL Simulation : 259 / 307 [41.94%] @ "141455000"
+// RTL Simulation : 260 / 307 [41.94%] @ "142005000"
+// RTL Simulation : 261 / 307 [41.94%] @ "142555000"
+// RTL Simulation : 262 / 307 [41.94%] @ "143105000"
+// RTL Simulation : 263 / 307 [41.94%] @ "143655000"
+// RTL Simulation : 264 / 307 [41.94%] @ "144205000"
+// RTL Simulation : 265 / 307 [41.94%] @ "144755000"
+// RTL Simulation : 266 / 307 [41.94%] @ "145305000"
+// RTL Simulation : 267 / 307 [41.94%] @ "145855000"
+// RTL Simulation : 268 / 307 [41.94%] @ "146405000"
+// RTL Simulation : 269 / 307 [41.94%] @ "146955000"
+// RTL Simulation : 270 / 307 [41.94%] @ "147505000"
+// RTL Simulation : 271 / 307 [41.94%] @ "148055000"
+// RTL Simulation : 272 / 307 [41.94%] @ "148605000"
+// RTL Simulation : 273 / 307 [41.94%] @ "149155000"
+// RTL Simulation : 274 / 307 [41.94%] @ "149705000"
+// RTL Simulation : 275 / 307 [41.94%] @ "150255000"
+// RTL Simulation : 276 / 307 [41.94%] @ "150805000"
+// RTL Simulation : 277 / 307 [41.94%] @ "151355000"
+// RTL Simulation : 278 / 307 [41.94%] @ "151905000"
+// RTL Simulation : 279 / 307 [41.94%] @ "152455000"
+// RTL Simulation : 280 / 307 [41.94%] @ "153005000"
+// RTL Simulation : 281 / 307 [41.94%] @ "153555000"
+// RTL Simulation : 282 / 307 [41.94%] @ "154105000"
+// RTL Simulation : 283 / 307 [41.94%] @ "154655000"
+// RTL Simulation : 284 / 307 [41.94%] @ "155205000"
+// RTL Simulation : 285 / 307 [41.94%] @ "155755000"
+// RTL Simulation : 286 / 307 [41.94%] @ "156305000"
+// RTL Simulation : 287 / 307 [41.94%] @ "156855000"
+// RTL Simulation : 288 / 307 [41.94%] @ "157405000"
+// RTL Simulation : 289 / 307 [41.94%] @ "157955000"
+// RTL Simulation : 290 / 307 [41.94%] @ "158505000"
+// RTL Simulation : 291 / 307 [41.94%] @ "159055000"
+// RTL Simulation : 292 / 307 [41.94%] @ "159605000"
+// RTL Simulation : 293 / 307 [41.94%] @ "160155000"
+// RTL Simulation : 294 / 307 [41.94%] @ "160705000"
+// RTL Simulation : 295 / 307 [41.94%] @ "161255000"
+// RTL Simulation : 296 / 307 [41.94%] @ "161805000"
+// RTL Simulation : 297 / 307 [41.94%] @ "162355000"
+// RTL Simulation : 298 / 307 [41.94%] @ "162905000"
+// RTL Simulation : 299 / 307 [41.94%] @ "163455000"
+// RTL Simulation : 300 / 307 [41.94%] @ "164005000"
+// RTL Simulation : 301 / 307 [41.94%] @ "164555000"
+// RTL Simulation : 302 / 307 [41.94%] @ "165105000"
+// RTL Simulation : 303 / 307 [41.94%] @ "165655000"
+// RTL Simulation : 304 / 307 [41.94%] @ "166205000"
+// RTL Simulation : 305 / 307 [41.94%] @ "166755000"
+// RTL Simulation : 306 / 307 [41.94%] @ "167305000"
+// RTL Simulation : 307 / 307 [100.00%] @ "167695000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 167755 ns : File "/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/sim/verilog/svdd_record_join.autotb.v" Line 364
+## quit
+INFO: [Common 17-206] Exiting xsim at Sun Nov 22 23:25:57 2026...
+INFO: [COSIM 212-316] Starting C post checking ...
+log1p_u32: 270225 inputs, 33 differ by 1 ulp from libm, 0 by more
+6 chunks -> 304 records, 298 feature records (0 beats breaking the spec framing)
+all testbench checks passed
+INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 8196
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [HLS 200-111] Finished Command cosim_design CPU user time: 261.39 seconds. CPU system time: 5.4 seconds. Elapsed time: 246.3 seconds; current allocated memory: 9.520 MB.
+INFO: [HLS 200-1510] Running: close_project 
+INFO: [HLS 200-112] Total CPU user time: 671.76 seconds. Total CPU system time: 18.73 seconds. Total elapsed time: 641.87 seconds; peak allocated memory: 392.887 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Sun Nov 22 23:27:59 2026...
+results copied to /home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/hls/reports (and ip/ after export)

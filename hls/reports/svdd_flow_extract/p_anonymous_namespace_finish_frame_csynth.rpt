@@ -1,0 +1,258 @@
+
+
+================================================================
+== Vitis HLS Report for 'p_anonymous_namespace_finish_frame'
+================================================================
+* Date:           Sun Nov 22 23:15:12 2026
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        prj_svdd_flow_extract
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  7.268 ns|     2.00 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+-----+-----+---------+
+    |  Latency (cycles) |   Latency (absolute)  |  Interval | Pipeline|
+    |   min   |   max   |    min    |    max    | min | max |   Type  |
+    +---------+---------+-----------+-----------+-----+-----+---------+
+    |        4|        4|  40.000 ns|  40.000 ns|    4|    4|       no|
+    +---------+---------+-----------+-----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-----+--------+-------+-----+
+|       Name      | BRAM_18K| DSP |   FF   |  LUT  | URAM|
++-----------------+---------+-----+--------+-------+-----+
+|DSP              |        -|    -|       -|      -|    -|
+|Expression       |        -|    -|       0|    705|    -|
+|FIFO             |        -|    -|       -|      -|    -|
+|Instance         |        -|    -|       -|      -|    -|
+|Memory           |        -|    -|       -|      -|    -|
+|Multiplexer      |        -|    -|       -|    334|    -|
+|Register         |        -|    -|     394|      -|    -|
++-----------------+---------+-----+--------+-------+-----+
+|Total            |        0|    0|     394|   1039|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Available        |      280|  220|  106400|  53200|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Utilization (%)  |        0|    0|      ~0|      1|    0|
++-----------------+---------+-----+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-------------------------+----------+----+---+----+------------+------------+
+    |      Variable Name      | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-------------------------+----------+----+---+----+------------+------------+
+    |add_ln160_fu_329_p2      |         +|   0|  0|  39|          32|           1|
+    |add_ln162_fu_405_p2      |         +|   0|  0|  39|          32|           1|
+    |add_ln164_fu_603_p2      |         +|   0|  0|  39|          32|           1|
+    |add_ln173_fu_737_p2      |         +|   0|  0|  39|          32|           1|
+    |add_ln174_fu_752_p2      |         +|   0|  0|  39|          32|           1|
+    |add_ln176_fu_651_p2      |         +|   0|  0|  39|          32|           1|
+    |l4_fu_483_p2             |         +|   0|  0|  14|           9|           9|
+    |need_7_fu_551_p2         |         +|   0|  0|  13|          10|           3|
+    |need_8_fu_425_p2         |         +|   0|  0|  14|           9|           5|
+    |need_fu_517_p2           |         +|   0|  0|  13|          10|           5|
+    |t_ts_fu_382_p2           |         +|   0|  0|  59|          52|          52|
+    |and_ln168_fu_539_p2      |       and|   0|  0|   2|           1|           1|
+    |and_ln169_4_fu_629_p2    |       and|   0|  0|   2|           1|           1|
+    |and_ln169_fu_591_p2      |       and|   0|  0|   2|           1|           1|
+    |ap_condition_498         |       and|   0|  0|   2|           1|           1|
+    |ports_fu_597_p2          |       and|   0|  0|   2|           1|           1|
+    |tcp_fu_545_p2            |       and|   0|  0|   2|           1|           1|
+    |first_frag_fu_497_p2     |      icmp|   0|  0|  14|          13|           1|
+    |icmp_ln161_fu_395_p2     |      icmp|   0|  0|  10|           2|           1|
+    |icmp_ln163_3_fu_453_p2   |      icmp|   0|  0|  13|           4|           3|
+    |icmp_ln163_4_fu_463_p2   |      icmp|   0|  0|  14|           7|           5|
+    |icmp_ln163_fu_439_p2     |      icmp|   0|  0|  39|          32|          32|
+    |icmp_ln168_2_fu_527_p2   |      icmp|   0|  0|  39|          32|          32|
+    |icmp_ln168_fu_507_p2     |      icmp|   0|  0|  15|           8|           3|
+    |icmp_ln169_3_fu_573_p2   |      icmp|   0|  0|  15|           8|           8|
+    |icmp_ln169_4_fu_579_p2   |      icmp|   0|  0|  15|           8|           5|
+    |icmp_ln169_fu_561_p2     |      icmp|   0|  0|  39|          32|          32|
+    |icmp_ln172_fu_641_p2     |      icmp|   0|  0|  13|          10|           8|
+    |or_ln163_fu_469_p2       |        or|   0|  0|   2|           1|           1|
+    |or_ln169_fu_585_p2       |        or|   0|  0|   2|           1|           1|
+    |or_ln184_fu_683_p2       |        or|   0|  0|   2|           1|           1|
+    |need_10_fu_634_p3        |    select|   0|  0|  10|           1|          10|
+    |need_9_fu_618_p3         |    select|   0|  0|  10|           1|          10|
+    |select_ln158_fu_372_p3   |    select|   0|  0|  32|           1|          32|
+    |t_dport_8_fu_704_p3      |    select|   0|  0|  16|           1|          16|
+    |t_sport_8_fu_695_p3      |    select|   0|  0|  16|           1|          16|
+    |t_tcp_flags_3_fu_721_p3  |    select|   0|  0|   8|           1|           8|
+    |t_win_3_fu_729_p3        |    select|   0|  0|  16|           1|          16|
+    |xor_ln168_2_fu_533_p2    |       xor|   0|  0|   2|           1|           2|
+    |xor_ln168_fu_624_p2      |       xor|   0|  0|   2|           1|           2|
+    |xor_ln169_fu_567_p2      |       xor|   0|  0|   2|           1|           2|
+    +-------------------------+----------+----+---+----+------------+------------+
+    |Total                    |          |   0|  0| 705|         457|         333|
+    +-------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------------------------+----+-----------+-----+-----------+
+    |                  Name                  | LUT| Input Size| Bits| Total Bits|
+    +----------------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                               |  31|          6|    1|          6|
+    |ap_phi_mux_t_dport_9_phi_fu_200_p8      |  14|          3|   16|         48|
+    |ap_phi_mux_t_dst_7_phi_fu_166_p8        |  14|          3|   32|         96|
+    |ap_phi_mux_t_has_win_2_phi_fu_302_p8    |  14|          3|    1|          3|
+    |ap_phi_mux_t_kind_phi_fu_131_p8         |  14|          3|    1|          3|
+    |ap_phi_mux_t_len_2_phi_fu_268_p8        |  14|          3|   16|         48|
+    |ap_phi_mux_t_proto_7_phi_fu_217_p8      |  14|          3|    8|         24|
+    |ap_phi_mux_t_sport_9_phi_fu_183_p8      |  14|          3|   16|         48|
+    |ap_phi_mux_t_src_7_phi_fu_149_p8        |  14|          3|   32|         96|
+    |ap_phi_mux_t_tcp_flags_4_phi_fu_251_p8  |  14|          3|    8|         24|
+    |ap_phi_mux_t_ttl_2_phi_fu_234_p8        |  14|          3|    8|         24|
+    |ap_phi_mux_t_win_4_phi_fu_285_p8        |  14|          3|   16|         48|
+    |pkts_blk_n                              |   9|          2|    1|          2|
+    |st_deep_o                               |   9|          2|   32|         64|
+    |st_frames_o                             |   9|          2|   32|         64|
+    |st_ipv4_o                               |   9|          2|   32|         64|
+    |st_malformed_o                          |  14|          3|   32|         96|
+    |st_non_ipv4_o                           |   9|          2|   32|         64|
+    |t_dport_9_reg_196                       |   9|          2|   16|         32|
+    |t_dst_7_reg_162                         |   9|          2|   32|         64|
+    |t_has_win_2_reg_298                     |   9|          2|    1|          2|
+    |t_len_2_reg_264                         |   9|          2|   16|         32|
+    |t_proto_7_reg_213                       |   9|          2|    8|         16|
+    |t_sport_9_reg_179                       |   9|          2|   16|         32|
+    |t_src_7_reg_145                         |   9|          2|   32|         64|
+    |t_tcp_flags_4_reg_247                   |   9|          2|    8|         16|
+    |t_ttl_2_reg_230                         |   9|          2|    8|         16|
+    |t_win_4_reg_281                         |   9|          2|   16|         32|
+    +----------------------------------------+----+-----------+-----+-----------+
+    |Total                                   | 334|         72|  469|       1128|
+    +----------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +---------------------------+----+----+-----+-----------+
+    |            Name           | FF | LUT| Bits| Const Bits|
+    +---------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                  |   5|   0|    5|          0|
+    |icmp_ln161_reg_835         |   1|   0|    1|          0|
+    |icmp_ln163_reg_844         |   1|   0|    1|          0|
+    |mul_ln158_2_reg_825        |  65|   0|   65|          0|
+    |mul_ln158_reg_820          |  52|   0|   52|          0|
+    |need_7_reg_875             |  10|   0|   10|          0|
+    |need_8_reg_839             |   9|   0|    9|          0|
+    |need_reg_860               |  10|   0|   10|          0|
+    |or_ln163_reg_853           |   1|   0|    1|          0|
+    |ports_reg_880              |   1|   0|    1|          0|
+    |st_malformed_load_reg_848  |  32|   0|   32|          0|
+    |t_dport_9_reg_196          |  16|   0|   16|          0|
+    |t_dst_7_reg_162            |  32|   0|   32|          0|
+    |t_has_win_2_reg_298        |   1|   0|    1|          0|
+    |t_kind_reg_127             |   1|   0|    1|          0|
+    |t_len_2_reg_264            |  16|   0|   16|          0|
+    |t_proto_7_reg_213          |   8|   0|    8|          0|
+    |t_sport_9_reg_179          |  16|   0|   16|          0|
+    |t_src_7_reg_145            |  32|   0|   32|          0|
+    |t_tcp_flags_4_reg_247      |   8|   0|    8|          0|
+    |t_ttl_2_reg_230            |   8|   0|    8|          0|
+    |t_win_4_reg_281            |  16|   0|   16|          0|
+    |tcp_reg_865                |   1|   0|    1|          0|
+    |zext_ln156_reg_830         |  52|   0|   64|         12|
+    +---------------------------+----+----+-----+-----------+
+    |Total                      | 394|   0|  406|         12|
+    +---------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------------+-----+-----+------------+-----------------------------------+--------------+
+|       RTL Ports       | Dir | Bits|  Protocol  |           Source Object           |    C Type    |
++-----------------------+-----+-----+------------+-----------------------------------+--------------+
+|ap_clk                 |   in|    1|  ap_ctrl_hs|  (anonymous namespace)finish_frame|  return value|
+|ap_rst                 |   in|    1|  ap_ctrl_hs|  (anonymous namespace)finish_frame|  return value|
+|ap_start               |   in|    1|  ap_ctrl_hs|  (anonymous namespace)finish_frame|  return value|
+|ap_done                |  out|    1|  ap_ctrl_hs|  (anonymous namespace)finish_frame|  return value|
+|ap_idle                |  out|    1|  ap_ctrl_hs|  (anonymous namespace)finish_frame|  return value|
+|ap_ready               |  out|    1|  ap_ctrl_hs|  (anonymous namespace)finish_frame|  return value|
+|grp_fu_1371_p_din0     |  out|   32|  ap_ctrl_hs|  (anonymous namespace)finish_frame|  return value|
+|grp_fu_1371_p_din1     |  out|   21|  ap_ctrl_hs|  (anonymous namespace)finish_frame|  return value|
+|grp_fu_1371_p_dout0    |   in|   52|  ap_ctrl_hs|  (anonymous namespace)finish_frame|  return value|
+|grp_fu_1371_p_ce       |  out|    1|  ap_ctrl_hs|  (anonymous namespace)finish_frame|  return value|
+|grp_fu_1375_p_din0     |  out|   32|  ap_ctrl_hs|  (anonymous namespace)finish_frame|  return value|
+|grp_fu_1375_p_din1     |  out|   34|  ap_ctrl_hs|  (anonymous namespace)finish_frame|  return value|
+|grp_fu_1375_p_dout0    |   in|   65|  ap_ctrl_hs|  (anonymous namespace)finish_frame|  return value|
+|grp_fu_1375_p_ce       |  out|    1|  ap_ctrl_hs|  (anonymous namespace)finish_frame|  return value|
+|ns                     |   in|    1|     ap_none|                                 ns|        scalar|
+|pkts_din               |  out|  420|     ap_fifo|                               pkts|       pointer|
+|pkts_num_data_valid    |   in|    5|     ap_fifo|                               pkts|       pointer|
+|pkts_fifo_cap          |   in|    5|     ap_fifo|                               pkts|       pointer|
+|pkts_full_n            |   in|    1|     ap_fifo|                               pkts|       pointer|
+|pkts_write             |  out|    1|     ap_fifo|                               pkts|       pointer|
+|f_sec                  |   in|   32|     ap_none|                              f_sec|       pointer|
+|f_frac                 |   in|   32|     ap_none|                             f_frac|       pointer|
+|st_frames_i            |   in|   32|     ap_ovld|                          st_frames|       pointer|
+|st_frames_o            |  out|   32|     ap_ovld|                          st_frames|       pointer|
+|st_frames_o_ap_vld     |  out|    1|     ap_ovld|                          st_frames|       pointer|
+|f_link                 |   in|    2|     ap_none|                             f_link|       pointer|
+|st_non_ipv4_i          |   in|   32|     ap_ovld|                        st_non_ipv4|       pointer|
+|st_non_ipv4_o          |  out|   32|     ap_ovld|                        st_non_ipv4|       pointer|
+|st_non_ipv4_o_ap_vld   |  out|    1|     ap_ovld|                        st_non_ipv4|       pointer|
+|f_ip_off               |   in|    8|     ap_none|                           f_ip_off|       pointer|
+|f_caplen               |   in|   32|     ap_none|                           f_caplen|       pointer|
+|st_malformed_i         |   in|   32|     ap_ovld|                       st_malformed|       pointer|
+|st_malformed_o         |  out|   32|     ap_ovld|                       st_malformed|       pointer|
+|st_malformed_o_ap_vld  |  out|    1|     ap_ovld|                       st_malformed|       pointer|
+|f_version              |   in|    4|     ap_none|                          f_version|       pointer|
+|f_ihl                  |   in|    7|     ap_none|                              f_ihl|       pointer|
+|f_frag                 |   in|   16|     ap_none|                             f_frag|       pointer|
+|f_proto                |   in|    8|     ap_none|                            f_proto|       pointer|
+|st_deep_i              |   in|   32|     ap_ovld|                            st_deep|       pointer|
+|st_deep_o              |  out|   32|     ap_ovld|                            st_deep|       pointer|
+|st_deep_o_ap_vld       |  out|    1|     ap_ovld|                            st_deep|       pointer|
+|st_ipv4_i              |   in|   32|     ap_ovld|                            st_ipv4|       pointer|
+|st_ipv4_o              |  out|   32|     ap_ovld|                            st_ipv4|       pointer|
+|st_ipv4_o_ap_vld       |  out|    1|     ap_ovld|                            st_ipv4|       pointer|
+|f_src                  |   in|   32|     ap_none|                              f_src|       pointer|
+|f_dst                  |   in|   32|     ap_none|                              f_dst|       pointer|
+|f_ttl                  |   in|    8|     ap_none|                              f_ttl|       pointer|
+|f_total_len            |   in|   16|     ap_none|                        f_total_len|       pointer|
+|f_sport                |   in|   16|     ap_none|                            f_sport|       pointer|
+|f_dport                |   in|   16|     ap_none|                            f_dport|       pointer|
+|f_tcp_flags            |   in|    8|     ap_none|                        f_tcp_flags|       pointer|
+|f_win                  |   in|   16|     ap_none|                              f_win|       pointer|
++-----------------------+-----+-----+------------+-----------------------------------+--------------+
+

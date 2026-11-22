@@ -1,0 +1,173 @@
+
+
+================================================================
+== Synthesis Summary Report of 'svdd_preprocess'
+================================================================
++ General Information: 
+    * Date:           Sun Nov 22 23:15:50 2026
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        prj_svdd_preprocess
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg400-1
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +-----------------------------------------+------+------+---------+-----------+----------+---------+------+----------+---------+---------+-----------+------------+-----+
+    |                 Modules                 | Issue|      | Latency |  Latency  | Iteration|         | Trip |          |         |         |           |            |     |
+    |                 & Loops                 | Type | Slack| (cycles)|    (ns)   |  Latency | Interval| Count| Pipelined|  BRAM   |   DSP   |     FF    |     LUT    | URAM|
+    +-----------------------------------------+------+------+---------+-----------+----------+---------+------+----------+---------+---------+-----------+------------+-----+
+    |+ svdd_preprocess                        |     -|  0.01|        -|          -|         -|        -|     -|        no|  2 (~0%)|  11 (5%)|  3810 (3%)|  7582 (14%)|    -|
+    | + svdd_preprocess_Pipeline_drain        |     -|  7.00|        -|          -|         -|        -|     -|        no|        -|        -|    2 (~0%)|    20 (~0%)|    -|
+    |  o drain                                |     -|  8.00|        -|          -|         1|        1|     -|       yes|        -|        -|          -|           -|    -|
+    | + preprocess                            |     -|  0.01|     1682|  1.682e+04|         -|     1682|     -|        no|  2 (~0%)|  11 (5%)|  3724 (3%)|  7207 (13%)|    -|
+    |  o features                             |     -|  8.00|     1680|  1.680e+04|       210|        -|     8|        no|        -|        -|          -|           -|    -|
+    |   + preprocess_Pipeline_cordic          |     -|  1.06|      132|  1.320e+03|         -|      132|     -|        no|  2 (~0%)|        -|  577 (~0%)|   1219 (2%)|    -|
+    |    o cordic                             |     -|  8.00|      130|  1.300e+03|         3|        2|    65|       yes|        -|        -|          -|           -|    -|
+    | + svdd_preprocess_Pipeline_write_codes  |     -|  3.09|       10|    100.000|         -|       10|     -|        no|        -|        -|    8 (~0%)|   101 (~0%)|    -|
+    |  o write_codes                          |     -|  8.00|        8|     80.000|         2|        1|     8|       yes|        -|        -|          -|           -|    -|
+    | o read_frame                            |     -|  8.00|        8|     80.000|         1|        -|     8|        no|        -|        -|          -|           -|    -|
+    +-----------------------------------------+------+------+---------+-----------+----------+---------+------+----------+---------+---------+-----------+------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* AXIS
++--------------+-----------+---------------+-------+-------+-------+--------+-------+-------+--------+
+| Interface    | Direction | Register Mode | TDATA | TKEEP | TLAST | TREADY | TSTRB | TUSER | TVALID |
++--------------+-----------+---------------+-------+-------+-------+--------+-------+-------+--------+
+| m_axis_codes | out       | both          | 32    | 4     | 1     | 1      | 4     |       | 1      |
+| m_axis_q24   | out       | both          | 32    | 4     | 1     | 1      | 4     |       | 1      |
+| s_axis_raw   | in        | both          | 32    | 4     | 1     | 1      | 4     | 1     | 1      |
++--------------+-----------+---------------+-------+-------+-------+--------+-------+-------+--------+
+
+* TOP LEVEL CONTROL
++-----------+--------------+----------+
+| Interface | Type         | Ports    |
++-----------+--------------+----------+
+| ap_clk    | clock        | ap_clk   |
+| ap_rst_n  | reset        | ap_rst_n |
+| ap_ctrl   | ap_ctrl_none |          |
++-----------+--------------+----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++--------------+-----------+---------------------------------------------------------+
+| Argument     | Direction | Datatype                                                |
++--------------+-----------+---------------------------------------------------------+
+| s_axis_raw   | in        | stream<hls::axis<ap_uint<32>, 1, 0, 0, '8', false>, 0>& |
+| m_axis_q24   | out       | stream<hls::axis<ap_uint<32>, 0, 0, 0, '8', false>, 0>& |
+| m_axis_codes | out       | stream<hls::axis<ap_uint<32>, 0, 0, 0, '8', false>, 0>& |
++--------------+-----------+---------------------------------------------------------+
+
+* SW-to-HW Mapping
++--------------+--------------+-----------+
+| Argument     | HW Interface | HW Type   |
++--------------+--------------+-----------+
+| s_axis_raw   | s_axis_raw   | interface |
+| m_axis_q24   | m_axis_q24   | interface |
+| m_axis_codes | m_axis_codes | interface |
++--------------+--------------+-----------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+
+================================================================
+== Bind Op Report
+================================================================
++-----------------------------------------+-----+--------+------------+------+---------+---------+
+| Name                                    | DSP | Pragma | Variable   | Op   | Impl    | Latency |
++-----------------------------------------+-----+--------+------------+------+---------+---------+
+| + svdd_preprocess                       | 11  |        |            |      |         |         |
+|   add_ln147_fu_263_p2                   |     |        | add_ln147  | add  | fabric  | 0       |
+|  + preprocess                           | 11  |        |            |      |         |         |
+|    add_ln119_fu_394_p2                  |     |        | add_ln119  | add  | fabric  | 0       |
+|    v_fu_447_p2                          |     |        | v          | add  | fabric  | 0       |
+|    e_fu_487_p2                          |     |        | e          | sub  | fabric  | 0       |
+|    sub_ln88_fu_493_p2                   |     |        | sub_ln88   | sub  | fabric  | 0       |
+|    sub_ln88_1_fu_506_p2                 |     |        | sub_ln88_1 | sub  | fabric  | 0       |
+|    X_fu_544_p2                          |     |        | X          | add  | fabric  | 0       |
+|    Y_fu_550_p2                          |     |        | Y          | add  | fabric  | 0       |
+|    mul_32s_67ns_72_5_1_U17              | 8   |        | L          | mul  | auto    | 4       |
+|    L_2_fu_571_p2                        |     |        | L_2        | add  | fabric  | 0       |
+|    add_ln49_fu_628_p2                   |     |        | add_ln49   | add  | fabric  | 0       |
+|    sub_ln51_fu_702_p2                   |     |        | sub_ln51   | sub  | fabric  | 0       |
+|    exp2_fu_707_p2                       |     |        | exp2       | add  | fabric  | 0       |
+|    m_2_fu_716_p2                        |     |        | m_2        | add  | fabric  | 0       |
+|    e_2_fu_744_p2                        |     |        | e_2        | add  | fabric  | 0       |
+|    add_ln63_fu_765_p2                   |     |        | add_ln63   | add  | fabric  | 0       |
+|    dsub_64ns_64ns_64_7_full_dsp_1_U13   | 3   |        | sub        | dsub | fulldsp | 6       |
+|    ddiv_64ns_64ns_64_45_no_dsp_1_U14    |     |        | v_2        | ddiv | fabric  | 44      |
+|    sh_fu_1007_p2                        |     |        | sh         | add  | fabric  | 0       |
+|    s_fu_1021_p2                         |     |        | s          | sub  | fabric  | 0       |
+|    rem_fu_1143_p2                       |     |        | rem        | sub  | fabric  | 0       |
+|    sub_ln32_fu_1077_p2                  |     |        | sub_ln32   | sub  | fabric  | 0       |
+|    sub_ln32_1_fu_1112_p2                |     |        | sub_ln32_1 | sub  | fabric  | 0       |
+|    q_1_fu_1148_p2                       |     |        | q_1        | add  | fabric  | 0       |
+|    sub_ln37_fu_1283_p2                  |     |        | sub_ln37   | sub  | fabric  | 0       |
+|   + preprocess_Pipeline_cordic          | 0   |        |            |      |         |         |
+|     add_ln91_fu_153_p2                  |     |        | add_ln91   | add  | fabric  | 0       |
+|     X_2_fu_214_p2                       |     |        | X_2        | add  | fabric  | 0       |
+|     Y_2_fu_218_p2                       |     |        | Y_2        | add  | fabric  | 0       |
+|     Z_1_fu_222_p2                       |     |        | Z_1        | sub  | fabric  | 0       |
+|     X_3_fu_228_p2                       |     |        | X_3        | sub  | fabric  | 0       |
+|     Y_3_fu_232_p2                       |     |        | Y_3        | sub  | fabric  | 0       |
+|     Z_2_fu_236_p2                       |     |        | Z_2        | add  | fabric  | 0       |
+|  + svdd_preprocess_Pipeline_write_codes | 0   |        |            |      |         |         |
+|    add_ln167_fu_131_p2                  |     |        | add_ln167  | add  | fabric  | 0       |
++-----------------------------------------+-----+--------+------------+------+---------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++--------------------------------+--------------+------+------+------+--------+----------------------+------+---------+------------------+
+| Name                           | Usage        | Type | BRAM | URAM | Pragma | Variable             | Impl | Latency | Bitwidth, Depth, |
+|                                |              |      |      |      |        |                      |      |         | Banks            |
++--------------------------------+--------------+------+------+------+--------+----------------------+------+---------+------------------+
+| + svdd_preprocess              |              |      | 2    | 0    |        |                      |      |         |                  |
+|   raw_U                        | ram_1p array |      |      |      |        | raw                  | auto | 1       | 32, 8, 1         |
+|   unknown_U                    | ram_1p array |      |      |      |        | unknown              | auto | 1       | 1, 8, 1          |
+|   codes_U                      | ram_1p array |      |      |      |        | codes                | auto | 1       | 24, 8, 1         |
+|  + preprocess                  |              |      | 2    | 0    |        |                      |      |         |                  |
+|    svpl_PRE_MEDIAN_U           | rom_1p       |      |      |      |        | svpl_PRE_MEDIAN      | auto | 1       | 13, 8, 1         |
+|    svpl_PRE_LOG1P_U            | rom_1p       |      |      |      |        | svpl_PRE_LOG1P       | auto | 1       | 1, 8, 1          |
+|    svpl_PRE_CLIP_LO_U          | rom_1p       |      |      |      |        | svpl_PRE_CLIP_LO     | auto | 1       | 64, 8, 1         |
+|    svpl_PRE_CLIP_HI_U          | rom_1p       |      |      |      |        | svpl_PRE_CLIP_HI     | auto | 1       | 64, 8, 1         |
+|    svpl_PRE_ANCHOR_U           | rom_1p       |      |      |      |        | svpl_PRE_ANCHOR      | auto | 1       | 64, 8, 1         |
+|    svpl_PRE_SCALE_U            | rom_1p       |      |      |      |        | svpl_PRE_SCALE       | auto | 1       | 64, 8, 1         |
+|   + preprocess_Pipeline_cordic |              |      | 2    | 0    |        |                      |      |         |                  |
+|     svpl_CORDIC_SHIFT_U        | rom_1p       |      |      |      |        | svpl_CORDIC_SHIFT    | auto | 1       | 6, 65, 1         |
+|     svpl_CORDIC_ATANH_HI_U     | rom_1p       |      |      |      |        | svpl_CORDIC_ATANH_HI | auto | 1       | 2, 65, 1         |
+|     svpl_CORDIC_ATANH_LO_U     | rom_1p       |      | 2    |      |        | svpl_CORDIC_ATANH_LO | auto | 1       | 64, 65, 1        |
++--------------------------------+--------------+------+------+------+--------+----------------------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------+-------------------------------------------+---------------------------------------------------------+
+| Type      | Options                                   | Location                                                |
++-----------+-------------------------------------------+---------------------------------------------------------+
+| pipeline  | II=2                                      | src/preprocess.cpp:92 in log1p_u32                      |
+| pipeline  | off                                       | src/preprocess.cpp:120 in preprocess                    |
+| interface | axis port=s_axis_raw register_mode=both   | src/preprocess.cpp:138 in svdd_preprocess, s_axis_raw   |
+| interface | axis port=m_axis_q24 register_mode=both   | src/preprocess.cpp:139 in svdd_preprocess, m_axis_q24   |
+| interface | axis port=m_axis_codes register_mode=both | src/preprocess.cpp:140 in svdd_preprocess, m_axis_codes |
+| interface | ap_ctrl_none port=return                  | src/preprocess.cpp:141 in svdd_preprocess, return       |
+| pipeline  | off                                       | src/preprocess.cpp:148 in svdd_preprocess               |
+| pipeline  | II=1                                      | src/preprocess.cpp:168 in svdd_preprocess               |
++-----------+-------------------------------------------+---------------------------------------------------------+
+
+

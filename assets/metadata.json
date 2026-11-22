@@ -1,0 +1,137 @@
+{
+  "architecture": [
+    8,
+    32,
+    16,
+    8
+  ],
+  "arithmetic": {
+    "accumulator_ranges": {
+      "layer0": {
+        "conservative_required_bits": 52,
+        "fractional_bits": 32,
+        "maximum": 19432725304,
+        "minimum": -15377626712
+      },
+      "layer1": {
+        "conservative_required_bits": 54,
+        "fractional_bits": 32,
+        "maximum": 16644984200,
+        "minimum": -20345633369
+      },
+      "layer2": {
+        "conservative_required_bits": 53,
+        "fractional_bits": 32,
+        "maximum": 13582102354,
+        "minimum": -12587373343
+      }
+    },
+    "bits": 24,
+    "casts": "Exact int64 products/sums at 2F; nearest-even shift to F; saturating B-bit cast; then ReLU on hidden layers",
+    "claim": "Arithmetic simulation only; does not verify Vitis/HLS scheduling, ap_fixed behavior or FPGA resource/throughput",
+    "distance": "Widen embedding-center to B+1 bits; keep exact square and eight-term score sum at 2F in int64; no B-bit score cast",
+    "fractional_bits": 16,
+    "integer_bits_including_sign": 8,
+    "original_threshold": "Compare real-valued integer_score / 2^(2F) to the unchanged float32 threshold; no threshold rounding in this comparison",
+    "overflow": "saturate at input/weight/center and each layer-output cast",
+    "rounding": "nearest, ties to even",
+    "saturation": {
+      "center": {
+        "saturated": 0,
+        "values": 8
+      },
+      "inputs": {
+        "saturated": 0,
+        "values": 2048
+      },
+      "layer0_cast": {
+        "saturated": 0,
+        "values": 8192
+      },
+      "layer1_cast": {
+        "saturated": 0,
+        "values": 4096
+      },
+      "layer2_cast": {
+        "saturated": 0,
+        "values": 2048
+      },
+      "weights0": {
+        "saturated": 0,
+        "values": 256
+      },
+      "weights1": {
+        "saturated": 0,
+        "values": 512
+      },
+      "weights2": {
+        "saturated": 0,
+        "values": 128
+      }
+    },
+    "score_accumulator_conservative_bits": 53
+  },
+  "checkpoint_sha256": "15102d230c192f3230b6c47c650e0c577d947ef19ec43a4fc7cf553c355cc780",
+  "float_golden_sha256": "f1bda14398b52dd8396dcfe7291d5f784d20e9b59bbe3bde310afbd8cb84dbb1",
+  "float_parameters_sha256": "1cd910bb1b9fbc01a22280cd8ca32c43cd25dc115f902e11c9c339a682cc95be",
+  "format": "Q24_I8",
+  "freeze_sha256": "c810dd9973cfedc0045309972d2f3cd4da9c896e21bc763a40fc1ca3ed2fec6d",
+  "golden_output_columns": [
+    {
+      "count": 32,
+      "name": "h1"
+    },
+    {
+      "count": 16,
+      "name": "h2"
+    },
+    {
+      "count": 8,
+      "name": "embedding"
+    },
+    {
+      "count": 8,
+      "name": "distance_terms"
+    },
+    {
+      "count": 1,
+      "name": "scores"
+    },
+    {
+      "count": 1,
+      "name": "original_decision"
+    },
+    {
+      "count": 1,
+      "name": "recalibrated_decision"
+    }
+  ],
+  "golden_rows": 256,
+  "matrix_orientation": "W[out_features,in_features], row-major; y=W*x; NumPy batches use x @ W.T",
+  "model_id": "d5e6200af8ed0ecf423c1ffdd0c52b183cda31bed4c304083d14452078e33aba:7:15102d230c192f3230b6c47c650e0c577d947ef19ec43a4fc7cf553c355cc780",
+  "ordered_pl_inputs": [
+    "IN_BYTES",
+    "OUT_BYTES",
+    "FLOW_DURATION_MILLISECONDS",
+    "MIN_TTL",
+    "MAX_IP_PKT_LEN",
+    "MIN_IP_PKT_LEN",
+    "TCP_WIN_MAX_IN",
+    "TCP_WIN_MAX_OUT"
+  ],
+  "preprocessing_sha256": "9c947318add1c3c260dcc2eb500c45e67953a5ae75e939dabcda1014a4a3fc67",
+  "thresholds": {
+    "original": {
+      "code": 6000531,
+      "value": 0.001397107494994998
+    },
+    "recalibrated": {
+      "code": 6018545,
+      "comparison": "score > threshold",
+      "measured_calibration_fpr": 0.009891273184394504,
+      "normal_calibration_rows": 90686,
+      "target_fpr": 0.01,
+      "threshold": 0.0014013017062097788
+    }
+  }
+}

@@ -1,0 +1,164 @@
+
+
+================================================================
+== Vitis HLS Report for 'emit_records_Pipeline_meta_words'
+================================================================
+* Date:           Sun Nov 22 23:15:14 2026
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        prj_svdd_flow_extract
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  4.956 ns|     2.00 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |       18|       18|  0.180 us|  0.180 us|   18|   18|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +--------------+---------+---------+----------+-----------+-----------+------+----------+
+        |              |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |   Loop Name  |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +--------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- meta_words  |       16|       16|         2|          1|          1|    16|       yes|
+        +--------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-----+--------+-------+-----+
+|       Name      | BRAM_18K| DSP |   FF   |  LUT  | URAM|
++-----------------+---------+-----+--------+-------+-----+
+|DSP              |        -|    -|       -|      -|    -|
+|Expression       |        -|    -|       0|     46|    -|
+|FIFO             |        -|    -|       -|      -|    -|
+|Instance         |        -|    -|       0|     65|    -|
+|Memory           |        -|    -|       -|      -|    -|
+|Multiplexer      |        -|    -|       -|     45|    -|
+|Register         |        -|    -|      73|      -|    -|
++-----------------+---------+-----+--------+-------+-----+
+|Total            |        0|    0|      73|    156|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Available        |      280|  220|  106400|  53200|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Utilization (%)  |        0|    0|      ~0|     ~0|    0|
++-----------------+---------+-----+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +----------------------------+-----------------------+---------+----+---+----+-----+
+    |          Instance          |         Module        | BRAM_18K| DSP| FF| LUT| URAM|
+    +----------------------------+-----------------------+---------+----+---+----+-----+
+    |sparsemux_33_4_64_1_1_U239  |sparsemux_33_4_64_1_1  |        0|   0|  0|  65|    0|
+    +----------------------------+-----------------------+---------+----+---+----+-----+
+    |Total                       |                       |        0|   0|  0|  65|    0|
+    +----------------------------+-----------------------+---------+----+---+----+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------------+----------+----+---+----+------------+------------+
+    |       Variable Name       | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |add_ln683_fu_242_p2        |         +|   0|  0|  13|           5|           1|
+    |ap_block_pp0_stage0_01001  |       and|   0|  0|   2|           1|           1|
+    |ap_block_pp0_stage0_11001  |       and|   0|  0|   2|           1|           1|
+    |b_last_fu_324_p2           |      icmp|   0|  0|  13|           5|           4|
+    |icmp_ln683_fu_236_p2       |      icmp|   0|  0|  14|           5|           6|
+    |ap_enable_pp0              |       xor|   0|  0|   2|           1|           2|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |Total                      |          |   0|  0|  46|          18|          15|
+    +---------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------+----+-----------+-----+-----------+
+    |           Name          | LUT| Input Size| Bits| Total Bits|
+    +-------------------------+----+-----------+-----+-----------+
+    |ap_done_int              |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1  |   9|          2|    1|          2|
+    |ap_sig_allocacmp_i_3     |   9|          2|    5|         10|
+    |i_fu_120                 |   9|          2|    5|         10|
+    |m_axis_meta_TDATA_blk_n  |   9|          2|    1|          2|
+    +-------------------------+----+-----------+-----+-----------+
+    |Total                    |  45|         10|   13|         26|
+    +-------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------+----+----+-----+-----------+
+    |           Name          | FF | LUT| Bits| Const Bits|
+    +-------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                |   1|   0|    1|          0|
+    |ap_done_reg              |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1  |   1|   0|    1|          0|
+    |b_data_reg_345           |  64|   0|   64|          0|
+    |b_last_reg_350           |   1|   0|    1|          0|
+    |i_fu_120                 |   5|   0|    5|          0|
+    +-------------------------+----+----+-----+-----------+
+    |Total                    |  73|   0|   73|          0|
+    +-------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------------+-----+-----+------------+----------------------------------+--------------+
+|      RTL Ports     | Dir | Bits|  Protocol  |           Source Object          |    C Type    |
++--------------------+-----+-----+------------+----------------------------------+--------------+
+|ap_clk              |   in|    1|  ap_ctrl_hs|  emit_records_Pipeline_meta_words|  return value|
+|ap_rst              |   in|    1|  ap_ctrl_hs|  emit_records_Pipeline_meta_words|  return value|
+|ap_start            |   in|    1|  ap_ctrl_hs|  emit_records_Pipeline_meta_words|  return value|
+|ap_done             |  out|    1|  ap_ctrl_hs|  emit_records_Pipeline_meta_words|  return value|
+|ap_idle             |  out|    1|  ap_ctrl_hs|  emit_records_Pipeline_meta_words|  return value|
+|ap_ready            |  out|    1|  ap_ctrl_hs|  emit_records_Pipeline_meta_words|  return value|
+|m_axis_meta_TREADY  |   in|    1|        axis|              m_axis_meta_V_data_V|       pointer|
+|m_axis_meta_TDATA   |  out|   64|        axis|              m_axis_meta_V_data_V|       pointer|
+|w_13                |   in|   64|     ap_none|                              w_13|        scalar|
+|f_first             |   in|   64|     ap_none|                           f_first|        scalar|
+|f_last              |   in|   64|     ap_none|                            f_last|        scalar|
+|w_16                |   in|   64|     ap_none|                              w_16|        scalar|
+|w_1                 |   in|   64|     ap_none|                               w_1|        scalar|
+|zext_ln724          |   in|   48|     ap_none|                        zext_ln724|        scalar|
+|zext_ln724_2        |   in|   48|     ap_none|                      zext_ln724_2|        scalar|
+|empty               |   in|   64|     ap_none|                             empty|        scalar|
+|zext_ln761          |   in|   49|     ap_none|                        zext_ln761|        scalar|
+|zext_ln762          |   in|   50|     ap_none|                        zext_ln762|        scalar|
+|zext_ln762_1        |   in|   32|     ap_none|                      zext_ln762_1|        scalar|
+|m_axis_meta_TVALID  |  out|    1|        axis|              m_axis_meta_V_last_V|       pointer|
+|m_axis_meta_TLAST   |  out|    1|        axis|              m_axis_meta_V_last_V|       pointer|
+|m_axis_meta_TKEEP   |  out|    8|        axis|              m_axis_meta_V_keep_V|       pointer|
+|m_axis_meta_TSTRB   |  out|    8|        axis|              m_axis_meta_V_strb_V|       pointer|
++--------------------+-----+-----+------------+----------------------------------+--------------+
+

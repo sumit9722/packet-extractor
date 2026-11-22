@@ -1,0 +1,171 @@
+
+
+================================================================
+== Vitis HLS Report for 'svdd_record_join_Pipeline_write_record'
+================================================================
+* Date:           Sun Nov 22 23:16:35 2026
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        prj_svdd_record_join
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  4.956 ns|     2.00 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |       18|       18|  0.180 us|  0.180 us|   18|   18|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |    Loop Name   |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- write_record  |       16|       16|         2|          1|          1|    16|       yes|
+        +----------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-----+--------+-------+-----+
+|       Name      | BRAM_18K| DSP |   FF   |  LUT  | URAM|
++-----------------+---------+-----+--------+-------+-----+
+|DSP              |        -|    -|       -|      -|    -|
+|Expression       |        -|    -|       0|     48|    -|
+|FIFO             |        -|    -|       -|      -|    -|
+|Instance         |        -|    -|       0|     65|    -|
+|Memory           |        -|    -|       -|      -|    -|
+|Multiplexer      |        -|    -|       -|     45|    -|
+|Register         |        -|    -|      73|      -|    -|
++-----------------+---------+-----+--------+-------+-----+
+|Total            |        0|    0|      73|    158|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Available        |      280|  220|  106400|  53200|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Utilization (%)  |        0|    0|      ~0|     ~0|    0|
++-----------------+---------+-----+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +---------------------------+-----------------------+---------+----+---+----+-----+
+    |          Instance         |         Module        | BRAM_18K| DSP| FF| LUT| URAM|
+    +---------------------------+-----------------------+---------+----+---+----+-----+
+    |sparsemux_33_4_64_1_1_U36  |sparsemux_33_4_64_1_1  |        0|   0|  0|  65|    0|
+    +---------------------------+-----------------------+---------+----+---+----+-----+
+    |Total                      |                       |        0|   0|  0|  65|    0|
+    +---------------------------+-----------------------+---------+----+---+----+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------------+----------+----+---+----+------------+------------+
+    |       Variable Name       | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |add_ln43_fu_262_p2         |         +|   0|  0|  13|           5|           1|
+    |ap_block_pp0_stage0_01001  |       and|   0|  0|   2|           1|           1|
+    |ap_block_pp0_stage0_11001  |       and|   0|  0|   2|           1|           1|
+    |b_last_fu_350_p2           |       and|   0|  0|   2|           1|           1|
+    |icmp_ln43_fu_256_p2        |      icmp|   0|  0|  14|           5|           6|
+    |icmp_ln49_fu_344_p2        |      icmp|   0|  0|  13|           5|           4|
+    |ap_enable_pp0              |       xor|   0|  0|   2|           1|           2|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |Total                      |          |   0|  0|  48|          19|          16|
+    +---------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------+----+-----------+-----+-----------+
+    |           Name          | LUT| Input Size| Bits| Total Bits|
+    +-------------------------+----+-----------+-----+-----------+
+    |ap_done_int              |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1  |   9|          2|    1|          2|
+    |ap_sig_allocacmp_i_1     |   9|          2|    5|         10|
+    |i_fu_124                 |   9|          2|    5|         10|
+    |m_axis_TDATA_blk_n       |   9|          2|    1|          2|
+    +-------------------------+----+-----------+-----+-----------+
+    |Total                    |  45|         10|   13|         26|
+    +-------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------+----+----+-----+-----------+
+    |           Name          | FF | LUT| Bits| Const Bits|
+    +-------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                |   1|   0|    1|          0|
+    |ap_done_reg              |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1  |   1|   0|    1|          0|
+    |b_data_reg_371           |  64|   0|   64|          0|
+    |b_last_reg_376           |   1|   0|    1|          0|
+    |i_fu_124                 |   5|   0|    5|          0|
+    +-------------------------+----+----+-----+-----------+
+    |Total                    |  73|   0|   73|          0|
+    +-------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------+-----+-----+------------+----------------------------------------+--------------+
+|   RTL Ports   | Dir | Bits|  Protocol  |              Source Object             |    C Type    |
++---------------+-----+-----+------------+----------------------------------------+--------------+
+|ap_clk         |   in|    1|  ap_ctrl_hs|  svdd_record_join_Pipeline_write_record|  return value|
+|ap_rst         |   in|    1|  ap_ctrl_hs|  svdd_record_join_Pipeline_write_record|  return value|
+|ap_start       |   in|    1|  ap_ctrl_hs|  svdd_record_join_Pipeline_write_record|  return value|
+|ap_done        |  out|    1|  ap_ctrl_hs|  svdd_record_join_Pipeline_write_record|  return value|
+|ap_idle        |  out|    1|  ap_ctrl_hs|  svdd_record_join_Pipeline_write_record|  return value|
+|ap_ready       |  out|    1|  ap_ctrl_hs|  svdd_record_join_Pipeline_write_record|  return value|
+|m_axis_TREADY  |   in|    1|        axis|                         m_axis_V_data_V|       pointer|
+|m_axis_TDATA   |  out|   64|        axis|                         m_axis_V_data_V|       pointer|
+|w_45           |   in|   64|     ap_none|                                    w_45|        scalar|
+|w_1_reload     |   in|   64|     ap_none|                              w_1_reload|        scalar|
+|w_2_reload     |   in|   64|     ap_none|                              w_2_reload|        scalar|
+|w_3_reload     |   in|   64|     ap_none|                              w_3_reload|        scalar|
+|w_4_reload     |   in|   64|     ap_none|                              w_4_reload|        scalar|
+|w_5_reload     |   in|   64|     ap_none|                              w_5_reload|        scalar|
+|w_6_reload     |   in|   64|     ap_none|                              w_6_reload|        scalar|
+|w_7_reload     |   in|   64|     ap_none|                              w_7_reload|        scalar|
+|w_8_reload     |   in|   64|     ap_none|                              w_8_reload|        scalar|
+|w_9_reload     |   in|   64|     ap_none|                              w_9_reload|        scalar|
+|w_46           |   in|   64|     ap_none|                                    w_46|        scalar|
+|w_47           |   in|   64|     ap_none|                                    w_47|        scalar|
+|w_48           |   in|   64|     ap_none|                                    w_48|        scalar|
+|w_49           |   in|   64|     ap_none|                                    w_49|        scalar|
+|w_50           |   in|   64|     ap_none|                                    w_50|        scalar|
+|w_15_reload    |   in|   64|     ap_none|                             w_15_reload|        scalar|
+|close_0317     |   in|    1|     ap_none|                              close_0317|        scalar|
+|m_axis_TVALID  |  out|    1|        axis|                         m_axis_V_last_V|       pointer|
+|m_axis_TLAST   |  out|    1|        axis|                         m_axis_V_last_V|       pointer|
+|m_axis_TKEEP   |  out|    8|        axis|                         m_axis_V_keep_V|       pointer|
+|m_axis_TSTRB   |  out|    8|        axis|                         m_axis_V_strb_V|       pointer|
++---------------+-----+-----+------------+----------------------------------------+--------------+
+

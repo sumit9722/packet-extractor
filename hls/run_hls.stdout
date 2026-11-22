@@ -1,0 +1,1014 @@
+Vitis HLS (csim csynth export) in /home/chilsu/.cache/svdd_pl_hls with a 6G memory cap. Log: /home/chilsu/.cache/svdd_pl_hls/vitis_hls.log
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.2 (64-bit)
+  **** SW Build 4023990 on Oct 11 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /home/chilsu/tools/Vitis_HLS/2023.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/home/chilsu/tools/Vitis_HLS/2023.2/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'chilsu' on host 'chilsu' (Linux_x86_64 version 6.18.60-1-lts) on Sun Nov 22 23:13:50 IST 2026
+INFO: [HLS 200-10] On os "Arch Linux"
+INFO: [HLS 200-10] In directory '/home/chilsu/.cache/svdd_pl_hls'
+INFO: [HLS 200-2053] The vitis_hls executable is being deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'src/synth.tcl'
+INFO: [HLS 200-1510] Running: open_project prj_svdd_flow_extract 
+INFO: [HLS 200-10] Creating and opening project '/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract'.
+INFO: [HLS 200-1510] Running: set_top svdd_flow_extract 
+INFO: [HLS 200-1510] Running: add_files /home/chilsu/.cache/svdd_pl_hls/src/extract.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding design file '/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/tb_svdd_pl.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/tb_svdd_pl.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/core/inference_axis.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/core/inference_axis.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/join.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/join.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution -reset solution1 -flow_target vivado 
+INFO: [HLS 200-10] Creating and opening solution '/home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2023.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: set_clock_uncertainty 2 
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 2ns.
+INFO: [HLS 200-1510] Running: config_rtl -reset control -reset_level low 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog -vendor bits.edu -library hls -version 1.0 -display_name SVDD feature extraction (pcap -> 8 raw words) -ipname svdd_flow_extract 
+INFO: [HLS 200-1510] Running: csim_design -ldflags -B/usr/bin/ -argv stream /home/chilsu/.cache/svdd_pl_hls/src/tb_data/small_stream.bin /home/chilsu/.cache/svdd_pl_hls/src/tb_data/small_out.bin 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+   Compiling ../../../../src/join.cpp in debug mode
+   Compiling ../../../../src/preprocess.cpp in debug mode
+   Compiling ../../../../src/core/inference_axis.cpp in debug mode
+   Compiling ../../../../src/tb_svdd_pl.cpp in debug mode
+   Compiling ../../../../src/extract.cpp in debug mode
+   Generating csim.exe
+log1p_u32: 270225 inputs, 33 differ by 1 ulp from libm, 0 by more
+6 chunks -> 304 records, 298 feature records (0 beats breaking the spec framing)
+all testbench checks passed
+INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 8196
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 59.22 seconds. CPU system time: 1.11 seconds. Elapsed time: 60.88 seconds; current allocated memory: 0.047 MB.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.06 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.08 seconds; current allocated memory: 228.641 MB.
+INFO: [HLS 200-10] Analyzing design file '/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp' ... 
+WARNING: [HLS 207-5292] unused parameter 'c' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:406:67)
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 4.28 seconds. CPU system time: 0.6 seconds. Elapsed time: 5.11 seconds; current allocated memory: 231.402 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-1995] There were 27,006 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 8,119 instructions in the design after the 'Unroll/Inline (step 1)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 6,241 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 6,279 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 5,055 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 10,124 instructions in the design after the 'Array/Struct (step 1)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 4,654 instructions in the design after the 'Array/Struct (step 2)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 7,735 instructions in the design after the 'Array/Struct (step 3)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 9,686 instructions in the design after the 'Array/Struct (step 4)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 9,654 instructions in the design after the 'Array/Struct (step 5)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 7,200 instructions in the design after the 'Performance (step 1)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 7,143 instructions in the design after the 'Performance (step 2)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 7,055 instructions in the design after the 'Performance (step 3)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 7,055 instructions in the design after the 'Performance (step 4)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 6,003 instructions in the design after the 'HW Transforms (step 1)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 6,095 instructions in the design after the 'HW Transforms (step 2)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_flow_extract/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 214-131] Inlining function 'svpl::(anonymous namespace)::emit(hls::stream<svpl::flow_tok_t, 0>&, svpl::(anonymous namespace)::entry_t const&, ap_uint<3>, ap_uint<32>&)' into 'svpl::flow_table(hls::stream<svpl::pkt_tok_t, 0>&, hls::stream<svpl::flow_tok_t, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:661:17)
+INFO: [HLS 214-131] Inlining function 'svpl::(anonymous namespace)::emit(hls::stream<svpl::flow_tok_t, 0>&, svpl::(anonymous namespace)::entry_t const&, ap_uint<3>, ap_uint<32>&)' into 'svpl::flow_table(hls::stream<svpl::pkt_tok_t, 0>&, hls::stream<svpl::flow_tok_t, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:639:25)
+INFO: [HLS 214-131] Inlining function 'svpl::(anonymous namespace)::emit(hls::stream<svpl::flow_tok_t, 0>&, svpl::(anonymous namespace)::entry_t const&, ap_uint<3>, ap_uint<32>&)' into 'svpl::flow_table(hls::stream<svpl::pkt_tok_t, 0>&, hls::stream<svpl::flow_tok_t, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:636:25)
+INFO: [HLS 214-131] Inlining function 'svpl::(anonymous namespace)::emit(hls::stream<svpl::flow_tok_t, 0>&, svpl::(anonymous namespace)::entry_t const&, ap_uint<3>, ap_uint<32>&)' into 'svpl::flow_table(hls::stream<svpl::pkt_tok_t, 0>&, hls::stream<svpl::flow_tok_t, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:624:25)
+INFO: [HLS 214-131] Inlining function 'svpl::(anonymous namespace)::emit(hls::stream<svpl::flow_tok_t, 0>&, svpl::(anonymous namespace)::entry_t const&, ap_uint<3>, ap_uint<32>&)' into 'svpl::flow_table(hls::stream<svpl::pkt_tok_t, 0>&, hls::stream<svpl::flow_tok_t, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:562:25)
+INFO: [HLS 214-131] Inlining function 'svpl::(anonymous namespace)::emit(hls::stream<svpl::flow_tok_t, 0>&, svpl::(anonymous namespace)::entry_t const&, ap_uint<3>, ap_uint<32>&)' into 'svpl::flow_table(hls::stream<svpl::pkt_tok_t, 0>&, hls::stream<svpl::flow_tok_t, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:548:25)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_289_1' is marked as complete unroll implied by the pipeline pragma (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:289:20)
+INFO: [HLS 214-186] Unrolling loop 'ways' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:586:17) in function 'svpl::flow_table' completely with a factor of 8 (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:492:0)
+INFO: [HLS 214-186] Unrolling loop 'pick' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:600:17) in function 'svpl::flow_table' completely with a factor of 8 (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:492:0)
+INFO: [HLS 214-186] Unrolling loop 'scan' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:655:13) in function 'svpl::flow_table' completely with a factor of 8 (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:492:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_289_1' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:289:20) in function 'svpl::parse' completely with a factor of 8 (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:205:0)
+WARNING: [HLS 214-366] Duplicating function 'svpl::(anonymous namespace)::expiry_reason(svpl::(anonymous namespace)::entry_t const&, svpl::(anonymous namespace)::flow_cfg_t const&)' as different function signatures were detected between this call site and other call site(s). This may impact the resources used in the design. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:636:45)
+WARNING: [HLS 214-366] Duplicating function 'svpl::(anonymous namespace)::expiry_reason(svpl::(anonymous namespace)::entry_t const&, svpl::(anonymous namespace)::flow_cfg_t const&)' as different function signatures were detected between this call site and other call site(s). This may impact the resources used in the design. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:661:37)
+WARNING: [HLS 214-366] Duplicating function 'svpl::(anonymous namespace)::expired(svpl::(anonymous namespace)::entry_t const&, ap_uint<64>, svpl::(anonymous namespace)::flow_cfg_t const&)' as different function signatures were detected between this call site and other call site(s). This may impact the resources used in the design. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:547:56)
+WARNING: [HLS 214-366] Duplicating function 'svpl::(anonymous namespace)::expired(svpl::(anonymous namespace)::entry_t const&, ap_uint<64>, svpl::(anonymous namespace)::flow_cfg_t const&)' as different function signatures were detected between this call site and other call site(s). This may impact the resources used in the design. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:561:36)
+INFO: [HLS 214-178] Inlining function 'svpl::(anonymous namespace)::is_raw(ap_uint<16>)' into 'svpl::(anonymous namespace)::start_frame(svpl::(anonymous namespace)::frame_t&, ap_uint<16>, ap_uint<32>, ap_uint<32>, ap_uint<32>)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:38:0)
+INFO: [HLS 214-178] Inlining function 'svpl::(anonymous namespace)::is_raw(ap_uint<16>)' into 'svpl::(anonymous namespace)::frame_byte(svpl::(anonymous namespace)::frame_t&, ap_uint<8>, ap_uint<16>)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:57:0)
+INFO: [HLS 214-178] Inlining function 'svpl::(anonymous namespace)::control(ap_uint<3>)' into 'svpl::parse(hls::stream<hls::axis<ap_uint<64>, 0ul, 0ul, 0ul, (unsigned char)56, false>, 0>&, hls::stream<svpl::pkt_tok_t, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:205:0)
+INFO: [HLS 214-178] Inlining function 'svpl::(anonymous namespace)::swap32(ap_uint<32>)' into 'svpl::parse(hls::stream<hls::axis<ap_uint<64>, 0ul, 0ul, 0ul, (unsigned char)56, false>, 0>&, hls::stream<svpl::pkt_tok_t, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:205:0)
+INFO: [HLS 214-178] Inlining function 'svpl::(anonymous namespace)::start_frame(svpl::(anonymous namespace)::frame_t&, ap_uint<16>, ap_uint<32>, ap_uint<32>, ap_uint<32>)' into 'svpl::parse(hls::stream<hls::axis<ap_uint<64>, 0ul, 0ul, 0ul, (unsigned char)56, false>, 0>&, hls::stream<svpl::pkt_tok_t, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:205:0)
+INFO: [HLS 214-178] Inlining function 'svpl::(anonymous namespace)::add_sat48(ap_uint<48>, ap_uint<16>)' into 'svpl::(anonymous namespace)::add_packet(svpl::(anonymous namespace)::entry_t&, svpl::pkt_tok_t const&, bool, svpl::(anonymous namespace)::flow_cfg_t const&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:466:0)
+INFO: [HLS 214-178] Inlining function 'svpl::(anonymous namespace)::expired(svpl::(anonymous namespace)::entry_t const&, ap_uint<64>, svpl::(anonymous namespace)::flow_cfg_t const&) (.903)' into 'svpl::flow_table(hls::stream<svpl::pkt_tok_t, 0>&, hls::stream<svpl::flow_tok_t, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:492:0)
+INFO: [HLS 214-178] Inlining function 'svpl::(anonymous namespace)::expiry_reason(svpl::(anonymous namespace)::entry_t const&, svpl::(anonymous namespace)::flow_cfg_t const&)' into 'svpl::flow_table(hls::stream<svpl::pkt_tok_t, 0>&, hls::stream<svpl::flow_tok_t, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:492:0)
+INFO: [HLS 214-178] Inlining function 'svpl::(anonymous namespace)::set_of(ap_uint<32>, ap_uint<32>, ap_uint<16>, ap_uint<16>, ap_uint<8>)' into 'svpl::flow_table(hls::stream<svpl::pkt_tok_t, 0>&, hls::stream<svpl::flow_tok_t, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:492:0)
+INFO: [HLS 214-178] Inlining function 'svpl::(anonymous namespace)::new_flow(svpl::pkt_tok_t const&)' into 'svpl::flow_table(hls::stream<svpl::pkt_tok_t, 0>&, hls::stream<svpl::flow_tok_t, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:492:0)
+INFO: [HLS 214-178] Inlining function 'svpl::(anonymous namespace)::expiry_reason(svpl::(anonymous namespace)::entry_t const&, svpl::(anonymous namespace)::flow_cfg_t const&) (.902)' into 'svpl::flow_table(hls::stream<svpl::pkt_tok_t, 0>&, hls::stream<svpl::flow_tok_t, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:492:0)
+INFO: [HLS 214-178] Inlining function 'svpl::(anonymous namespace)::set_deadline(svpl::(anonymous namespace)::entry_t&, svpl::(anonymous namespace)::flow_cfg_t const&)' into 'svpl::flow_table(hls::stream<svpl::pkt_tok_t, 0>&, hls::stream<svpl::flow_tok_t, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:492:0)
+INFO: [HLS 214-178] Inlining function 'svpl::(anonymous namespace)::write_meta(hls::stream<hls::axis<ap_uint<64>, 0ul, 0ul, 0ul, (unsigned char)56, false>, 0>&, ap_uint<64> const*)' into 'svpl::emit_records(hls::stream<svpl::flow_tok_t, 0>&, hls::stream<hls::axis<ap_uint<32>, 1ul, 0ul, 0ul, (unsigned char)56, false>, 0>&, hls::stream<hls::axis<ap_uint<64>, 0ul, 0ul, 0ul, (unsigned char)56, false>, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:696:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZZN4svpl10flow_tableERN3hls6streamINS_9pkt_tok_tELi0EEERNS1_INS_10flow_tok_tELi0EEEE5table': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:493:0)
+INFO: [HLS 214-248] Applying array_partition to 'bytes': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:287:20)
+INFO: [HLS 214-248] Applying array_partition to 'e133.valid': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.src': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.dst': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.sport': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.dport': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.proto': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.first': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.last': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.in_pkts': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.out_pkts': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.in_bytes': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.out_bytes': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.min_ttl': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.max_len': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.min_len': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.win_in': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.win_out': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.fin_in': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.fin_out': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.closing': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'e133.deadline': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:573:25)
+INFO: [HLS 214-248] Applying array_partition to 'fwdv': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:578:20)
+INFO: [HLS 214-248] Applying array_partition to 'gone_prev': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:578:33)
+INFO: [HLS 214-248] Applying array_partition to 'idle_now': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:578:51)
+INFO: [HLS 214-248] Applying array_partition to 'too_old': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:578:68)
+INFO: [HLS 214-248] Applying array_partition to 'g.valid': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.src': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.dst': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.sport': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.dport': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.proto': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.first': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.last': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.in_pkts': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.out_pkts': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.in_bytes': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.out_bytes': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.min_ttl': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.max_len': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.min_len': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.win_in': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.win_out': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.fin_in': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.fin_out': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.closing': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'g.deadline': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:652:21)
+INFO: [HLS 214-248] Applying array_partition to 'w': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:700:21)
+INFO: [HLS 214-241] Aggregating fifo (hls::stream) variable 'pkts' with compact=bit mode in 420-bits (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:780:35)
+INFO: [HLS 214-241] Aggregating fifo (hls::stream) variable 'flows' with compact=bit mode in 764-bits (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:781:39)
+INFO: [HLS 214-241] Aggregating bram variable 'svpl::flow_table(hls::stream<svpl::pkt_tok_t, 0>&, hls::stream<svpl::flow_tok_t, 0>&)::table' with compact=bit mode in 516-bits
+INFO: [HLS 214-364] Automatically inlining function 'svpl::(anonymous namespace)::finish_frame(svpl::(anonymous namespace)::frame_t const&, bool, svpl::parse_stats_t&, hls::stream<svpl::pkt_tok_t, 0>&)' to improve effectiveness of pipeline pragma in function 'svpl::parse(hls::stream<hls::axis<ap_uint<64>, 0ul, 0ul, 0ul, (unsigned char)56, false>, 0>&, hls::stream<svpl::pkt_tok_t, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:275:13)
+INFO: [HLS 214-364] Automatically inlining function 'svpl::(anonymous namespace)::frame_byte(svpl::(anonymous namespace)::frame_t&, ap_uint<8>, ap_uint<16>)' to improve effectiveness of pipeline pragma in function 'svpl::parse(hls::stream<hls::axis<ap_uint<64>, 0ul, 0ul, 0ul, (unsigned char)56, false>, 0>&, hls::stream<svpl::pkt_tok_t, 0>&)' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:312:17)
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_727_2> at /home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:727:27 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< header> at /home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:218:5 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< drain_long> at /home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:331:9 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< drain_bad> at /home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:235:9 
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 6.44 seconds. CPU system time: 0.72 seconds. Elapsed time: 8.13 seconds; current allocated memory: 234.523 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 234.523 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.49 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.53 seconds; current allocated memory: 243.480 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'svpl::(anonymous namespace)::expired' into 'svpl::flow_table' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:595) automatically.
+INFO: [XFORM 203-602] Inlining function 'svpl::(anonymous namespace)::older' into 'svpl::flow_table' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:596) automatically.
+WARNING: [SYNCHK 200-23] /home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:728: variable-indexed range selection may cause suboptimal QoR.
+INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.69 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.71 seconds; current allocated memory: 247.141 MB.
+INFO: [XFORM 203-602] Inlining function 'svpl::(anonymous namespace)::expired' into 'svpl::flow_table' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:595) automatically.
+INFO: [XFORM 203-602] Inlining function 'svpl::(anonymous namespace)::older' into 'svpl::flow_table' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:596) automatically.
+INFO: [XFORM 203-712] Applying dataflow to function 'svdd_flow_extract' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:773:1), detected/extracted 3 process function(s): 
+	 'svpl::parse'
+	 'svpl::flow_table'
+	 'svpl::emit_records'.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:166:32) to (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:172:13) in function 'svpl::parse'... converting 11 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:297:35) to (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:33:25) in function 'svpl::parse'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:114:40) to (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:116:21) in function 'svpl::parse'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:547:53) to (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:549:43) in function 'svpl::flow_table'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:378:37) to (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:610:21) in function 'svpl::flow_table'... converting 17 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:612:23) to (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:623:25) in function 'svpl::flow_table'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:412:15) to (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:637:21) in function 'svpl::flow_table'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:608:25) to (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:647:31) in function 'svpl::flow_table'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:506:5) to (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:660:17) in function 'svpl::flow_table'... converting 17 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:412:15) to (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:662:46) in function 'svpl::flow_table'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:166:32) to (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:172:13) in function 'svpl::(anonymous namespace)::finish_frame'... converting 11 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:467:14) to (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:467:14) in function 'svpl::(anonymous namespace)::add_packet'... converting 10 basic blocks.
+INFO: [XFORM 203-602] Inlining function 'svpl::(anonymous namespace)::add_packet' into 'svpl::flow_table' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:645) automatically.
+INFO: [XFORM 203-11] Balancing expressions in function 'svpl::parse' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:33:26)...6 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'svpl::flow_table' (/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:380:21)...116 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 2.47 seconds. CPU system time: 0.01 seconds. Elapsed time: 2.5 seconds; current allocated memory: 286.320 MB.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.81 seconds. CPU system time: 0.04 seconds. Elapsed time: 0.85 seconds; current allocated memory: 412.000 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'svdd_flow_extract' ...
+WARNING: [SYN 201-103] Legalizing function name '(anonymous namespace)finish_frame' to 'p_anonymous_namespace_finish_frame'.
+WARNING: [SYN 201-107] Renaming port name 'svdd_flow_extract/open' to 'svdd_flow_extract/open_r' to avoid the conflict with HDL keywords or other object names.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'parse_Pipeline_header' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'header'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 3, loop 'header'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.11 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.17 seconds; current allocated memory: 414.090 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 414.090 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'parse_Pipeline_drain_bad' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'drain_bad'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 1, loop 'drain_bad'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 414.453 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 414.453 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'parse_Pipeline_data' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'data'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 4, loop 'data'
+WARNING: [HLS 200-871] Estimated clock period (8.331 ns) exceeds the target (target clock period: 10.000 ns, clock uncertainty: 2.000 ns, effective delay budget: 8.000 ns).
+Resolution: For help on HLS 200-871 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2023.2%20English&url=ug1448-hls-guidance&resourceid=200-871.html
+WARNING: [HLS 200-1016] The critical path in module 'parse_Pipeline_data' consists of the following:
+	'load' operation 8 bit ('f_ip_off_load_1', /home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:128->/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:312) on static variable 'f_ip_off' [492]  (0.000 ns)
+	'sub' operation 8 bit ('q', /home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:129->/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:312) [498]  (1.915 ns)
+	'store' operation 0 bit ('f_ihl_write_ln132', /home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:132->/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:312) of variable 'zext_ln132', /home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:132->/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:312 on static variable 'f_ihl' [532]  (1.588 ns)
+	'load' operation 7 bit ('f_ihl_load_1', /home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:142->/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:312) on static variable 'f_ihl' [557]  (0.000 ns)
+	'sub' operation 8 bit ('r', /home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:143->/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp:312) [562]  (1.915 ns)
+	blocking operation 2.91338 ns on control path)
+
+Resolution: For help on HLS 200-1016 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2023.2%20English&url=ug1448-hls-guidance&resourceid=200-1016.html
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.28 seconds. CPU system time: 0 seconds. Elapsed time: 0.29 seconds; current allocated memory: 425.457 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.08 seconds. CPU system time: 0 seconds. Elapsed time: 0.08 seconds; current allocated memory: 425.457 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_anonymous_namespace_finish_frame' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.1 seconds; current allocated memory: 425.457 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.02 seconds; current allocated memory: 425.457 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'parse_Pipeline_drain_long' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'drain_long'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 1, loop 'drain_long'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 425.457 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 425.457 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'parse' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.06 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 425.457 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 425.457 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'flow_table' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.71 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.72 seconds; current allocated memory: 451.137 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.32 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.33 seconds; current allocated memory: 456.914 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'emit_records_Pipeline_VITIS_LOOP_727_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_727_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'VITIS_LOOP_727_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.19 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.2 seconds; current allocated memory: 456.914 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 456.914 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'emit_records_Pipeline_feature_words' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'feature_words'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'feature_words'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 456.914 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 456.914 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'emit_records_Pipeline_meta_words' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'meta_words'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'meta_words'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 456.914 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.01 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.02 seconds; current allocated memory: 456.914 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'emit_records_Pipeline_meta_words1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'meta_words'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'meta_words'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 456.914 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 456.914 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'emit_records' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.06 seconds; current allocated memory: 456.914 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 456.914 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'svdd_flow_extract' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 456.914 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 456.914 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'parse_Pipeline_header' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'parse_Pipeline_header' pipeline 'header' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'parse_Pipeline_header'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 456.914 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'parse_Pipeline_drain_bad' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'parse_Pipeline_drain_bad'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.06 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 456.914 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'parse_Pipeline_data' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Register 'f_remain' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_p' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_et_pos' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'hdr' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_hold1' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_hold2' is power-on initialization.
+INFO: [RTGEN 206-100] Generating core module 'mul_32ns_21ns_52_2_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_32ns_34ns_65_2_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_17_3_8_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'parse_Pipeline_data'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.14 seconds. CPU system time: 0 seconds. Elapsed time: 0.15 seconds; current allocated memory: 456.914 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_anonymous_namespace_finish_frame' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mul_32ns_21ns_52_2_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_32ns_34ns_65_2_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_anonymous_namespace_finish_frame'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.18 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.21 seconds; current allocated memory: 464.199 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'parse_Pipeline_drain_long' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'parse_Pipeline_drain_long'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.1 seconds; current allocated memory: 466.305 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'parse' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Register 'st_chunks' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'st_frames' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'st_ipv4' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'st_non_ipv4' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'st_malformed' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'st_deep' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'in_frame' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'hdr_n' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_cap_on' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_hold0' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_sec' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_frac' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_caplen' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_ihl' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_version' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_ip_off' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_link' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_frag' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_proto' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_src' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_dst' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_ttl' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_total_len' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_sport' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_dport' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_tcp_flags' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'f_win' is power-on initialization.
+INFO: [RTGEN 206-100] Generating core module 'mul_32ns_21ns_52_2_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_32ns_34ns_65_2_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'parse'.
+INFO: [RTMG 210-278] Implementing memory 'svdd_flow_extract_parse_w_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.15 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.22 seconds; current allocated memory: 468.766 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'flow_table' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Register 'exported' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'evicted' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'open_r' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'peak' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cfg_idle_us' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cfg_active_us' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cfg_close_us' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cfg_ttl_both' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cfg_fin_rst' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cfg_close_first' is power-on initialization.
+INFO: [SYN 201-210] Renamed object name 'flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_RAM_2P_BRAM_1R1W' to 'flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_RAM_2P_BRAbkb' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_30_RAM_2P_BRAM_1R1W' to 'flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_30_RAM_2P_cud' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_RAM_2P_BRAM_1R1W' to 'flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_RAM_2P_dEe' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_RAM_2P_BRAM_1R1W' to 'flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_RAM_2P_eOg' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_33_RAM_2P_BRAM_1R1W' to 'flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_33_RAM_2P_fYi' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_34_RAM_2P_BRAM_1R1W' to 'flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_34_RAM_2P_g8j' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_RAM_2P_BRAM_1R1W' to 'flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_RAM_2P_hbi' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_36_RAM_2P_BRAM_1R1W' to 'flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_36_RAM_2P_ibs' due to the length limit 80
+WARNING: [RTGEN 206-101] Register 'have_prev' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'scan_ptr' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'prev_ts' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'evict_ptr' is power-on initialization.
+INFO: [RTGEN 206-104] Estimated max fanout for 'flow_table' is 5140 from HDL expression: (1'b1 == ap_CS_fsm_state15)
+INFO: [RTGEN 206-100] Generating core module 'mul_25s_24ns_25_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_17_3_16_1_1': 36 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_17_3_1_1_1': 14 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_17_3_32_1_1': 24 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_17_3_48_1_1': 14 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_17_3_64_1_1': 12 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_17_3_8_1_1': 12 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'flow_table'.
+INFO: [RTMG 210-278] Implementing memory 'svdd_flow_extract_flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_RAM_2P_BRAbkb' using block RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.46 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.51 seconds; current allocated memory: 489.312 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'emit_records_Pipeline_VITIS_LOOP_727_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'emit_records_Pipeline_VITIS_LOOP_727_2' pipeline 'VITIS_LOOP_727_2' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'emit_records_Pipeline_VITIS_LOOP_727_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.62 seconds. CPU system time: 0.05 seconds. Elapsed time: 0.68 seconds; current allocated memory: 526.883 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'emit_records_Pipeline_feature_words' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'emit_records_Pipeline_feature_words' pipeline 'feature_words' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'emit_records_Pipeline_feature_words'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.07 seconds; current allocated memory: 526.883 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'emit_records_Pipeline_meta_words' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'emit_records_Pipeline_meta_words' pipeline 'meta_words' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_33_4_64_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'emit_records_Pipeline_meta_words'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 526.883 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'emit_records_Pipeline_meta_words1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'emit_records_Pipeline_meta_words1' pipeline 'meta_words' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_33_4_32_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'emit_records_Pipeline_meta_words1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.04 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.06 seconds; current allocated memory: 526.883 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'emit_records' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mul_65s_67ns_131_5_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'emit_records'.
+INFO: [RTMG 210-278] Implementing memory 'svdd_flow_extract_emit_records_wide_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'svdd_flow_extract_emit_records_raw_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.06 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.08 seconds; current allocated memory: 528.055 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'svdd_flow_extract' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_flow_extract/s_axis_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_flow_extract/s_axis_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_flow_extract/s_axis_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_flow_extract/s_axis_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_flow_extract/m_axis_features_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_flow_extract/m_axis_features_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_flow_extract/m_axis_features_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_flow_extract/m_axis_features_V_user_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_flow_extract/m_axis_features_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_flow_extract/m_axis_meta_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_flow_extract/m_axis_meta_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_flow_extract/m_axis_meta_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_flow_extract/m_axis_meta_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on function 'svdd_flow_extract' to 'ap_ctrl_none'.
+INFO: [HLS 200-633] Setting ap_ctrl_none interface for svdd_flow_extract
+INFO: [RTGEN 206-100] Finished creating RTL model for 'svdd_flow_extract'.
+INFO: [RTMG 210-285] Implementing FIFO 'pkts_U(svdd_flow_extract_fifo_w420_d16_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'flows_U(svdd_flow_extract_fifo_w764_d16_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_flow_table_U0_U(svdd_flow_extract_start_for_flow_table_U0)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_emit_records_U0_U(svdd_flow_extract_start_for_emit_records_U0)' using Shift Registers.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.12 seconds. CPU system time: 0 seconds. Elapsed time: 0.14 seconds; current allocated memory: 530.484 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.22 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.25 seconds; current allocated memory: 530.879 MB.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 0.55 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.55 seconds; current allocated memory: 539.121 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for svdd_flow_extract.
+INFO: [VLOG 209-307] Generating Verilog RTL for svdd_flow_extract.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 120.03 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 20.54 seconds. CPU system time: 1.73 seconds. Elapsed time: 23.79 seconds; current allocated memory: 312.129 MB.
+INFO: [HLS 200-1510] Running: export_design 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+ipx::create_core: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1351.609 ; gain = 0.023 ; free physical = 186 ; free virtual = 8760
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/chilsu/tools/Vivado/2023.2/data/ip'.
+INFO: [Common 17-206] Exiting Vivado at Sun Nov 22 23:15:27 2026...
+INFO: [HLS 200-802] Generated output file prj_svdd_flow_extract/solution1/impl/export.zip
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 11.52 seconds. CPU system time: 1.03 seconds. Elapsed time: 22.27 seconds; current allocated memory: 7.145 MB.
+INFO: [HLS 200-1510] Running: close_project 
+INFO: [HLS 200-1510] Running: open_project prj_svdd_preprocess 
+INFO: [HLS 200-10] Creating and opening project '/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess'.
+INFO: [HLS 200-1510] Running: set_top svdd_preprocess 
+INFO: [HLS 200-1510] Running: add_files /home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding design file '/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/tb_svdd_pl.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/tb_svdd_pl.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/core/inference_axis.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/core/inference_axis.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/extract.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/join.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/join.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution -reset solution1 -flow_target vivado 
+INFO: [HLS 200-10] Creating and opening solution '/home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2023.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: set_clock_uncertainty 2 
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 2ns.
+INFO: [HLS 200-1510] Running: config_rtl -reset control -reset_level low 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog -vendor bits.edu -library hls -version 1.0 -display_name SVDD preprocessing (raw words -> Q24 codes) -ipname svdd_preprocess 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.06 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] Analyzing design file '/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 3.67 seconds. CPU system time: 0.58 seconds. Elapsed time: 4.28 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-1995] There were 6,711 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 822 instructions in the design after the 'Unroll/Inline (step 1)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 441 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 436 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 402 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 396 instructions in the design after the 'Array/Struct (step 1)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 396 instructions in the design after the 'Array/Struct (step 2)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 396 instructions in the design after the 'Array/Struct (step 3)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 396 instructions in the design after the 'Array/Struct (step 4)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 497 instructions in the design after the 'Array/Struct (step 5)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 506 instructions in the design after the 'Performance (step 1)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 492 instructions in the design after the 'Performance (step 2)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 386 instructions in the design after the 'Performance (step 3)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 382 instructions in the design after the 'Performance (step 4)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 353 instructions in the design after the 'HW Transforms (step 1)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 358 instructions in the design after the 'HW Transforms (step 2)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_preprocess/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 214-178] Inlining function 'svpl::(anonymous namespace)::fix_to_double(ap_fixed<72, 6, (ap_q_mode)5, (ap_o_mode)3, 0>)' into 'svpl::log1p_u32(ap_uint<32>)' (/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp:83:0)
+INFO: [HLS 214-178] Inlining function 'svpl::log1p_u32(ap_uint<32>)' into 'svpl::preprocess(ap_uint<32> const*, bool const*, ap_int<32>*)' (/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp:117:0)
+INFO: [HLS 214-178] Inlining function 'svpl::quantize_q16(float)' into 'svpl::preprocess(ap_uint<32> const*, bool const*, ap_int<32>*)' (/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp:117:0)
+INFO: [HLS 214-376] automatically set the pipeline for Loop< drain> at /home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp:158:9 
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 2.35 seconds. CPU system time: 0.56 seconds. Elapsed time: 7.29 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.05 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 547.508 MB.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp:92:9) to (/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp:91:5) in function 'svpl::preprocess'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp:119:14) to (/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp:124:13) in function 'svpl::preprocess'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp:123:16) to (/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp:119:5) in function 'svpl::preprocess'... converting 16 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp:85:27) to (/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp:91:5) in function 'svpl::preprocess'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp:109:16) in function 'svpl::preprocess'... converting 6 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'svpl::preprocess' (/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp:19:5)...3 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.15 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.17 seconds; current allocated memory: 547.508 MB.
+WARNING: [HLS 200-960] Cannot flatten loop 'features' (/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp:129:5) in function 'svpl::preprocess' the outer loop is not a perfect loop because there is nontrivial logic before entering the inner loop.
+Resolution: For help on HLS 200-960 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2023.2%20English&url=ug1448-hls-guidance&resourceid=200-960.html
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.09 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'svdd_preprocess' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'svdd_preprocess_Pipeline_drain' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'drain'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 1, loop 'drain'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.03 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.06 seconds; current allocated memory: 547.508 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'preprocess_Pipeline_cordic' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'cordic'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 2, Final II = 2, Depth = 3, loop 'cordic'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 547.508 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'preprocess' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.15 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.15 seconds; current allocated memory: 547.508 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'svdd_preprocess_Pipeline_write_codes' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'write_codes'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'write_codes'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 547.508 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.01 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.01 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'svdd_preprocess' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 547.508 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'svdd_preprocess_Pipeline_drain' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'svdd_preprocess_Pipeline_drain'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'preprocess_Pipeline_cordic' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'preprocess_Pipeline_cordic' pipeline 'cordic' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'preprocess_Pipeline_cordic'.
+INFO: [RTMG 210-279] Implementing memory 'svdd_preprocess_preprocess_Pipeline_cordic_svpl_CORDIC_SHIFT_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'svdd_preprocess_preprocess_Pipeline_cordic_svpl_CORDIC_ATANH_HI_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'svdd_preprocess_preprocess_Pipeline_cordic_svpl_CORDIC_ATANH_LO_ROM_AUTO_1R' using auto ROMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'preprocess' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_2_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'ddiv_64ns_64ns_64_45_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dsub_64ns_64ns_64_7_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fptrunc_64ns_32_2_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_32s_67ns_72_5_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'uitodp_32ns_64_6_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'preprocess'.
+INFO: [RTMG 210-279] Implementing memory 'svdd_preprocess_preprocess_svpl_PRE_MEDIAN_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'svdd_preprocess_preprocess_svpl_PRE_LOG1P_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'svdd_preprocess_preprocess_svpl_PRE_CLIP_LO_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'svdd_preprocess_preprocess_svpl_PRE_CLIP_HI_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'svdd_preprocess_preprocess_svpl_PRE_ANCHOR_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'svdd_preprocess_preprocess_svpl_PRE_SCALE_ROM_AUTO_1R' using auto ROMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.07 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.09 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'svdd_preprocess_Pipeline_write_codes' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'svdd_preprocess_Pipeline_write_codes' pipeline 'write_codes' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'svdd_preprocess_Pipeline_write_codes'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.1 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'svdd_preprocess' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_preprocess/s_axis_raw_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_preprocess/s_axis_raw_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_preprocess/s_axis_raw_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_preprocess/s_axis_raw_V_user_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_preprocess/s_axis_raw_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_preprocess/m_axis_q24_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_preprocess/m_axis_q24_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_preprocess/m_axis_q24_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_preprocess/m_axis_q24_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_preprocess/m_axis_codes_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_preprocess/m_axis_codes_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_preprocess/m_axis_codes_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_preprocess/m_axis_codes_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on function 'svdd_preprocess' to 'ap_ctrl_none'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'svdd_preprocess'.
+INFO: [RTMG 210-278] Implementing memory 'svdd_preprocess_raw_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'svdd_preprocess_unknown_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'svdd_preprocess_codes_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.06 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.18 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.21 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 0.47 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.48 seconds; current allocated memory: 547.508 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for svdd_preprocess.
+INFO: [VLOG 209-307] Generating Verilog RTL for svdd_preprocess.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 125.17 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 7.67 seconds. CPU system time: 1.26 seconds. Elapsed time: 13.41 seconds; current allocated memory: 0.000 MB.
+INFO: [HLS 200-1510] Running: export_design 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1321.781 ; gain = 0.023 ; free physical = 360 ; free virtual = 8551
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/chilsu/tools/Vivado/2023.2/data/ip'.
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'svdd_preprocess_dcmp_64ns_64ns_1_2_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'svdd_preprocess_dcmp_64ns_64ns_1_2_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'svdd_preprocess_ddiv_64ns_64ns_64_45_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'svdd_preprocess_ddiv_64ns_64ns_64_45_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'svdd_preprocess_dsub_64ns_64ns_64_7_full_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'svdd_preprocess_dsub_64ns_64ns_64_7_full_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'svdd_preprocess_fptrunc_64ns_32_2_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'svdd_preprocess_fptrunc_64ns_32_2_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'svdd_preprocess_uitodp_32ns_64_6_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'svdd_preprocess_uitodp_32ns_64_6_no_dsp_1_ip'...
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/chilsu/tools/Vivado/2023.2/data/ip'.
+INFO: [Common 17-206] Exiting Vivado at Sun Nov 22 23:16:13 2026...
+INFO: [HLS 200-802] Generated output file prj_svdd_preprocess/solution1/impl/export.zip
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 22.15 seconds. CPU system time: 0.85 seconds. Elapsed time: 32.61 seconds; current allocated memory: 0.000 MB.
+INFO: [HLS 200-1510] Running: close_project 
+INFO: [HLS 200-1510] Running: open_project prj_svdd_record_join 
+INFO: [HLS 200-10] Creating and opening project '/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join'.
+INFO: [HLS 200-1510] Running: set_top svdd_record_join 
+INFO: [HLS 200-1510] Running: add_files /home/chilsu/.cache/svdd_pl_hls/src/join.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding design file '/home/chilsu/.cache/svdd_pl_hls/src/join.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/tb_svdd_pl.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/tb_svdd_pl.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/core/inference_axis.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/core/inference_axis.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/extract.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/extract.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb /home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp -cflags -I/home/chilsu/.cache/svdd_pl_hls/src -std=c++14 
+INFO: [HLS 200-10] Adding test bench file '/home/chilsu/.cache/svdd_pl_hls/src/preprocess.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution -reset solution1 -flow_target vivado 
+INFO: [HLS 200-10] Creating and opening solution '/home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2023.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: set_clock_uncertainty 2 
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 2ns.
+INFO: [HLS 200-1510] Running: config_rtl -reset control -reset_level low 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog -vendor bits.edu -library hls -version 1.0 -display_name SVDD record join (metadata + codes + score) -ipname svdd_record_join 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.06 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] Analyzing design file '/home/chilsu/.cache/svdd_pl_hls/src/join.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 2.48 seconds. CPU system time: 0.56 seconds. Elapsed time: 3.07 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-1995] There were 1,059 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 204 instructions in the design after the 'Unroll/Inline (step 1)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 177 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 171 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 171 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 288 instructions in the design after the 'Array/Struct (step 1)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 234 instructions in the design after the 'Array/Struct (step 2)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 234 instructions in the design after the 'Array/Struct (step 3)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 233 instructions in the design after the 'Array/Struct (step 4)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 278 instructions in the design after the 'Array/Struct (step 5)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 263 instructions in the design after the 'Performance (step 1)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 257 instructions in the design after the 'Performance (step 2)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 211 instructions in the design after the 'Performance (step 3)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 211 instructions in the design after the 'Performance (step 4)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 195 instructions in the design after the 'HW Transforms (step 1)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 203 instructions in the design after the 'HW Transforms (step 2)' phase of compilation. See the Design Size Report for more details: /home/chilsu/.cache/svdd_pl_hls/prj_svdd_record_join/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 214-248] Applying array_partition to 'w': Complete partitioning on dimension 1. (/home/chilsu/.cache/svdd_pl_hls/src/join.cpp:19:17)
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_35_1> at /home/chilsu/.cache/svdd_pl_hls/src/join.cpp:35:26 
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 2.14 seconds. CPU system time: 0.5 seconds. Elapsed time: 7.22 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.09 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.1 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.12 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'svdd_record_join' ...
+WARNING: [SYN 201-107] Renaming port name 'svdd_record_join/group' to 'svdd_record_join/group_r' to avoid the conflict with HDL keywords or other object names.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'svdd_record_join_Pipeline_read_meta' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'read_meta'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'read_meta'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.07 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.11 seconds; current allocated memory: 547.508 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'svdd_record_join_Pipeline_read_codes' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'read_codes'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'read_codes'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 547.508 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'svdd_record_join_Pipeline_VITIS_LOOP_35_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_35_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'VITIS_LOOP_35_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 547.508 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'svdd_record_join_Pipeline_write_record' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'write_record'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'write_record'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 547.508 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.01 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.01 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'svdd_record_join' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 547.508 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'svdd_record_join_Pipeline_read_meta' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'svdd_record_join_Pipeline_read_meta'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'svdd_record_join_Pipeline_read_codes' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'svdd_record_join_Pipeline_read_codes'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.04 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.05 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'svdd_record_join_Pipeline_VITIS_LOOP_35_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'svdd_record_join_Pipeline_VITIS_LOOP_35_1' pipeline 'VITIS_LOOP_35_1' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'svdd_record_join_Pipeline_VITIS_LOOP_35_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'svdd_record_join_Pipeline_write_record' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'svdd_record_join_Pipeline_write_record' pipeline 'write_record' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_33_4_64_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'svdd_record_join_Pipeline_write_record'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'svdd_record_join' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_record_join/s_axis_meta_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_record_join/s_axis_meta_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_record_join/s_axis_meta_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_record_join/s_axis_meta_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_record_join/s_axis_codes_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_record_join/s_axis_codes_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_record_join/s_axis_codes_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_record_join/s_axis_codes_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_record_join/s_axis_score_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_record_join/s_axis_score_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_record_join/s_axis_score_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_record_join/s_axis_score_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_record_join/m_axis_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_record_join/m_axis_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_record_join/m_axis_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'svdd_record_join/m_axis_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on function 'svdd_record_join' to 'ap_ctrl_none'.
+WARNING: [RTGEN 206-101] Register 'group_r' is power-on initialization.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'svdd_record_join'.
+INFO: [RTMG 210-278] Implementing memory 'svdd_record_join_c_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.08 seconds. CPU system time: 0 seconds. Elapsed time: 0.08 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.2 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.23 seconds; current allocated memory: 547.508 MB.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 0.59 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.6 seconds; current allocated memory: 547.508 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for svdd_record_join.
+INFO: [VLOG 209-307] Generating Verilog RTL for svdd_record_join.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 136.67 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 6.18 seconds. CPU system time: 1.17 seconds. Elapsed time: 12.03 seconds; current allocated memory: 0.000 MB.
+INFO: [HLS 200-1510] Running: export_design 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/chilsu/tools/Vivado/2023.2/data/ip'.
+INFO: [Common 17-206] Exiting Vivado at Sun Nov 22 23:16:46 2026...
+INFO: [HLS 200-802] Generated output file prj_svdd_record_join/solution1/impl/export.zip
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 10.62 seconds. CPU system time: 0.5 seconds. Elapsed time: 19.88 seconds; current allocated memory: 0.000 MB.
+INFO: [HLS 200-1510] Running: close_project 
+INFO: [HLS 200-112] Total CPU user time: 139.61 seconds. Total CPU system time: 7.97 seconds. Total elapsed time: 186.97 seconds; peak allocated memory: 547.508 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Sun Nov 22 23:16:56 2026...
+results copied to /home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/hls/reports (and ip/ after export)
+exit 0

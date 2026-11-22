@@ -1,0 +1,130 @@
+
+
+================================================================
+== Synthesis Summary Report of 'svdd_record_join'
+================================================================
++ General Information: 
+    * Date:           Sun Nov 22 23:16:35 2026
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        prj_svdd_record_join
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg400-1
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +----------------------------------------------+------+------+---------+---------+----------+---------+------+----------+------+----+-----------+-----------+-----+
+    |                    Modules                   | Issue|      | Latency | Latency | Iteration|         | Trip |          |      |    |           |           |     |
+    |                    & Loops                   | Type | Slack| (cycles)|   (ns)  |  Latency | Interval| Count| Pipelined| BRAM | DSP|     FF    |    LUT    | URAM|
+    +----------------------------------------------+------+------+---------+---------+----------+---------+------+----------+------+----+-----------+-----------+-----+
+    |+ svdd_record_join                            |     -|  0.68|       62|  620.000|         -|       63|     -|        no|     -|   -|  2463 (2%)|   957 (1%)|    -|
+    | + svdd_record_join_Pipeline_read_meta        |     -|  3.04|       18|  180.000|         -|       18|     -|        no|     -|   -|  1095 (1%)|   65 (~0%)|    -|
+    |  o read_meta                                 |     -|  8.00|       16|  160.000|         1|        1|    16|       yes|     -|   -|          -|          -|    -|
+    | + svdd_record_join_Pipeline_read_codes       |     -|  1.36|       10|  100.000|         -|       10|     -|        no|     -|   -|    6 (~0%)|   64 (~0%)|    -|
+    |  o read_codes                                |     -|  8.00|        8|   80.000|         1|        1|     8|       yes|     -|   -|          -|          -|    -|
+    | + svdd_record_join_Pipeline_VITIS_LOOP_35_1  |     -|  3.17|        6|   60.000|         -|        6|     -|        no|     -|   -|  264 (~0%)|  101 (~0%)|    -|
+    |  o VITIS_LOOP_35_1                           |     -|  8.00|        4|   40.000|         2|        1|     4|       yes|     -|   -|          -|          -|    -|
+    | + svdd_record_join_Pipeline_write_record     |     -|  3.04|       18|  180.000|         -|       18|     -|        no|     -|   -|   73 (~0%)|  158 (~0%)|    -|
+    |  o write_record                              |     -|  8.00|       16|  160.000|         2|        1|    16|       yes|     -|   -|          -|          -|    -|
+    +----------------------------------------------+------+------+---------+---------+----------+---------+------+----------+------+----+-----------+-----------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* AXIS
++--------------+-----------+---------------+-------+-------+-------+--------+-------+--------+
+| Interface    | Direction | Register Mode | TDATA | TKEEP | TLAST | TREADY | TSTRB | TVALID |
++--------------+-----------+---------------+-------+-------+-------+--------+-------+--------+
+| m_axis       | out       | both          | 64    | 8     | 1     | 1      | 8     | 1      |
+| s_axis_codes | in        | both          | 32    | 4     | 1     | 1      | 4     | 1      |
+| s_axis_meta  | in        | both          | 64    | 8     | 1     | 1      | 8     | 1      |
+| s_axis_score | in        | both          | 64    | 8     | 1     | 1      | 8     | 1      |
++--------------+-----------+---------------+-------+-------+-------+--------+-------+--------+
+
+* TOP LEVEL CONTROL
++-----------+--------------+----------+
+| Interface | Type         | Ports    |
++-----------+--------------+----------+
+| ap_clk    | clock        | ap_clk   |
+| ap_rst_n  | reset        | ap_rst_n |
+| ap_ctrl   | ap_ctrl_none |          |
++-----------+--------------+----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++--------------+-----------+---------------------------------------------------------+
+| Argument     | Direction | Datatype                                                |
++--------------+-----------+---------------------------------------------------------+
+| s_axis_meta  | in        | stream<hls::axis<ap_uint<64>, 0, 0, 0, '8', false>, 0>& |
+| s_axis_codes | in        | stream<hls::axis<ap_uint<32>, 0, 0, 0, '8', false>, 0>& |
+| s_axis_score | in        | stream<hls::axis<ap_uint<64>, 0, 0, 0, '8', false>, 0>& |
+| m_axis       | out       | stream<hls::axis<ap_uint<64>, 0, 0, 0, '8', false>, 0>& |
++--------------+-----------+---------------------------------------------------------+
+
+* SW-to-HW Mapping
++--------------+--------------+-----------+
+| Argument     | HW Interface | HW Type   |
++--------------+--------------+-----------+
+| s_axis_meta  | s_axis_meta  | interface |
+| s_axis_codes | s_axis_codes | interface |
+| s_axis_score | s_axis_score | interface |
+| m_axis       | m_axis       | interface |
++--------------+--------------+-----------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++----------------------------------------------+-----+--------+----------+-----+--------+---------+
+| Name                                         | DSP | Pragma | Variable | Op  | Impl   | Latency |
++----------------------------------------------+-----+--------+----------+-----+--------+---------+
+| + svdd_record_join                           | 0   |        |          |     |        |         |
+|   add_ln38_fu_584_p2                         |     |        | add_ln38 | add | fabric | 0       |
+|  + svdd_record_join_Pipeline_read_meta       | 0   |        |          |     |        |         |
+|    add_ln22_fu_329_p2                        |     |        | add_ln22 | add | fabric | 0       |
+|  + svdd_record_join_Pipeline_read_codes      | 0   |        |          |     |        |         |
+|    add_ln30_fu_93_p2                         |     |        | add_ln30 | add | fabric | 0       |
+|  + svdd_record_join_Pipeline_VITIS_LOOP_35_1 | 0   |        |          |     |        |         |
+|    add_ln35_fu_187_p2                        |     |        | add_ln35 | add | fabric | 0       |
+|  + svdd_record_join_Pipeline_write_record    | 0   |        |          |     |        |         |
+|    add_ln43_fu_262_p2                        |     |        | add_ln43 | add | fabric | 0       |
++----------------------------------------------+-----+--------+----------+-----+--------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++--------------------+---------------+------+------+------+--------+----------+------+---------+------------------+
+| Name               | Usage         | Type | BRAM | URAM | Pragma | Variable | Impl | Latency | Bitwidth, Depth, |
+|                    |               |      |      |      |        |          |      |         | Banks            |
++--------------------+---------------+------+------+------+--------+----------+------+---------+------------------+
+| + svdd_record_join |               |      | 0    | 0    |        |          |      |         |                  |
+|   c_U              | ram_s2p array |      |      |      |        | c        | auto | 1       | 32, 8, 1         |
++--------------------+---------------+------+------+------+--------+----------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------------+-------------------------------------------+---------------------------------------------------+
+| Type            | Options                                   | Location                                          |
++-----------------+-------------------------------------------+---------------------------------------------------+
+| interface       | axis port=s_axis_meta register_mode=both  | src/join.cpp:12 in svdd_record_join, s_axis_meta  |
+| interface       | axis port=s_axis_codes register_mode=both | src/join.cpp:13 in svdd_record_join, s_axis_codes |
+| interface       | axis port=s_axis_score register_mode=both | src/join.cpp:14 in svdd_record_join, s_axis_score |
+| interface       | axis port=m_axis register_mode=both       | src/join.cpp:15 in svdd_record_join, m_axis       |
+| interface       | ap_ctrl_none port=return                  | src/join.cpp:16 in svdd_record_join, return       |
+| array_partition | variable=w complete                       | src/join.cpp:20 in svdd_record_join, w            |
+| pipeline        | II=1                                      | src/join.cpp:23 in svdd_record_join               |
+| pipeline        | II=1                                      | src/join.cpp:31 in svdd_record_join               |
+| pipeline        | II=1                                      | src/join.cpp:44 in svdd_record_join               |
++-----------------+-------------------------------------------+---------------------------------------------------+
+
+
