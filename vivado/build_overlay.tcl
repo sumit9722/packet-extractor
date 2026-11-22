@@ -167,6 +167,9 @@ opt_design
 place_design
 phys_opt_design
 route_design
+# The routed design, so ../../power can run report_power on it (also with simulated
+# switching activity) without rebuilding. About 30 MB; deleted with the build folder.
+write_checkpoint -force "$build_dir/${bd}_routed.dcp"
 
 # Plain paths (no glob): the space in "FPGA Project" breaks Tcl lists.
 file mkdir $out_dir
@@ -175,6 +178,8 @@ file copy -force "$build_dir/$proj.gen/sources_1/bd/$bd/hw_handoff/$bd.hwh" "$ou
 report_utilization -file $out_dir/utilization.rpt
 report_timing_summary -file $out_dir/timing.rpt
 report_timing -max_paths 30 -nworst 1 -sort_by slack -file $out_dir/timing_paths.rpt
+# Vectorless estimate (default toggle rates); ../../power has the full power test.
+report_power -file $out_dir/power.rpt
 set wns [get_property SLACK [get_timing_paths -max_paths 1 -nworst 1 -setup]]
 set whs [get_property SLACK [get_timing_paths -max_paths 1 -nworst 1 -hold]]
 puts "INFO: worst setup slack = $wns ns, worst hold slack = $whs ns"

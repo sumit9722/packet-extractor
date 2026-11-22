@@ -12,6 +12,7 @@
 #   STREAM=s.bin EXPECT=o.bin ./run_sim.sh ...   another capture (README.md says how to make one)
 #   SETUP=1 ./run_sim.sh ...          rebuild the block design even if nothing changed
 #   MEM=5G ./run_sim.sh ...           memory cap (default 4G; Vivado/xsim get killed, not the PC)
+#   SAIF=1 ./run_sim.sh ...           also write results/<board>/pl_activity.saif (for ../../../power)
 set -euo pipefail
 cd "$(dirname "$0")"
 TB=$(pwd)
@@ -48,7 +49,12 @@ done
 
 # shellcheck disable=SC1090
 source "$VIVADO_SETTINGS"
-capped() { systemd-run --user --scope --quiet -p MemoryMax="$MEM" -p MemorySwapMax=0 "$@"; }
+if systemd-run --user --scope --quiet -p MemoryMax="$MEM" -p MemorySwapMax=0 true >/dev/null 2>&1; then
+    capped() { systemd-run --user --scope --quiet -p MemoryMax="$MEM" -p MemorySwapMax=0 "$@"; }
+else
+    echo "warning: user systemd scope unavailable; running without the $MEM memory cap" >&2
+    capped() { "$@"; }
+fi
 
 status=0
 for b in "${boards[@]}"; do
@@ -93,13 +99,32 @@ for b in "${boards[@]}"; do
         capped xsim tb_svdd_pl_behav "${args[@]}" -gui -view tb_svdd_pl.wcfg -tclbatch run_gui.tcl -log simulate.log || true
     else
         echo "[3/3] simulation (log: $res/simulate.log)"
-        printf 'run all\nquit\n' > run_all.tcl
+        rm -f pl_activity.saif
+        if [[ ${SAIF:-0} == 1 ]]; then
+            # For the power test (../../../power): record the switching activity of every PL
+            # cell and of the nets between them, but not of the PS model, which is a hard
+            # block on the chip and has its own power model.
+            echo "    SAIF=1: recording switching activity to $res/pl_activity.saif (slower)"
+            cat > run_all.tcl <<'EOF'
+open_saif pl_activity.saif
+log_saif [get_objects /tb_svdd_pl/dut/svdd_pl_i/*]
+foreach scope [get_scopes /tb_svdd_pl/dut/svdd_pl_i/*] {
+    if {![string match */processing_system7_0 $scope]} { log_saif [get_objects -r $scope/*] }
+}
+run all
+close_saif
+quit
+EOF
+        else
+            printf 'run all\nquit\n' > run_all.tcl
+        fi
         start=$(date +%s)
         capped xsim tb_svdd_pl_behav "${args[@]}" -tclbatch run_all.tcl -log simulate.log > /dev/null 2>&1 || true
         echo "    $(( $(date +%s) - start )) s of wall time"
     fi
     cp simulate.log "$res/simulate.log"
     [[ -f pl_out.bin ]] && cp pl_out.bin "$res/pl_out.bin"
+    [[ -f pl_activity.saif ]] && mv pl_activity.saif "$res/pl_activity.saif"
     cd "$TB"
 
     grep '^\[tb\]\|^Error\|^ERROR\|^Fatal\|^FATAL' "$res/simulate.log" | grep -v 'chunk [0-9]*:' | head -60 || true

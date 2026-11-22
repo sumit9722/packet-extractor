@@ -1,0 +1,5 @@
+xilinx rtfpga
+rt::do_reinfer_area_combined 1
+WARNING: [Synth 8-7129] Port reset in module svdd_flow_extract_flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_RAM_2P_BRAbkb is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reset in module svdd_flow_extract_flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_RAM_2P_BRAbkb__7 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reset in module svdd_flow_extract_flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_RAM_2P_BRAbkb__6 is either unconnected or has no load

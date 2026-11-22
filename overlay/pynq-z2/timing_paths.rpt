@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Sun Nov 22 23:29:52 2026
+| Date         : Mon Nov 23 03:08:26 2026
 | Host         : chilsu running 64-bit Arch Linux
 | Command      : report_timing -max_paths 30 -nworst 1 -sort_by slack -file {/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/overlay/pynq-z2/timing_paths.rpt}
 | Design       : svdd_pl_wrapper

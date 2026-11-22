@@ -3,14 +3,15 @@
 # SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Sun Nov 22 23:29:54 2026
-# Process ID: 142153
+# Start of session at: Mon Nov 23 03:13:39 2026
+# Process ID: 86
 # Current directory: /home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado
 # Command line: vivado -mode batch -nojournal -log build_zedboard.log -source build_overlay.tcl -tclargs zedboard
 # Log file: /home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard.log
 # Journal file: 
-# Running On: chilsu, OS: Linux, CPU Frequency: 4252.422 MHz, CPU Physical cores: 14, Host memory: 16442 MB
+# Running On: chilsu, OS: Linux, CPU Frequency: 1637.138 MHz, CPU Physical cores: 14, Host memory: 16440 MB
 #-----------------------------------------------------------
+CRITICAL WARNING: [Common 17-741] No write access right to the local Tcl store at '/home/chilsu/.Xilinx/Vivado/2023.2/XilinxTclStore'. XilinxTclStore is reverted to the installation area. If you want to use local Tcl Store, please change the access right and relaunch Vivado.
 source build_overlay.tcl
 # set board [lindex $argv 0]
 # set fclk [expr {[info exists ::env(FCLK_MHZ)] ? $::env(FCLK_MHZ) : 100}]
@@ -26,6 +27,7 @@ source build_overlay.tcl
 # set out_dir    "$root/overlay/$board"
 # set proj       svdd_pl_overlay
 # set bd         svdd_pl
+# if {[info exists ::svdd_sim_build]} { set build_dir $::svdd_sim_build }
 # set svdd_ip    [file normalize "$root/../svdd_inference/inference_axis_ip/solution1/impl/ip"]
 # set our_ips    {svdd_flow_extract svdd_preprocess svdd_record_join}
 # set ip_repos   [list $svdd_ip]
@@ -49,7 +51,6 @@ source build_overlay.tcl
 #     }
 #     set board_part [find_board $board_glob]
 # }
-INFO: [xhubtcl 76-61] The object 'avnet.com:xilinx_board_store:zedboard:1.4' is already installed, to update use xhub::update command.
 # set_param general.maxThreads 4
 # file delete -force $build_dir
 # create_project $proj $build_dir -part $part
@@ -59,7 +60,7 @@ INFO: [xhubtcl 76-61] The object 'avnet.com:xilinx_board_store:zedboard:1.4' is 
 # } else {
 #     puts "WARNING: no board files for $board; building with part $part only"
 # }
-INFO: using board part avnet.com:zedboard:part0:1.4
+WARNING: no board files for zedboard; building with part xc7z020clg484-1 only
 # set_property ip_repo_paths $ip_repos [current_project]
 # update_ip_catalog
 INFO: [IP_Flow 19-234] Refreshing IP repositories
@@ -74,6 +75,7 @@ Wrote  : </home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zed
 # apply_bd_automation -rule xilinx.com:bd_rule:processing_system7 \
 #     -config [list make_external "FIXED_IO, DDR" apply_board_preset [expr {$board_part ne "" ? 1 : 0}] \
 #                   Master Disable Slave Disable] $ps
+WARNING: [Boardtcl 53-1] No current board_part set.
 # set_property -dict [list \
 #     CONFIG.PCW_USE_M_AXI_GP0 {1} \
 #     CONFIG.PCW_USE_S_AXI_HP0 {1} \
@@ -185,7 +187,6 @@ WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
 WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
 WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
 WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
-INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
 Slave segment '/axi_dma/S_AXI_LITE/Reg' is being assigned into address space '/processing_system7_0/Data' at <0x41E0_0000 [ 64K ]>.
 # apply_bd_automation -rule xilinx.com:bd_rule:axi4 \
 #     -config [list Clk_master {Auto} Clk_slave {Auto} Clk_xbar {Auto} \
@@ -216,6 +217,7 @@ Slave segment '/processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM' is being assigned
 # validate_bd_design
 # save_bd_design
 Wrote  : </home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.srcs/sources_1/bd/svdd_pl/svdd_pl.bd> 
+# if {[info exists ::svdd_sim_build]} { return }
 # set bd_file [get_files $bd.bd]
 # set_property synth_checkpoint_mode None $bd_file
 # generate_target all $bd_file
@@ -247,7 +249,7 @@ INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_mem_inte
 INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_mem_intercon/m00_couplers/auto_pc .
 Exporting to file /home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/hw_handoff/svdd_pl.hwh
 Generated Hardware Definition File /home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.hwdef
-generate_target: Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1736.441 ; gain = 231.500 ; free physical = 1922 ; free virtual = 10253
+generate_target: Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1728.465 ; gain = 232.438 ; free physical = 3586 ; free virtual = 9747
 # make_wrapper -files $bd_file -top
 # add_files -norecurse [glob $build_dir/$proj.gen/sources_1/bd/$bd/hdl/${bd}_wrapper.v]
 # set_property top ${bd}_wrapper [current_fileset]
@@ -261,9 +263,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Device 21-403] Loading part xc7z020clg484-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 142603
+INFO: [Synth 8-7075] Helper process launched with PID 148
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2314.137 ; gain = 401.742 ; free physical = 529 ; free virtual = 9368
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2307.066 ; gain = 402.680 ; free physical = 2792 ; free virtual = 8947
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'svdd_pl_wrapper' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/hdl/svdd_pl_wrapper.v:13]
 INFO: [Synth 8-6157] synthesizing module 'svdd_pl' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:937]
@@ -605,7 +607,7 @@ WARNING: [Synth 8-7071] port 'mm2s_introut' of module 'svdd_pl_axi_dma_0' is unc
 WARNING: [Synth 8-7071] port 's2mm_introut' of module 'svdd_pl_axi_dma_0' is unconnected for instance 'axi_dma' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1169]
 WARNING: [Synth 8-7071] port 'axi_dma_tstvec' of module 'svdd_pl_axi_dma_0' is unconnected for instance 'axi_dma' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1169]
 WARNING: [Synth 8-7023] instance 'axi_dma' of module 'svdd_pl_axi_dma_0' has 64 connections declared, but only 59 given [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1169]
-INFO: [Synth 8-6157] synthesizing module 'svdd_pl_axi_mem_intercon_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1565]
+INFO: [Synth 8-6157] synthesizing module 'svdd_pl_axi_mem_intercon_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1564]
 INFO: [Synth 8-6157] synthesizing module 'm00_couplers_imp_1THC56S' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:13]
 INFO: [Synth 8-6157] synthesizing module 'svdd_pl_auto_pc_1' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_auto_pc_1/synth/svdd_pl_auto_pc_1.v:53]
 INFO: [Synth 8-6157] synthesizing module 'axi_protocol_converter_v2_1_29_axi_protocol_converter' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/a63f/hdl/axi_protocol_converter_v2_1_vl_rfs.v:5285]
@@ -724,15 +726,15 @@ INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_30_addr_arbiter
 INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_30_crossbar' (0#1) [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/fb47/hdl/axi_crossbar_v2_1_vl_rfs.v:2232]
 INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_30_axi_crossbar' (0#1) [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/fb47/hdl/axi_crossbar_v2_1_vl_rfs.v:4871]
 INFO: [Synth 8-6155] done synthesizing module 'svdd_pl_xbar_0' (0#1) [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_xbar_0/synth/svdd_pl_xbar_0.v:53]
-WARNING: [Synth 8-689] width (1) of port connection 's_axi_arready' does not match port width (2) of module 'svdd_pl_xbar_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:2128]
-WARNING: [Synth 8-689] width (64) of port connection 's_axi_rdata' does not match port width (128) of module 'svdd_pl_xbar_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:2145]
-WARNING: [Synth 8-689] width (1) of port connection 's_axi_rlast' does not match port width (2) of module 'svdd_pl_xbar_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:2146]
-WARNING: [Synth 8-689] width (2) of port connection 's_axi_rresp' does not match port width (4) of module 'svdd_pl_xbar_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:2148]
-WARNING: [Synth 8-689] width (1) of port connection 's_axi_rvalid' does not match port width (2) of module 'svdd_pl_xbar_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:2149]
-WARNING: [Synth 8-7071] port 's_axi_bid' of module 'svdd_pl_xbar_0' is unconnected for instance 'xbar' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:2078]
-WARNING: [Synth 8-7071] port 's_axi_rid' of module 'svdd_pl_xbar_0' is unconnected for instance 'xbar' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:2078]
-WARNING: [Synth 8-7023] instance 'xbar' of module 'svdd_pl_xbar_0' has 78 connections declared, but only 76 given [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:2078]
-INFO: [Synth 8-6155] done synthesizing module 'svdd_pl_axi_mem_intercon_0' (0#1) [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1565]
+WARNING: [Synth 8-689] width (1) of port connection 's_axi_arready' does not match port width (2) of module 'svdd_pl_xbar_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:2127]
+WARNING: [Synth 8-689] width (64) of port connection 's_axi_rdata' does not match port width (128) of module 'svdd_pl_xbar_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:2144]
+WARNING: [Synth 8-689] width (1) of port connection 's_axi_rlast' does not match port width (2) of module 'svdd_pl_xbar_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:2145]
+WARNING: [Synth 8-689] width (2) of port connection 's_axi_rresp' does not match port width (4) of module 'svdd_pl_xbar_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:2147]
+WARNING: [Synth 8-689] width (1) of port connection 's_axi_rvalid' does not match port width (2) of module 'svdd_pl_xbar_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:2148]
+WARNING: [Synth 8-7071] port 's_axi_bid' of module 'svdd_pl_xbar_0' is unconnected for instance 'xbar' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:2077]
+WARNING: [Synth 8-7071] port 's_axi_rid' of module 'svdd_pl_xbar_0' is unconnected for instance 'xbar' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:2077]
+WARNING: [Synth 8-7023] instance 'xbar' of module 'svdd_pl_xbar_0' has 78 connections declared, but only 76 given [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:2077]
+INFO: [Synth 8-6155] done synthesizing module 'svdd_pl_axi_mem_intercon_0' (0#1) [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1564]
 INFO: [Synth 8-6157] synthesizing module 'svdd_pl_deep_svdd_axis_0_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_deep_svdd_axis_0_0/synth/svdd_pl_deep_svdd_axis_0_0.v:53]
 INFO: [Synth 8-6157] synthesizing module 'deep_svdd_axis' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/bee8/hdl/verilog/deep_svdd_axis.v:9]
 INFO: [Synth 8-6157] synthesizing module 'deep_svdd_axis_deep_svdd_axis_Pipeline_VITIS_LOOP_34_2' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/bee8/hdl/verilog/deep_svdd_axis_deep_svdd_axis_Pipeline_VITIS_LOOP_34_2.v:9]
@@ -832,30 +834,25 @@ INFO: [Synth 8-3876] $readmem data file './deep_svdd_axis_deep_svdd_inference_Pi
 INFO: [Synth 8-3876] $readmem data file './deep_svdd_axis_deep_svdd_inference_Pipeline_VITIS_LOOP_13_13_p_ZL2W3_13_ROM_AUTO_1R.dat' is read successfully [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/bee8/hdl/verilog/deep_svdd_axis_deep_svdd_inference_Pipeline_VITIS_LOOP_13_13_p_ZL2W3_13_ROM_AUTO_1R.v:28]
 INFO: [Synth 8-3876] $readmem data file './deep_svdd_axis_deep_svdd_inference_Pipeline_VITIS_LOOP_13_13_p_ZL2W3_14_ROM_AUTO_1R.dat' is read successfully [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/bee8/hdl/verilog/deep_svdd_axis_deep_svdd_inference_Pipeline_VITIS_LOOP_13_13_p_ZL2W3_14_ROM_AUTO_1R.v:28]
 INFO: [Synth 8-3876] $readmem data file './deep_svdd_axis_deep_svdd_inference_Pipeline_VITIS_LOOP_12_1_CENTER_ROM_AUTO_1R.dat' is read successfully [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/bee8/hdl/verilog/deep_svdd_axis_deep_svdd_inference_Pipeline_VITIS_LOOP_12_1_CENTER_ROM_AUTO_1R.v:28]
-WARNING: [Synth 8-7071] port 'M_AXI_GP0_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:467]
-WARNING: [Synth 8-7071] port 'M_AXI_GP1_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:467]
-WARNING: [Synth 8-7071] port 'S_AXI_GP0_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:467]
-WARNING: [Synth 8-7071] port 'S_AXI_GP1_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:467]
-WARNING: [Synth 8-7071] port 'S_AXI_ACP_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:467]
-WARNING: [Synth 8-7071] port 'S_AXI_HP0_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:467]
-WARNING: [Synth 8-7071] port 'S_AXI_HP1_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:467]
-WARNING: [Synth 8-7071] port 'S_AXI_HP2_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:467]
-WARNING: [Synth 8-7071] port 'S_AXI_HP3_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:467]
-WARNING: [Synth 8-7071] port 'DMA0_RSTN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:467]
-WARNING: [Synth 8-7071] port 'DMA1_RSTN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:467]
-WARNING: [Synth 8-7071] port 'DMA2_RSTN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:467]
-WARNING: [Synth 8-7071] port 'DMA3_RSTN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:467]
-WARNING: [Synth 8-7023] instance 'inst' of module 'processing_system7_v5_5_processing_system7' has 685 connections declared, but only 672 given [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:467]
-WARNING: [Synth 8-7071] port 'TTC0_WAVE0_OUT' of module 'svdd_pl_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1320]
-WARNING: [Synth 8-7071] port 'TTC0_WAVE1_OUT' of module 'svdd_pl_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1320]
-WARNING: [Synth 8-7071] port 'TTC0_WAVE2_OUT' of module 'svdd_pl_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1320]
-WARNING: [Synth 8-7071] port 'USB0_PORT_INDCTL' of module 'svdd_pl_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1320]
-WARNING: [Synth 8-7071] port 'USB0_VBUS_PWRSELECT' of module 'svdd_pl_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1320]
+WARNING: [Synth 8-7071] port 'M_AXI_GP0_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:452]
+WARNING: [Synth 8-7071] port 'M_AXI_GP1_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:452]
+WARNING: [Synth 8-7071] port 'S_AXI_GP0_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:452]
+WARNING: [Synth 8-7071] port 'S_AXI_GP1_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:452]
+WARNING: [Synth 8-7071] port 'S_AXI_ACP_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:452]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:452]
+WARNING: [Synth 8-7071] port 'S_AXI_HP1_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:452]
+WARNING: [Synth 8-7071] port 'S_AXI_HP2_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:452]
+WARNING: [Synth 8-7071] port 'S_AXI_HP3_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:452]
+WARNING: [Synth 8-7071] port 'DMA0_RSTN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:452]
+WARNING: [Synth 8-7071] port 'DMA1_RSTN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:452]
+WARNING: [Synth 8-7071] port 'DMA2_RSTN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:452]
+WARNING: [Synth 8-7071] port 'DMA3_RSTN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:452]
+WARNING: [Synth 8-7023] instance 'inst' of module 'processing_system7_v5_5_processing_system7' has 685 connections declared, but only 672 given [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_processing_system7_0_0/synth/svdd_pl_processing_system7_0_0.v:452]
 WARNING: [Synth 8-7071] port 'S_AXI_HP0_RCOUNT' of module 'svdd_pl_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1320]
 WARNING: [Synth 8-7071] port 'S_AXI_HP0_WCOUNT' of module 'svdd_pl_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1320]
 WARNING: [Synth 8-7071] port 'S_AXI_HP0_RACOUNT' of module 'svdd_pl_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1320]
 WARNING: [Synth 8-7071] port 'S_AXI_HP0_WACOUNT' of module 'svdd_pl_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1320]
-WARNING: [Synth 8-7023] instance 'processing_system7_0' of module 'svdd_pl_processing_system7_0_0' has 113 connections declared, but only 104 given [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1320]
+WARNING: [Synth 8-7023] instance 'processing_system7_0' of module 'svdd_pl_processing_system7_0_0' has 107 connections declared, but only 103 given [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1320]
 INFO: [Synth 8-226] default block is never used [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/a63f/hdl/axi_protocol_converter_v2_1_vl_rfs.v:3446]
 INFO: [Synth 8-226] default block is never used [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/a63f/hdl/axi_protocol_converter_v2_1_vl_rfs.v:3608]
 WARNING: [Synth 8-7071] port 'aclk2x' of module 'axi_register_slice_v2_1_29_axi_register_slice' is unconnected for instance 'SI_REG' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/a63f/hdl/axi_protocol_converter_v2_1_vl_rfs.v:4871]
@@ -911,11 +908,11 @@ INFO: [Synth 8-256] done synthesizing module 'upcnt_n' (0#1) [/home/chilsu/Docum
 INFO: [Synth 8-256] done synthesizing module 'sequence_psr' (0#1) [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/408c/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:304]
 INFO: [Synth 8-256] done synthesizing module 'proc_sys_reset' (0#1) [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/408c/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1330]
 INFO: [Synth 8-256] done synthesizing module 'svdd_pl_rst_ps7_0_100M_0' (0#1) [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ip/svdd_pl_rst_ps7_0_100M_0/synth/svdd_pl_rst_ps7_0_100M_0.vhd:74]
-WARNING: [Synth 8-7071] port 'mb_reset' of module 'svdd_pl_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1486]
-WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'svdd_pl_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1486]
-WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'svdd_pl_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1486]
-WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'svdd_pl_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1486]
-WARNING: [Synth 8-7023] instance 'rst_ps7_0_100M' of module 'svdd_pl_rst_ps7_0_100M_0' has 10 connections declared, but only 6 given [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1486]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'svdd_pl_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1485]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'svdd_pl_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1485]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'svdd_pl_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1485]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'svdd_pl_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1485]
+WARNING: [Synth 8-7023] instance 'rst_ps7_0_100M' of module 'svdd_pl_rst_ps7_0_100M_0' has 10 connections declared, but only 6 given [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1485]
 INFO: [Synth 8-226] default block is never used [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/67be/hdl/verilog/svdd_flow_extract_sparsemux_17_3_8_1_1.v:78]
 INFO: [Synth 8-3876] $readmem data file './svdd_flow_extract_flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_RAM_2P_BRAbkb.dat' is read successfully [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/67be/hdl/verilog/svdd_flow_extract_flow_table_flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_RAM_2P_BRAbkb.v:40]
 INFO: [Synth 8-226] default block is never used [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/67be/hdl/verilog/svdd_flow_extract_sparsemux_17_3_1_1_1.v:78]
@@ -943,8 +940,8 @@ INFO: [Synth 8-3876] $readmem data file './svdd_preprocess_preprocess_Pipeline_c
 INFO: [Synth 8-3876] $readmem data file './svdd_preprocess_preprocess_Pipeline_cordic_svpl_CORDIC_ATANH_HI_ROM_AUTO_1R.dat' is read successfully [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/832f/hdl/verilog/svdd_preprocess_preprocess_Pipeline_cordic_svpl_CORDIC_ATANH_HI_ROM_AUTO_1R.v:28]
 INFO: [Synth 8-3876] $readmem data file './svdd_preprocess_preprocess_Pipeline_cordic_svpl_CORDIC_ATANH_LO_ROM_AUTO_1R.dat' is read successfully [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/832f/hdl/verilog/svdd_preprocess_preprocess_Pipeline_cordic_svpl_CORDIC_ATANH_LO_ROM_AUTO_1R.v:28]
 INFO: [Synth 8-226] default block is never used [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/e215/hdl/verilog/svdd_record_join_sparsemux_33_4_64_1_1.v:126]
-WARNING: [Synth 8-7071] port 'm_axis_TSTRB' of module 'svdd_pl_svdd_record_join_0_0' is unconnected for instance 'svdd_record_join_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1537]
-WARNING: [Synth 8-7023] instance 'svdd_record_join_0' of module 'svdd_pl_svdd_record_join_0_0' has 26 connections declared, but only 25 given [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1537]
+WARNING: [Synth 8-7071] port 'm_axis_TSTRB' of module 'svdd_pl_svdd_record_join_0_0' is unconnected for instance 'svdd_record_join_0' [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1536]
+WARNING: [Synth 8-7023] instance 'svdd_record_join_0' of module 'svdd_pl_svdd_record_join_0_0' has 26 connections declared, but only 25 given [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/synth/svdd_pl.v:1536]
 WARNING: [Synth 8-6014] Unused sequential element awaddr_reg was removed.  [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/ddec/hdl/axi_dma_v7_1_vh_rfs.vhd:2151]
 WARNING: [Synth 8-6014] Unused sequential element wdata_reg was removed.  [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/ddec/hdl/axi_dma_v7_1_vh_rfs.vhd:2153]
 WARNING: [Synth 8-6014] Unused sequential element GEN_SYNC_WRITE.axi2ip_wrdata_i_reg was removed.  [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_overlay.gen/sources_1/bd/svdd_pl/ipshared/ddec/hdl/axi_dma_v7_1_vh_rfs.vhd:2306]
@@ -1129,18 +1126,18 @@ WARNING: [Synth 8-7129] Port CE in module xbip_pipe_v3_0_7_viv__parameterized102
 WARNING: [Synth 8-7129] Port SCLR in module xbip_pipe_v3_0_7_viv__parameterized102 is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2880.785 ; gain = 968.391 ; free physical = 220 ; free virtual = 8928
+Finished RTL Elaboration : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 2872.715 ; gain = 968.328 ; free physical = 2116 ; free virtual = 8345
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2880.785 ; gain = 968.391 ; free physical = 284 ; free virtual = 9008
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 2872.715 ; gain = 968.328 ; free physical = 2113 ; free virtual = 8342
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2880.785 ; gain = 968.391 ; free physical = 284 ; free virtual = 9008
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 2872.715 ; gain = 968.328 ; free physical = 2113 ; free virtual = 8342
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.89 ; elapsed = 00:00:00.89 . Memory (MB): peak = 2880.785 ; gain = 0.000 ; free physical = 320 ; free virtual = 8855
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 2872.715 ; gain = 0.000 ; free physical = 2170 ; free virtual = 8382
 INFO: [Netlist 29-17] Analyzing 6568 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -1168,23 +1165,23 @@ Resolution: To avoid this warning, move constraints listed in [.Xil/svdd_pl_wrap
 INFO: [Project 1-1714] 6 XPM XDC files have been applied to the design.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2943.598 ; gain = 0.000 ; free physical = 260 ; free virtual = 8881
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2939.496 ; gain = 0.000 ; free physical = 2117 ; free virtual = 8351
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 44 instances were transformed.
   FDE => FDRE: 19 instances
   FDR => FDRE: 24 instances
   SRL16 => SRL16E: 1 instance 
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.25 ; elapsed = 00:00:00.26 . Memory (MB): peak = 2943.633 ; gain = 0.000 ; free physical = 259 ; free virtual = 8880
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.39 ; elapsed = 00:00:00.4 . Memory (MB): peak = 2939.531 ; gain = 0.000 ; free physical = 2117 ; free virtual = 8351
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 2943.633 ; gain = 1031.238 ; free physical = 349 ; free virtual = 8977
+Finished Constraint Validation : Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 2939.531 ; gain = 1035.145 ; free physical = 2137 ; free virtual = 8405
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 2947.508 ; gain = 1035.113 ; free physical = 349 ; free virtual = 8977
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 2943.406 ; gain = 1039.020 ; free physical = 2137 ; free virtual = 8405
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -1212,7 +1209,7 @@ Applied set_property KEEP_HIERARCHY = SOFT for svdd_pl_i/axi_dma/U0/I_PRMRY_DATA
 Applied set_property KEEP_HIERARCHY = SOFT for svdd_pl_i/axi_dma/U0/I_PRMRY_DATAMOVER/\GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT /I_DATA_FIFO/\BLK_MEM.I_SYNC_FIFOGEN_FIFO /\xpm_fifo_instance.xpm_fifo_sync_inst . (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for svdd_pl_i/axi_dma/U0/I_PRMRY_DATAMOVER/\GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT /I_XD_FIFO/\NON_BLK_MEM.I_SYNC_FIFOGEN_FIFO /\xpm_fifo_instance.xpm_fifo_sync_inst . (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2947.516 ; gain = 1035.121 ; free physical = 176 ; free virtual = 8864
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 2943.414 ; gain = 1039.027 ; free physical = 2125 ; free virtual = 8373
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'smpl_cs_reg' in module 'axi_dma_smple_sm'
 INFO: [Synth 8-802] inferred FSM for state register 'sig_pcc_sm_state_reg' in module 'axi_datamover_pcc'
@@ -1418,7 +1415,7 @@ INFO: [Synth 8-3971] The signal "svdd_flow_extract_parse_w_RAM_AUTO_1R1W:/ram_re
 INFO: [Synth 8-3971] The signal "svdd_flow_extract_emit_records_wide_RAM_AUTO_1R1W:/ram_reg" was recognized as a true dual port RAM template.
 INFO: [Synth 8-3971] The signal "svdd_flow_extract_emit_records_raw_RAM_AUTO_1R1W:/ram_reg" was recognized as a true dual port RAM template.
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:49 ; elapsed = 00:00:50 . Memory (MB): peak = 2947.516 ; gain = 1035.121 ; free physical = 166 ; free virtual = 6766
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:55 ; elapsed = 00:00:57 . Memory (MB): peak = 2943.414 ; gain = 1039.027 ; free physical = 437 ; free virtual = 6710
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-223] decloning instance 'svdd_pl_i/deep_svdd_axis_0/inst/regslice_both_m_axis_score_V_keep_V_U' (deep_svdd_axis_regslice_both__parameterized3) to 'svdd_pl_i/deep_svdd_axis_0/inst/regslice_both_m_axis_score_V_strb_V_U'
 INFO: [Synth 8-223] decloning instance 'svdd_pl_i/svdd_preprocess_0/inst/grp_preprocess_fu_195/fptrunc_64ns_32_2_no_dsp_1_U12/svdd_preprocess_fptrunc_64ns_32_2_no_dsp_1_ip_u/inst/i_synth/FLT_TO_FLT_OP.SPD.OP/RND_REQ.ROUND/EXTRA_LSB_BIT_DEL' (floating_point_v7_1_16_delay__parameterized3) to 'svdd_pl_i/svdd_preprocess_0/inst/grp_preprocess_fu_195/fptrunc_64ns_32_2_no_dsp_1_U12/svdd_preprocess_fptrunc_64ns_32_2_no_dsp_1_ip_u/inst/i_synth/FLT_TO_FLT_OP.SPD.OP/RND_REQ.ROUND/EXTRA_LSB_RND1_DEL'
@@ -1973,9 +1970,21 @@ INFO: [Synth 8-3333] propagating constant 1 across sequential element (svpl_PRE_
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (svpl_PRE_CLIP_HI_U/\q0_reg[43] )
 INFO: [Synth 8-3333] propagating constant 1 across sequential element (uitodp_32ns_64_6_no_dsp_1_U16/ce_r_reg)
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (svpl_PRE_ANCHOR_U/\q0_reg[61] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (dcmp_64ns_64ns_1_2_no_dsp_1_U15/\opcode_buf1_reg[4] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (dcmp_64ns_64ns_1_2_no_dsp_1_U15/ce_r_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (dsub_64ns_64ns_64_7_full_dsp_1_U13/svdd_preprocess_dsub_64ns_64ns_64_7_full_dsp_1_ip_u/inst/i_synth/\ADDSUB_OP.ADDSUB /\LOGIC_SPEED.OP /ALIGN_BLK/FRAC_ADDSUB/\DSP_ADD.FRAC_ADDSUB /\i_no_versal_es1_workaround.LOGIC_ADD.LRG_LOGIC_DEL /i_pipe/\opt_has_pipe.first_q_reg[8] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\zext_ln22_reg_1581_reg[23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\zext_ln22_reg_1581_reg[62] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (dsub_64ns_64ns_64_7_full_dsp_1_U13/ce_r_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (uitodp_32ns_64_6_no_dsp_1_U16/\dout_r_reg[63] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\x_2_reg_310_reg[63] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\svpl_PRE_CLIP_LO_load_reg_1512_reg[62] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\svpl_PRE_CLIP_LO_load_reg_1512_reg[56] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (dcmp_64ns_64ns_1_2_no_dsp_1_U15/\din1_buf1_reg[61] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (dcmp_64ns_64ns_1_2_no_dsp_1_U15/\din1_buf1_reg[62] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\x_3_reg_1529_reg[62] )
 INFO: [Common 17-14] Message 'Synth 8-3333' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (grp_preprocess_Pipeline_cordic_fu_324/ap_done_reg_reg)
 DSP Report: Generating DSP tmp_product, operation Mode is: A*B.
 DSP Report: operator tmp_product is absorbed into DSP tmp_product.
 DSP Report: Generating DSP tmp_product, operation Mode is: A*B.
@@ -2307,18 +2316,6 @@ DSP Report: operator tmp_product is absorbed into DSP tmp_product.
 DSP Report: Generating DSP tmp_product, operation Mode is: (PCIN>>17)+A*B.
 DSP Report: operator tmp_product is absorbed into DSP tmp_product.
 DSP Report: operator tmp_product is absorbed into DSP tmp_product.
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (deep_svdd_axis_0/inst/grp_deep_svdd_inference_fu_303/grp_deep_svdd_inference_Pipeline_VITIS_LOOP_11_1_fu_428/\hidden1_fu_164_reg[24] )
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (deep_svdd_axis_0/inst/grp_deep_svdd_inference_fu_303/grp_deep_svdd_inference_Pipeline_VITIS_LOOP_13_13_fu_582/p_ZL2W3_0_U/\q0_reg[9] )
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (deep_svdd_axis_0/inst/grp_deep_svdd_inference_fu_303/grp_deep_svdd_inference_Pipeline_VITIS_LOOP_13_13_fu_582/p_ZL2W3_8_U/\q0_reg[14] )
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (deep_svdd_axis_0/inst/grp_deep_svdd_inference_fu_303/grp_deep_svdd_inference_Pipeline_VITIS_LOOP_13_1_fu_390/\ap_CS_fsm_reg[0] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (deep_svdd_axis_0/inst/grp_deep_svdd_inference_fu_303/grp_deep_svdd_inference_Pipeline_VITIS_LOOP_13_1_fu_390/ap_done_reg_reg)
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (deep_svdd_axis_0/inst/grp_deep_svdd_inference_fu_303/grp_deep_svdd_inference_Pipeline_VITIS_LOOP_11_12_fu_562/\hidden2_fu_100_reg[24] )
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (deep_svdd_axis_0/inst/grp_deep_svdd_inference_fu_303/grp_deep_svdd_inference_Pipeline_VITIS_LOOP_11_1_fu_428/\ap_CS_fsm_reg[0] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (deep_svdd_axis_0/inst/grp_deep_svdd_inference_fu_303/grp_deep_svdd_inference_Pipeline_VITIS_LOOP_11_1_fu_428/ap_done_reg_reg)
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (deep_svdd_axis_0/inst/grp_deep_svdd_inference_fu_303/grp_deep_svdd_inference_Pipeline_VITIS_LOOP_13_11_fu_464/\ap_CS_fsm_reg[0] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (deep_svdd_axis_0/inst/grp_deep_svdd_inference_fu_303/grp_deep_svdd_inference_Pipeline_VITIS_LOOP_13_11_fu_464/ap_done_reg_reg)
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (rst_ps7_0_100M/U0/EXT_LPF/\ACTIVE_LOW_AUX.ACT_LO_AUX /\GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_IN_cdc_to )
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (deep_svdd_axis_0/inst/grp_deep_svdd_inference_fu_303/grp_deep_svdd_inference_Pipeline_VITIS_LOOP_11_12_fu_562/\ap_CS_fsm_reg[0] )
 INFO: [Common 17-14] Message 'Synth 8-3333' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 INFO: [Synth 8-5544] ROM "size_mask" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "addr_step" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
@@ -2355,7 +2352,7 @@ INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM 
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:33 ; elapsed = 00:01:36 . Memory (MB): peak = 2955.523 ; gain = 1043.129 ; free physical = 257 ; free virtual = 6329
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:45 ; elapsed = 00:01:50 . Memory (MB): peak = 2951.422 ; gain = 1047.035 ; free physical = 332 ; free virtual = 5640
 ---------------------------------------------------------------------------------
  Sort Area is svdd_flow_extract__GC0 buff0_reg_9 : 0 0 : 3185 9622 : Used 1 time 0
  Sort Area is svdd_flow_extract__GC0 buff0_reg_9 : 0 1 : 3204 9622 : Used 1 time 0
@@ -2451,7 +2448,7 @@ INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM 
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:40 ; elapsed = 00:01:43 . Memory (MB): peak = 2955.523 ; gain = 1043.129 ; free physical = 350 ; free virtual = 6044
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:53 ; elapsed = 00:01:58 . Memory (MB): peak = 2951.422 ; gain = 1047.035 ; free physical = 330 ; free virtual = 5630
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
@@ -2459,7 +2456,7 @@ Start Timing Optimization
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:49 ; elapsed = 00:01:53 . Memory (MB): peak = 2955.523 ; gain = 1043.129 ; free physical = 428 ; free virtual = 6022
+Finished Timing Optimization : Time (s): cpu = 00:02:04 ; elapsed = 00:02:09 . Memory (MB): peak = 2951.422 ; gain = 1047.035 ; free physical = 299 ; free virtual = 5608
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
@@ -2480,30 +2477,30 @@ INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/i
 INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_5_2/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_33_U/ram_reg_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_5_2/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_33_U/ram_reg_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_5_2/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_33_U/ram_reg_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_U/ram_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_U/ram_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_U/ram_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_U/ram_reg_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_U/ram_reg_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_U/ram_reg_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_U/ram_reg_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_U/ram_reg_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_U/ram_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_U/ram_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_U/ram_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_U/ram_reg_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_U/ram_reg_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_U/ram_reg_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_U/ram_reg_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_U/ram_reg_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_U/ram_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_U/ram_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_U/ram_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_U/ram_reg_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_U/ram_reg_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_U/ram_reg_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_U/ram_reg_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_3_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_U/ram_reg_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_U/ram_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_U/ram_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_U/ram_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_U/ram_reg_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_U/ram_reg_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_U/ram_reg_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_U/ram_reg_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_35_U/ram_reg_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_U/ram_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_U/ram_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_U/ram_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_U/ram_reg_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_U/ram_reg_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_U/ram_reg_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_U/ram_reg_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_32_U/ram_reg_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_U/ram_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_U/ram_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_U/ram_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_U/ram_reg_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_U/ram_reg_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_U/ram_reg_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_U/ram_reg_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_2_3/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_31_U/ram_reg_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_5_4/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_36_U/ram_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_5_4/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_36_U/ram_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/i_5_4/flow_table_stream_pkt_tok_t_0_stream_flow_tok_t_0_table_36_U/ram_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
@@ -2536,7 +2533,7 @@ INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/i
 INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/i_5_0/emit_records_U0/wide_U/ram_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance svdd_pl_i/svdd_flow_extract_0/inst/i_5_0/emit_records_U0/raw_U/ram_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:02:08 ; elapsed = 00:02:18 . Memory (MB): peak = 2971.535 ; gain = 1059.141 ; free physical = 318 ; free virtual = 5512
+Finished Technology Mapping : Time (s): cpu = 00:02:24 ; elapsed = 00:02:35 . Memory (MB): peak = 2959.426 ; gain = 1055.039 ; free physical = 330 ; free virtual = 5097
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -2580,19 +2577,19 @@ Finished Final Netlist Cleanup
 WARNING: [Synth 8-3295] tying undriven pin strm_valid_int2_inferred:in0 to constant 0
 WARNING: [Synth 8-3295] tying undriven pin strm_valid_int_cdc_to_inferred:in0 to constant 0
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:02:17 ; elapsed = 00:02:27 . Memory (MB): peak = 2971.535 ; gain = 1059.141 ; free physical = 279 ; free virtual = 5559
+Finished IO Insertion : Time (s): cpu = 00:02:36 ; elapsed = 00:02:48 . Memory (MB): peak = 2969.277 ; gain = 1064.891 ; free physical = 301 ; free virtual = 5105
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:02:17 ; elapsed = 00:02:27 . Memory (MB): peak = 2971.535 ; gain = 1059.141 ; free physical = 279 ; free virtual = 5559
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:36 ; elapsed = 00:02:48 . Memory (MB): peak = 2969.277 ; gain = 1064.891 ; free physical = 301 ; free virtual = 5105
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:02:23 ; elapsed = 00:02:34 . Memory (MB): peak = 2971.535 ; gain = 1059.141 ; free physical = 280 ; free virtual = 5561
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:45 ; elapsed = 00:02:57 . Memory (MB): peak = 2969.277 ; gain = 1064.891 ; free physical = 242 ; free virtual = 5080
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -2739,13 +2736,13 @@ Report Cell Usage:
 |46    |FDSE     |   220|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:02:23 ; elapsed = 00:02:34 . Memory (MB): peak = 2971.535 ; gain = 1059.141 ; free physical = 262 ; free virtual = 5552
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:45 ; elapsed = 00:02:57 . Memory (MB): peak = 2969.277 ; gain = 1064.891 ; free physical = 242 ; free virtual = 5080
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 532 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:02:15 ; elapsed = 00:02:24 . Memory (MB): peak = 2971.535 ; gain = 996.293 ; free physical = 3602 ; free virtual = 8932
-Synthesis Optimization Complete : Time (s): cpu = 00:02:26 ; elapsed = 00:02:35 . Memory (MB): peak = 2971.535 ; gain = 1059.141 ; free physical = 3602 ; free virtual = 8924
+Synthesis finished with 0 errors, 0 critical warnings and 540 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:02:34 ; elapsed = 00:02:48 . Memory (MB): peak = 2973.188 ; gain = 1001.984 ; free physical = 3688 ; free virtual = 8478
+Synthesis Optimization Complete : Time (s): cpu = 00:02:48 ; elapsed = 00:03:01 . Memory (MB): peak = 2973.188 ; gain = 1068.801 ; free physical = 3693 ; free virtual = 8478
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.66 ; elapsed = 00:00:00.66 . Memory (MB): peak = 2995.363 ; gain = 0.000 ; free physical = 3561 ; free virtual = 8906
+Netlist sorting complete. Time (s): cpu = 00:00:00.95 ; elapsed = 00:00:00.95 . Memory (MB): peak = 2986.121 ; gain = 0.000 ; free physical = 3620 ; free virtual = 8447
 INFO: [Netlist 29-17] Analyzing 11748 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -2770,7 +2767,7 @@ Finished Parsing XDC File [/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl
 INFO: [Project 1-1714] 6 XPM XDC files have been applied to the design.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
 INFO: [Project 1-1687] 1 scoped IP constraints or related sub-commands were skipped due to synthesis logic optimizations usually triggered by constant connectivity or unconnected output pins. To review the skipped constraints and messages, run the command 'set_param netlist.IPMsgFiltering false' before opening the design.
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2882 ; free virtual = 8314
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3071 ; free virtual = 7931
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1072 instances were transformed.
   (MUXCY,XORCY) => CARRY4: 879 instances
@@ -2783,13 +2780,13 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   RAM32X1S => RAM32X1S (RAMS32): 25 instances
   SRL16 => SRL16E: 1 instance 
 
-Synth Design complete | Checksum: 87e23c96
+Synth Design complete | Checksum: 6eb9ba52
 INFO: [Common 17-83] Releasing license: Synthesis
-999 Infos, 457 Warnings, 0 Critical Warnings and 0 Errors encountered.
+999 Infos, 452 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:02:45 ; elapsed = 00:02:53 . Memory (MB): peak = 3745.016 ; gain = 1856.500 ; free physical = 2853 ; free virtual = 8322
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 5390.809; main = 2618.226; forked = 3395.384
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 8875.703; main = 3624.961; forked = 5908.086
+synth_design: Time (s): cpu = 00:03:13 ; elapsed = 00:03:26 . Memory (MB): peak = 3736.734 ; gain = 1856.195 ; free physical = 3076 ; free virtual = 7936
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 5862.781; main = 2949.355; forked = 3707.501
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 8946.703; main = 3616.680; forked = 5977.422
 # opt_design
 Command: opt_design
 Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
@@ -2801,79 +2798,79 @@ INFO: [DRC 23-27] Running DRC with 2 threads
 INFO: [Project 1-461] DRC finished with 0 Errors
 INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.65 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2819 ; free virtual = 8323
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.9 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3070 ; free virtual = 7932
 
 Starting Cache Timing Information Task
 INFO: [Timing 38-35] Done setting XDC timing constraints.
-Ending Cache Timing Information Task | Checksum: 1a1b7e003
+Ending Cache Timing Information Task | Checksum: 1888f5dbf
 
-Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2807 ; free virtual = 8316
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3067 ; free virtual = 7929
 
 Starting Logic Optimization Task
 
 Phase 1 Initialization
 
 Phase 1.1 Core Generation And Design Setup
-Phase 1.1 Core Generation And Design Setup | Checksum: 1a1b7e003
+Phase 1.1 Core Generation And Design Setup | Checksum: 1888f5dbf
 
-Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2801 ; free virtual = 8312
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3068 ; free virtual = 7930
 
 Phase 1.2 Setup Constraints And Sort Netlist
-Phase 1.2 Setup Constraints And Sort Netlist | Checksum: 1a1b7e003
+Phase 1.2 Setup Constraints And Sort Netlist | Checksum: 1888f5dbf
 
-Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2801 ; free virtual = 8312
-Phase 1 Initialization | Checksum: 1a1b7e003
+Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3068 ; free virtual = 7930
+Phase 1 Initialization | Checksum: 1888f5dbf
 
-Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.04 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2801 ; free virtual = 8312
+Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.04 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3068 ; free virtual = 7930
 
 Phase 2 Timer Update And Timing Data Collection
 
 Phase 2.1 Timer Update
-Phase 2.1 Timer Update | Checksum: 1a1b7e003
+Phase 2.1 Timer Update | Checksum: 1888f5dbf
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2803 ; free virtual = 8315
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3069 ; free virtual = 7931
 
 Phase 2.2 Timing Data Collection
-Phase 2.2 Timing Data Collection | Checksum: 1a1b7e003
+Phase 2.2 Timing Data Collection | Checksum: 1888f5dbf
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2788 ; free virtual = 8298
-Phase 2 Timer Update And Timing Data Collection | Checksum: 1a1b7e003
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3061 ; free virtual = 7923
+Phase 2 Timer Update And Timing Data Collection | Checksum: 1888f5dbf
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2788 ; free virtual = 8298
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3061 ; free virtual = 7923
 
 Phase 3 Retarget
 INFO: [Opt 31-1566] Pulled 11 inverters resulting in an inversion of 106 pins
 INFO: [Opt 31-138] Pushed 34 inverter(s) to 331 load pin(s).
 INFO: [Opt 31-49] Retargeted 0 cell(s).
-Phase 3 Retarget | Checksum: f2787133
+Phase 3 Retarget | Checksum: 118834fb2
 
-Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2788 ; free virtual = 8296
-Retarget | Checksum: f2787133
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3070 ; free virtual = 7932
+Retarget | Checksum: 118834fb2
 INFO: [Opt 31-389] Phase Retarget created 22 cells and removed 139 cells
 INFO: [Opt 31-1021] In phase Retarget, 27 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
 
 Phase 4 Constant propagation
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Phase 4 Constant propagation | Checksum: 14f8207b8
+Phase 4 Constant propagation | Checksum: 1257ae93d
 
-Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2785 ; free virtual = 8293
-Constant propagation | Checksum: 14f8207b8
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3094 ; free virtual = 7936
+Constant propagation | Checksum: 1257ae93d
 INFO: [Opt 31-389] Phase Constant propagation created 92 cells and removed 170 cells
 INFO: [Opt 31-1021] In phase Constant propagation, 27 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
 
 Phase 5 Sweep
-Phase 5 Sweep | Checksum: 129b16e70
+Phase 5 Sweep | Checksum: 1b34267ec
 
-Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2780 ; free virtual = 8293
-Sweep | Checksum: 129b16e70
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:05 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3077 ; free virtual = 7931
+Sweep | Checksum: 1b34267ec
 INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 76 cells
 INFO: [Opt 31-1021] In phase Sweep, 98 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
 
 Phase 6 BUFG optimization
-Phase 6 BUFG optimization | Checksum: 129b16e70
+Phase 6 BUFG optimization | Checksum: 1b34267ec
 
-Time (s): cpu = 00:00:06 ; elapsed = 00:00:04 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2781 ; free virtual = 8297
-BUFG optimization | Checksum: 129b16e70
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3108 ; free virtual = 7938
+BUFG optimization | Checksum: 1b34267ec
 INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
 
 Phase 7 Shift Register Optimization
@@ -2979,38 +2976,38 @@ WARNING: [Opt 31-1131] Can not pull register out from svdd_pl_i/svdd_flow_extrac
 WARNING: [Opt 31-1131] Can not pull register out from svdd_pl_i/svdd_flow_extract_0/inst/flows_U/U_svdd_flow_extract_fifo_w764_d16_S_ShiftReg/SRL_SIG_reg[15][189]_srl16 due to none static srl address bits
 INFO: [Common 17-14] Message 'Opt 31-1131' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
-Phase 7 Shift Register Optimization | Checksum: 129b16e70
+Phase 7 Shift Register Optimization | Checksum: 1b34267ec
 
-Time (s): cpu = 00:00:06 ; elapsed = 00:00:04 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2781 ; free virtual = 8294
-Shift Register Optimization | Checksum: 129b16e70
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3108 ; free virtual = 7938
+Shift Register Optimization | Checksum: 1b34267ec
 INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
 
 Phase 8 Post Processing Netlist
-Phase 8 Post Processing Netlist | Checksum: 129b16e70
+Phase 8 Post Processing Netlist | Checksum: 1b34267ec
 
-Time (s): cpu = 00:00:06 ; elapsed = 00:00:05 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2781 ; free virtual = 8294
-Post Processing Netlist | Checksum: 129b16e70
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:06 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3108 ; free virtual = 7938
+Post Processing Netlist | Checksum: 1b34267ec
 INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
 INFO: [Opt 31-1021] In phase Post Processing Netlist, 33 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
 
 Phase 9 Finalization
 
 Phase 9.1 Finalizing Design Cores and Updating Shapes
-Phase 9.1 Finalizing Design Cores and Updating Shapes | Checksum: 9f377da9
+Phase 9.1 Finalizing Design Cores and Updating Shapes | Checksum: cf727ce6
 
-Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2783 ; free virtual = 8296
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3116 ; free virtual = 7947
 
 Phase 9.2 Verifying Netlist Connectivity
 
 Starting Connectivity Check Task
 
-Time (s): cpu = 00:00:00.12 ; elapsed = 00:00:00.12 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2795 ; free virtual = 8299
-Phase 9.2 Verifying Netlist Connectivity | Checksum: 9f377da9
+Time (s): cpu = 00:00:00.16 ; elapsed = 00:00:00.16 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3116 ; free virtual = 7946
+Phase 9.2 Verifying Netlist Connectivity | Checksum: cf727ce6
 
-Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2795 ; free virtual = 8299
-Phase 9 Finalization | Checksum: 9f377da9
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3116 ; free virtual = 7946
+Phase 9 Finalization | Checksum: cf727ce6
 
-Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2795 ; free virtual = 8298
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3116 ; free virtual = 7946
 Opt_design Change Summary
 =========================
 
@@ -3027,16 +3024,16 @@ Opt_design Change Summary
 -------------------------------------------------------------------------------------------------------------------------
 
 
-Ending Logic Optimization Task | Checksum: 9f377da9
+Ending Logic Optimization Task | Checksum: cf727ce6
 
-Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2795 ; free virtual = 8298
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3116 ; free virtual = 7946
 INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
-Done building netlist checker database: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2794 ; free virtual = 8299
+Done building netlist checker database: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3116 ; free virtual = 7946
 
 Starting Power Optimization Task
 INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
-INFO: [Timing 38-35] Done setting XDC timing constraints.
 INFO: [Pwropt 34-9] Applying IDT optimizations ...
+INFO: [Timing 38-35] Done setting XDC timing constraints.
 INFO: [Pwropt 34-10] Applying ODC optimizations ...
 Running Vector-less Activity Propagation...
 
@@ -3047,27 +3044,27 @@ Starting PowerOpt Patch Enables Task
 INFO: [Pwropt 34-162] WRITE_MODE attribute of 0 BRAM(s) out of a total of 73 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
 INFO: [Pwropt 34-201] Structural ODC has moved 2 WE to EN ports
 Number of BRAM Ports augmented: 8 newly gated: 2 Total Ports: 146
-Ending PowerOpt Patch Enables Task | Checksum: 1490ab787
+Ending PowerOpt Patch Enables Task | Checksum: 99d7b442
 
-Time (s): cpu = 00:00:00.32 ; elapsed = 00:00:00.31 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2683 ; free virtual = 8219
-Ending Power Optimization Task | Checksum: 1490ab787
+Time (s): cpu = 00:00:00.37 ; elapsed = 00:00:00.36 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2981 ; free virtual = 7825
+Ending Power Optimization Task | Checksum: 99d7b442
 
-Time (s): cpu = 00:00:27 ; elapsed = 00:00:16 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2684 ; free virtual = 8220
+Time (s): cpu = 00:00:32 ; elapsed = 00:00:17 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2979 ; free virtual = 7825
 
 Starting Final Cleanup Task
-Ending Final Cleanup Task | Checksum: 1490ab787
+Ending Final Cleanup Task | Checksum: 99d7b442
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2684 ; free virtual = 8220
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2979 ; free virtual = 7825
 
 Starting Netlist Obfuscation Task
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2684 ; free virtual = 8220
-Ending Netlist Obfuscation Task | Checksum: 5adb2079
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2979 ; free virtual = 7825
+Ending Netlist Obfuscation Task | Checksum: 12a08233c
 
-Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2684 ; free virtual = 8220
+Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.05 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2979 ; free virtual = 7825
 INFO: [Common 17-83] Releasing license: Implementation
 29 Infos, 100 Warnings, 0 Critical Warnings and 0 Errors encountered.
 opt_design completed successfully
-opt_design: Time (s): cpu = 00:00:39 ; elapsed = 00:00:26 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2684 ; free virtual = 8220
+opt_design: Time (s): cpu = 00:00:49 ; elapsed = 00:00:30 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2979 ; free virtual = 7824
 # place_design
 Command: place_design
 Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
@@ -3087,54 +3084,54 @@ Starting Placer Task
 Phase 1 Placer Initialization
 
 Phase 1.1 Placer Initialization Netlist Sorting
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2680 ; free virtual = 8220
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2989 ; free virtual = 7837
 Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 59f07790
 
-Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2680 ; free virtual = 8220
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2680 ; free virtual = 8220
+Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2989 ; free virtual = 7837
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2989 ; free virtual = 7837
 
 Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 784904b3
 
-Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2678 ; free virtual = 8220
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2996 ; free virtual = 7845
 
 Phase 1.3 Build Placer Netlist Model
 Phase 1.3 Build Placer Netlist Model | Checksum: c01baf29
 
-Time (s): cpu = 00:00:18 ; elapsed = 00:00:13 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2686 ; free virtual = 8233
+Time (s): cpu = 00:00:22 ; elapsed = 00:00:16 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2993 ; free virtual = 7847
 
 Phase 1.4 Constrain Clocks/Macros
 Phase 1.4 Constrain Clocks/Macros | Checksum: c01baf29
 
-Time (s): cpu = 00:00:18 ; elapsed = 00:00:13 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2688 ; free virtual = 8234
+Time (s): cpu = 00:00:22 ; elapsed = 00:00:16 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2993 ; free virtual = 7846
 Phase 1 Placer Initialization | Checksum: c01baf29
 
-Time (s): cpu = 00:00:18 ; elapsed = 00:00:13 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2687 ; free virtual = 8234
+Time (s): cpu = 00:00:22 ; elapsed = 00:00:16 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2992 ; free virtual = 7846
 
 Phase 2 Global Placement
 
 Phase 2.1 Floorplanning
 Phase 2.1 Floorplanning | Checksum: 123062bb2
 
-Time (s): cpu = 00:00:23 ; elapsed = 00:00:16 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2675 ; free virtual = 8227
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:20 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2986 ; free virtual = 7842
 
 Phase 2.2 Update Timing before SLR Path Opt
 Phase 2.2 Update Timing before SLR Path Opt | Checksum: d0db184c
 
-Time (s): cpu = 00:00:27 ; elapsed = 00:00:19 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2672 ; free virtual = 8225
+Time (s): cpu = 00:00:34 ; elapsed = 00:00:23 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2991 ; free virtual = 7848
 
 Phase 2.3 Post-Processing in Floorplanning
 Phase 2.3 Post-Processing in Floorplanning | Checksum: d0db184c
 
-Time (s): cpu = 00:00:27 ; elapsed = 00:00:19 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2672 ; free virtual = 8225
+Time (s): cpu = 00:00:34 ; elapsed = 00:00:23 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2990 ; free virtual = 7846
 
 Phase 2.4 Global Placement Core
 
 Phase 2.4.1 UpdateTiming Before Physical Synthesis
 Phase 2.4.1 UpdateTiming Before Physical Synthesis | Checksum: f4b4c838
 
-Time (s): cpu = 00:01:08 ; elapsed = 00:00:45 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2643 ; free virtual = 8220
+Time (s): cpu = 00:01:36 ; elapsed = 00:01:01 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3161 ; free virtual = 8023
 
 Phase 2.4.2 Physical Synthesis In Placer
 INFO: [Physopt 32-1035] Found 0 LUTNM shape to break, 4277 LUT instances to create LUTNM shape
@@ -3145,7 +3142,7 @@ INFO: [Physopt 32-81] Processed net svdd_pl_i/svdd_flow_extract_0/inst/flow_tabl
 INFO: [Physopt 32-81] Processed net svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/ap_CS_fsm_state25. Replicated 26 times.
 INFO: [Physopt 32-232] Optimized 2 nets. Created 37 new instances.
 INFO: [Physopt 32-775] End 1 Pass. Optimized 2 nets or cells. Created 37 new cells, deleted 0 existing cell and moved 0 existing cell
-Netlist sorting complete. Time (s): cpu = 00:00:00.19 ; elapsed = 00:00:00.2 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2626 ; free virtual = 8216
+Netlist sorting complete. Time (s): cpu = 00:00:00.26 ; elapsed = 00:00:00.26 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3146 ; free virtual = 8015
 INFO: [Physopt 32-670] No setup violation found.  DSP Register Optimization was not performed.
 INFO: [Physopt 32-670] No setup violation found.  Shift Register to Pipeline Optimization was not performed.
 INFO: [Physopt 32-670] No setup violation found.  Shift Register Optimization was not performed.
@@ -3153,9 +3150,9 @@ INFO: [Physopt 32-670] No setup violation found.  BRAM Register Optimization was
 INFO: [Physopt 32-670] No setup violation found.  URAM Register Optimization was not performed.
 INFO: [Physopt 32-949] No candidate nets found for dynamic/static region interface net replication
 INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2626 ; free virtual = 8216
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3146 ; free virtual = 8015
 INFO: [Physopt 32-670] No setup violation found.  Critical Cell Optimization was not performed.
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2626 ; free virtual = 8216
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3146 ; free virtual = 8015
 
 Summary of Physical Synthesis Optimizations
 ============================================
@@ -3166,7 +3163,7 @@ Summary of Physical Synthesis Optimizations
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 |  LUT Combining                                    |            0  |            464  |                   464  |           0  |           1  |  00:00:02  |
 |  Retime                                           |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
-|  Very High Fanout                                 |           37  |              0  |                     2  |           0  |           1  |  00:00:01  |
+|  Very High Fanout                                 |           37  |              0  |                     2  |           0  |           1  |  00:00:02  |
 |  DSP Register                                     |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
 |  Shift Register to Pipeline                       |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
 |  Shift Register                                   |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
@@ -3174,64 +3171,64 @@ Summary of Physical Synthesis Optimizations
 |  URAM Register                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
 |  Dynamic/Static Region Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
 |  Critical Cell                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
-|  Total                                            |           37  |            464  |                   466  |           0  |           4  |  00:00:03  |
+|  Total                                            |           37  |            464  |                   466  |           0  |           4  |  00:00:04  |
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 Phase 2.4.2 Physical Synthesis In Placer | Checksum: 16d4c0c69
 
-Time (s): cpu = 00:01:16 ; elapsed = 00:00:51 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2641 ; free virtual = 8231
+Time (s): cpu = 00:01:46 ; elapsed = 00:01:09 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3189 ; free virtual = 8059
 Phase 2.4 Global Placement Core | Checksum: 123d60979
 
-Time (s): cpu = 00:01:18 ; elapsed = 00:00:53 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2639 ; free virtual = 8231
+Time (s): cpu = 00:01:49 ; elapsed = 00:01:11 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3189 ; free virtual = 8062
 Phase 2 Global Placement | Checksum: 123d60979
 
-Time (s): cpu = 00:01:18 ; elapsed = 00:00:53 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2639 ; free virtual = 8231
+Time (s): cpu = 00:01:49 ; elapsed = 00:01:11 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3189 ; free virtual = 8062
 
 Phase 3 Detail Placement
 
 Phase 3.1 Commit Multi Column Macros
 Phase 3.1 Commit Multi Column Macros | Checksum: 112b306cb
 
-Time (s): cpu = 00:01:23 ; elapsed = 00:00:56 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2587 ; free virtual = 8200
+Time (s): cpu = 00:01:55 ; elapsed = 00:01:14 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3189 ; free virtual = 8062
 
 Phase 3.2 Commit Most Macros & LUTRAMs
 Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: aae925f8
 
-Time (s): cpu = 00:01:32 ; elapsed = 00:01:02 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2601 ; free virtual = 8190
+Time (s): cpu = 00:02:06 ; elapsed = 00:01:22 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3182 ; free virtual = 8064
 
 Phase 3.3 Area Swap Optimization
 Phase 3.3 Area Swap Optimization | Checksum: 11dfb3024
 
-Time (s): cpu = 00:01:33 ; elapsed = 00:01:02 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2602 ; free virtual = 8191
+Time (s): cpu = 00:02:07 ; elapsed = 00:01:22 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3170 ; free virtual = 8061
 
 Phase 3.4 Pipeline Register Optimization
 Phase 3.4 Pipeline Register Optimization | Checksum: e2529206
 
-Time (s): cpu = 00:01:33 ; elapsed = 00:01:03 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2602 ; free virtual = 8191
+Time (s): cpu = 00:02:07 ; elapsed = 00:01:23 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3166 ; free virtual = 8060
 
 Phase 3.5 Fast Optimization
 Phase 3.5 Fast Optimization | Checksum: 933815df
 
-Time (s): cpu = 00:01:44 ; elapsed = 00:01:09 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2615 ; free virtual = 8207
+Time (s): cpu = 00:02:21 ; elapsed = 00:01:30 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3075 ; free virtual = 8028
 
 Phase 3.6 Small Shape Detail Placement
 Phase 3.6 Small Shape Detail Placement | Checksum: ad986d12
 
-Time (s): cpu = 00:02:00 ; elapsed = 00:01:25 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2643 ; free virtual = 8239
+Time (s): cpu = 00:02:43 ; elapsed = 00:01:52 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3030 ; free virtual = 7999
 
 Phase 3.7 Re-assign LUT pins
 Phase 3.7 Re-assign LUT pins | Checksum: 17cc3dee4
 
-Time (s): cpu = 00:02:02 ; elapsed = 00:01:27 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2639 ; free virtual = 8235
+Time (s): cpu = 00:02:46 ; elapsed = 00:01:55 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3017 ; free virtual = 8002
 
 Phase 3.8 Pipeline Register Optimization
 Phase 3.8 Pipeline Register Optimization | Checksum: 158c0b994
 
-Time (s): cpu = 00:02:03 ; elapsed = 00:01:27 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2640 ; free virtual = 8236
+Time (s): cpu = 00:02:46 ; elapsed = 00:01:56 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3017 ; free virtual = 8003
 Phase 3 Detail Placement | Checksum: 158c0b994
 
-Time (s): cpu = 00:02:03 ; elapsed = 00:01:28 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2640 ; free virtual = 8235
+Time (s): cpu = 00:02:47 ; elapsed = 00:01:56 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 3021 ; free virtual = 8004
 
 Phase 4 Post Placement Optimization and Clean-Up
 
@@ -3248,34 +3245,34 @@ Starting Physical Synthesis Task
 Phase 1 Physical Synthesis Initialization
 INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 2 CPUs
 INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.164 | TNS=-0.164 |
-Phase 1 Physical Synthesis Initialization | Checksum: 19cd71726
+Phase 1 Physical Synthesis Initialization | Checksum: 1ebdc1861
 
-Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2532 ; free virtual = 8238
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:03 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2895 ; free virtual = 7949
 INFO: [Place 46-33] Processed net svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/reg_33190, BUFG insertion was skipped due to placement/routing conflicts.
 INFO: [Place 46-33] Processed net svdd_pl_i/svdd_flow_extract_0/inst/flow_table_U0/ap_CS_fsm_state7, BUFG insertion was skipped due to placement/routing conflicts.
 INFO: [Place 46-56] BUFG insertion identified 2 candidate nets. Inserted BUFG: 0, Replicated BUFG Driver: 0, Skipped due to Placement/Routing Conflicts: 2, Skipped due to Timing Degradation: 0, Skipped due to netlist editing failed: 0.
-Ending Physical Synthesis Task | Checksum: 19cd71726
+Ending Physical Synthesis Task | Checksum: 1ebdc1861
 
-Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2539 ; free virtual = 8247
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:05 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2888 ; free virtual = 7940
 Phase 4.1.1.1 BUFG Insertion | Checksum: 1bec71e2b
 
-Time (s): cpu = 00:02:23 ; elapsed = 00:01:41 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2074 ; free virtual = 8106
+Time (s): cpu = 00:03:14 ; elapsed = 00:02:14 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2887 ; free virtual = 7939
 
 Phase 4.1.1.2 Post Placement Timing Optimization
 INFO: [Place 30-746] Post Placement Timing Summary WNS=0.501. For the most accurate timing information please run report_timing.
 Phase 4.1.1.2 Post Placement Timing Optimization | Checksum: 130611a8e
 
-Time (s): cpu = 00:02:27 ; elapsed = 00:01:46 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1882 ; free virtual = 8004
+Time (s): cpu = 00:03:20 ; elapsed = 00:02:20 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2863 ; free virtual = 7904
 
-Time (s): cpu = 00:02:27 ; elapsed = 00:01:46 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1882 ; free virtual = 8004
+Time (s): cpu = 00:03:20 ; elapsed = 00:02:20 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2863 ; free virtual = 7904
 Phase 4.1 Post Commit Optimization | Checksum: 130611a8e
 
-Time (s): cpu = 00:02:28 ; elapsed = 00:01:46 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1924 ; free virtual = 8001
+Time (s): cpu = 00:03:20 ; elapsed = 00:02:20 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2859 ; free virtual = 7901
 
 Phase 4.2 Post Placement Cleanup
 Phase 4.2 Post Placement Cleanup | Checksum: 130611a8e
 
-Time (s): cpu = 00:02:29 ; elapsed = 00:01:47 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1967 ; free virtual = 8054
+Time (s): cpu = 00:03:21 ; elapsed = 00:02:21 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2927 ; free virtual = 7968
 
 Phase 4.3 Placer Reporting
 
@@ -3296,24 +3293,24 @@ INFO: [Place 30-612] Post-Placement Estimated Congestion
 
 Phase 4.3.1 Print Estimated Congestion | Checksum: 130611a8e
 
-Time (s): cpu = 00:02:29 ; elapsed = 00:01:47 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1958 ; free virtual = 8046
+Time (s): cpu = 00:03:22 ; elapsed = 00:02:21 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2927 ; free virtual = 7968
 Phase 4.3 Placer Reporting | Checksum: 130611a8e
 
-Time (s): cpu = 00:02:30 ; elapsed = 00:01:48 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1963 ; free virtual = 8052
+Time (s): cpu = 00:03:22 ; elapsed = 00:02:22 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2926 ; free virtual = 7967
 
 Phase 4.4 Final Placement Cleanup
-Netlist sorting complete. Time (s): cpu = 00:00:00.08 ; elapsed = 00:00:00.09 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1963 ; free virtual = 8052
+Netlist sorting complete. Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.13 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2927 ; free virtual = 7968
 
-Time (s): cpu = 00:02:30 ; elapsed = 00:01:48 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1963 ; free virtual = 8052
+Time (s): cpu = 00:03:22 ; elapsed = 00:02:22 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2927 ; free virtual = 7968
 Phase 4 Post Placement Optimization and Clean-Up | Checksum: e09dc33a
 
-Time (s): cpu = 00:02:30 ; elapsed = 00:01:48 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1995 ; free virtual = 8052
+Time (s): cpu = 00:03:23 ; elapsed = 00:02:23 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2925 ; free virtual = 7967
 Ending Placer Task | Checksum: be1d7589
 
-Time (s): cpu = 00:02:30 ; elapsed = 00:01:49 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1999 ; free virtual = 8059
+Time (s): cpu = 00:03:23 ; elapsed = 00:02:23 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2935 ; free virtual = 7971
 34 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
 place_design completed successfully
-place_design: Time (s): cpu = 00:02:33 ; elapsed = 00:01:50 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2000 ; free virtual = 8059
+place_design: Time (s): cpu = 00:03:26 ; elapsed = 00:02:25 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2934 ; free virtual = 7970
 # phys_opt_design
 Command: phys_opt_design
 Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
@@ -3321,13 +3318,13 @@ INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc
 
 Starting Initial Update Timing Task
 
-Time (s): cpu = 00:00:12 ; elapsed = 00:00:07 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2070 ; free virtual = 8106
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:08 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2932 ; free virtual = 7974
 INFO: [Vivado_Tcl 4-383] Design worst setup slack (WNS) is greater than or equal to 0.000 ns. Skipping all physical synthesis optimizations.
 INFO: [Vivado_Tcl 4-232] No setup violation found. The netlist was not modified.
 INFO: [Common 17-83] Releasing license: Implementation
 4 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
 phys_opt_design completed successfully
-phys_opt_design: Time (s): cpu = 00:00:12 ; elapsed = 00:00:07 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2070 ; free virtual = 8106
+phys_opt_design: Time (s): cpu = 00:00:14 ; elapsed = 00:00:08 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2932 ; free virtual = 7974
 # route_design
 Command: route_design
 Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
@@ -3346,25 +3343,25 @@ Checksum: PlaceDB: 9dbc7b79 ConstDB: 0 ShapeSum: 2060fa10 RouteDB: 0
 Post Restoration Checksum: NetGraph: 5b3723a5 | NumContArr: e8aee59d | Constraints: c2a8fa9d | Timing: c2a8fa9d
 Phase 1 Build RT Design | Checksum: 2c937fe7c
 
-Time (s): cpu = 00:00:25 ; elapsed = 00:00:15 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2080 ; free virtual = 8228
+Time (s): cpu = 00:00:33 ; elapsed = 00:00:19 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2909 ; free virtual = 7946
 
 Phase 2 Router Initialization
 
 Phase 2.1 Fix Topology Constraints
 Phase 2.1 Fix Topology Constraints | Checksum: 2c937fe7c
 
-Time (s): cpu = 00:00:26 ; elapsed = 00:00:16 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2089 ; free virtual = 8230
+Time (s): cpu = 00:00:33 ; elapsed = 00:00:20 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2908 ; free virtual = 7945
 
 Phase 2.2 Pre Route Cleanup
 Phase 2.2 Pre Route Cleanup | Checksum: 2c937fe7c
 
-Time (s): cpu = 00:00:26 ; elapsed = 00:00:16 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 2088 ; free virtual = 8229
+Time (s): cpu = 00:00:34 ; elapsed = 00:00:20 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2907 ; free virtual = 7945
  Number of Nodes with overlaps = 0
 
 Phase 2.3 Update Timing
 Phase 2.3 Update Timing | Checksum: 20bfeadc3
 
-Time (s): cpu = 00:00:44 ; elapsed = 00:00:28 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1946 ; free virtual = 8185
+Time (s): cpu = 00:00:58 ; elapsed = 00:00:36 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2884 ; free virtual = 7930
 INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.571  | TNS=0.000  | WHS=-0.236 | THS=-318.653|
 
 
@@ -3382,22 +3379,22 @@ Router Utilization Summary
 
 Phase 2 Router Initialization | Checksum: 2363152d6
 
-Time (s): cpu = 00:00:53 ; elapsed = 00:00:33 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1899 ; free virtual = 8190
+Time (s): cpu = 00:01:10 ; elapsed = 00:00:44 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2861 ; free virtual = 7921
 
 Phase 3 Initial Routing
 
 Phase 3.1 Global Routing
 Phase 3.1 Global Routing | Checksum: 2363152d6
 
-Time (s): cpu = 00:00:53 ; elapsed = 00:00:34 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1899 ; free virtual = 8190
+Time (s): cpu = 00:01:10 ; elapsed = 00:00:44 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2861 ; free virtual = 7921
 
 Phase 3.2 Initial Net Routing
 Phase 3.2 Initial Net Routing | Checksum: 27059be3e
 
-Time (s): cpu = 00:01:38 ; elapsed = 00:00:57 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1990 ; free virtual = 8232
+Time (s): cpu = 00:02:01 ; elapsed = 00:01:12 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2876 ; free virtual = 7944
 Phase 3 Initial Routing | Checksum: 27059be3e
 
-Time (s): cpu = 00:01:38 ; elapsed = 00:00:57 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1989 ; free virtual = 8232
+Time (s): cpu = 00:02:02 ; elapsed = 00:01:12 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2874 ; free virtual = 7942
 
 Phase 4 Rip-up And Reroute
 
@@ -3420,7 +3417,7 @@ INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.066  | TNS=0.000  | WHS
 
 Phase 4.1 Global Iteration 0 | Checksum: 1fe72027d
 
-Time (s): cpu = 00:04:26 ; elapsed = 00:02:45 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1767 ; free virtual = 8143
+Time (s): cpu = 00:05:42 ; elapsed = 00:03:37 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2814 ; free virtual = 7940
 
 Phase 4.2 Global Iteration 1
  Number of Nodes with overlaps = 53
@@ -3434,25 +3431,25 @@ INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.066  | TNS=0.000  | WHS
 
 Phase 4.2 Global Iteration 1 | Checksum: 2896e9be1
 
-Time (s): cpu = 00:04:36 ; elapsed = 00:02:54 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1742 ; free virtual = 8127
+Time (s): cpu = 00:05:55 ; elapsed = 00:03:48 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2800 ; free virtual = 7931
 Phase 4 Rip-up And Reroute | Checksum: 2896e9be1
 
-Time (s): cpu = 00:04:36 ; elapsed = 00:02:54 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1740 ; free virtual = 8125
+Time (s): cpu = 00:05:55 ; elapsed = 00:03:48 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2804 ; free virtual = 7936
 
 Phase 5 Delay and Skew Optimization
 
 Phase 5.1 Delay CleanUp
 Phase 5.1 Delay CleanUp | Checksum: 2896e9be1
 
-Time (s): cpu = 00:04:36 ; elapsed = 00:02:54 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1740 ; free virtual = 8125
+Time (s): cpu = 00:05:56 ; elapsed = 00:03:48 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2798 ; free virtual = 7929
 
 Phase 5.2 Clock Skew Optimization
 Phase 5.2 Clock Skew Optimization | Checksum: 2896e9be1
 
-Time (s): cpu = 00:04:37 ; elapsed = 00:02:54 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1741 ; free virtual = 8125
+Time (s): cpu = 00:05:56 ; elapsed = 00:03:48 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2798 ; free virtual = 7929
 Phase 5 Delay and Skew Optimization | Checksum: 2896e9be1
 
-Time (s): cpu = 00:04:37 ; elapsed = 00:02:54 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1740 ; free virtual = 8125
+Time (s): cpu = 00:05:56 ; elapsed = 00:03:48 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2798 ; free virtual = 7929
 
 Phase 6 Post Hold Fix
 
@@ -3461,15 +3458,15 @@ Phase 6.1 Hold Fix Iter
 Phase 6.1.1 Update Timing
 Phase 6.1.1 Update Timing | Checksum: 25c3a646c
 
-Time (s): cpu = 00:04:42 ; elapsed = 00:02:57 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1730 ; free virtual = 8118
+Time (s): cpu = 00:06:02 ; elapsed = 00:03:52 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2809 ; free virtual = 7939
 INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.079  | TNS=0.000  | WHS=0.017  | THS=0.000  |
 
 Phase 6.1 Hold Fix Iter | Checksum: 2989da376
 
-Time (s): cpu = 00:04:42 ; elapsed = 00:02:57 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1730 ; free virtual = 8118
+Time (s): cpu = 00:06:02 ; elapsed = 00:03:52 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2809 ; free virtual = 7938
 Phase 6 Post Hold Fix | Checksum: 2989da376
 
-Time (s): cpu = 00:04:42 ; elapsed = 00:02:58 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1729 ; free virtual = 8118
+Time (s): cpu = 00:06:02 ; elapsed = 00:03:52 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2809 ; free virtual = 7938
 
 Phase 7 Route finalize
 
@@ -3487,19 +3484,19 @@ Router Utilization Summary
 
 Phase 7 Route finalize | Checksum: 2989da376
 
-Time (s): cpu = 00:04:42 ; elapsed = 00:02:58 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1729 ; free virtual = 8117
+Time (s): cpu = 00:06:03 ; elapsed = 00:03:53 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2810 ; free virtual = 7939
 
 Phase 8 Verifying routed nets
 
  Verification completed successfully
 Phase 8 Verifying routed nets | Checksum: 2989da376
 
-Time (s): cpu = 00:04:43 ; elapsed = 00:02:58 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1729 ; free virtual = 8116
+Time (s): cpu = 00:06:03 ; elapsed = 00:03:53 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2810 ; free virtual = 7939
 
 Phase 9 Depositing Routes
 Phase 9 Depositing Routes | Checksum: 21df93c33
 
-Time (s): cpu = 00:04:47 ; elapsed = 00:03:02 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1703 ; free virtual = 8112
+Time (s): cpu = 00:06:09 ; elapsed = 00:03:57 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2813 ; free virtual = 7937
 
 Phase 10 Post Router Timing
 INFO: [Route 35-57] Estimated Timing Summary | WNS=0.079  | TNS=0.000  | WHS=0.017  | THS=0.000  |
@@ -3507,22 +3504,37 @@ INFO: [Route 35-57] Estimated Timing Summary | WNS=0.079  | TNS=0.000  | WHS=0.0
 INFO: [Route 35-327] The final timing numbers are based on the router estimated timing analysis. For a complete and accurate timing signoff, please run report_timing_summary.
 Phase 10 Post Router Timing | Checksum: 21df93c33
 
-Time (s): cpu = 00:04:52 ; elapsed = 00:03:04 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1714 ; free virtual = 8105
+Time (s): cpu = 00:06:14 ; elapsed = 00:04:00 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2785 ; free virtual = 7927
 INFO: [Route 35-16] Router Completed Successfully
 
 Phase 11 Post-Route Event Processing
 Phase 11 Post-Route Event Processing | Checksum: 84a26383
 
-Time (s): cpu = 00:04:53 ; elapsed = 00:03:06 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1714 ; free virtual = 8105
+Time (s): cpu = 00:06:16 ; elapsed = 00:04:03 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2813 ; free virtual = 7949
 Ending Routing Task | Checksum: 84a26383
 
-Time (s): cpu = 00:04:55 ; elapsed = 00:03:07 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1729 ; free virtual = 8116
+Time (s): cpu = 00:06:18 ; elapsed = 00:04:04 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2809 ; free virtual = 7949
 
 Routing Is Done.
 INFO: [Common 17-83] Releasing license: Implementation
 13 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
 route_design completed successfully
-route_design: Time (s): cpu = 00:05:00 ; elapsed = 00:03:10 . Memory (MB): peak = 3745.016 ; gain = 0.000 ; free physical = 1726 ; free virtual = 8113
+route_design: Time (s): cpu = 00:06:24 ; elapsed = 00:04:07 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2805 ; free virtual = 7945
+# write_checkpoint -force "$build_dir/${bd}_routed.dcp"
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.25 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2769 ; free virtual = 7933
+Wrote PlaceDB: Time (s): cpu = 00:00:09 ; elapsed = 00:00:03 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2739 ; free virtual = 7941
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2739 ; free virtual = 7941
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.79 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2727 ; free virtual = 7945
+Wrote Netlist Cache: Time (s): cpu = 00:00:00.1 ; elapsed = 00:00:00.09 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2719 ; free virtual = 7945
+Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2719 ; free virtual = 7946
+Write Physdb Complete: Time (s): cpu = 00:00:10 ; elapsed = 00:00:04 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2716 ; free virtual = 7945
+report_design_analysis: Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2720 ; free virtual = 7941
+INFO: [Common 17-1381] The checkpoint '/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/build_zedboard/svdd_pl_routed.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:27 ; elapsed = 00:00:20 . Memory (MB): peak = 3736.734 ; gain = 0.000 ; free physical = 2592 ; free virtual = 7943
 # file mkdir $out_dir
 # write_bitstream -force "$out_dir/svdd_pl.bit"
 Command: write_bitstream -force {/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/overlay/zedboard/svdd_pl.bit}
@@ -3708,7 +3720,7 @@ WARNING: [DRC DPREG-4] DSP48E1_PregDynOpmodeZmuxP:: The DSP48E1 cell svdd_pl_i/s
 WARNING: [DRC PDCN-1569] LUT equation term check: Used physical LUT pin 'A1' of cell svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/gpregsm1.user_valid_i_1 (pin svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/gpregsm1.user_valid_i_1/I1) is not included in the LUT equation: 'O6=(A6)+((~A6)*(~A4)*A3)'. If this cell is a user instantiated LUT in the design, please remove connectivity to the pin or change the equation and/or INIT string of the LUT to prevent this issue. If the cell is inferred or IP created LUT, please regenerate the IP and/or resynthesize the design to attempt to correct the issue.
 WARNING: [DRC PDCN-1569] LUT equation term check: Used physical LUT pin 'A2' of cell svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/gpregsm1.user_valid_i_1 (pin svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/gpregsm1.user_valid_i_1/I1) is not included in the LUT equation: 'O6=(A1)+((~A1)*(~A3)*A5)'. If this cell is a user instantiated LUT in the design, please remove connectivity to the pin or change the equation and/or INIT string of the LUT to prevent this issue. If the cell is inferred or IP created LUT, please regenerate the IP and/or resynthesize the design to attempt to correct the issue.
 WARNING: [DRC PDCN-1569] LUT equation term check: Used physical LUT pin 'A2' of cell svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/gpregsm1.user_valid_i_1 (pin svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/gpregsm1.user_valid_i_1/I1) is not included in the LUT equation: 'O6=(A6)+((~A6)*(~A5)*A3)'. If this cell is a user instantiated LUT in the design, please remove connectivity to the pin or change the equation and/or INIT string of the LUT to prevent this issue. If the cell is inferred or IP created LUT, please regenerate the IP and/or resynthesize the design to attempt to correct the issue.
-WARNING: [DRC RTSTAT-10] No routable loads: 33 net(s) have no routable loads. The problem bus(es) and/or net(s) are svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i, svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i, svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i, svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg[2:0], svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg[2:0], svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg[2:0], svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg[2:0], svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg[2:0], svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg[2:0], svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_fb, svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_fb, svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_fb, svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_i, svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_i, svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_i... and (the first 15 of 21 listed).
+WARNING: [DRC RTSTAT-10] No routable loads: 33 net(s) have no routable loads. The problem bus(es) and/or net(s) are svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i, svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i, svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i, svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg[2:0], svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg[2:0], svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg[2:0], svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg[2:0], svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg[2:0], svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg[2:0], svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_fb, svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_fb, svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_fb, svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_i, svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_i, svdd_pl_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_i... and (the first 15 of 21 listed).
 INFO: [DRC AVAL-4] enum_USE_DPORT_FALSE_enum_DREG_ADREG_0_connects_CED_CEAD_RSTD_GND: svdd_pl_i/svdd_preprocess_0/inst/grp_preprocess_fu_195/dsub_64ns_64ns_64_7_full_dsp_1_U13/svdd_preprocess_dsub_64ns_64ns_64_7_full_dsp_1_ip_u/inst/i_synth/ADDSUB_OP.ADDSUB/LOGIC_SPEED.OP/ALIGN_BLK/FRAC_ADDSUB/DSP_ADD.FRAC_ADDSUB/i_no_versal_es1_workaround.DSP48E1_ADD.DSP48E1_ADD/i_no_versal_es1_workaround.DSP: DSP48E1 is not using the D port (USE_DPORT = FALSE). For improved power characteristics, set DREG and ADREG to '1', tie CED, CEAD, and RSTD to logic '0'.
 INFO: [DRC AVAL-4] enum_USE_DPORT_FALSE_enum_DREG_ADREG_0_connects_CED_CEAD_RSTD_GND: svdd_pl_i/svdd_preprocess_0/inst/grp_preprocess_fu_195/dsub_64ns_64ns_64_7_full_dsp_1_U13/svdd_preprocess_dsub_64ns_64ns_64_7_full_dsp_1_ip_u/inst/i_synth/ADDSUB_OP.ADDSUB/LOGIC_SPEED.OP/ALIGN_BLK/FRAC_ADDSUB/DSP_ADD.FRAC_ADDSUB/i_no_versal_es1_workaround.DSP48E1_GEN.DSP48E1_DEL/i_no_versal_es1_workaround.DSP: DSP48E1 is not using the D port (USE_DPORT = FALSE). For improved power characteristics, set DREG and ADREG to '1', tie CED, CEAD, and RSTD to logic '0'.
 INFO: [DRC AVAL-4] enum_USE_DPORT_FALSE_enum_DREG_ADREG_0_connects_CED_CEAD_RSTD_GND: svdd_pl_i/svdd_preprocess_0/inst/grp_preprocess_fu_195/dsub_64ns_64ns_64_7_full_dsp_1_U13/svdd_preprocess_dsub_64ns_64ns_64_7_full_dsp_1_ip_u/inst/i_synth/ADDSUB_OP.ADDSUB/LOGIC_SPEED.OP/NORM/ROUND/DSP48_E1.DSP48E1_ADD.DSP48E1_ADD/i_no_versal_es1_workaround.DSP: DSP48E1 is not using the D port (USE_DPORT = FALSE). For improved power characteristics, set DREG and ADREG to '1', tie CED, CEAD, and RSTD to logic '0'.
@@ -3734,17 +3746,27 @@ INFO: [Project 1-1876] WebTalk data collection is mandatory when using a ULT dev
 INFO: [Common 17-83] Releasing license: Implementation
 19 Infos, 178 Warnings, 0 Critical Warnings and 0 Errors encountered.
 write_bitstream completed successfully
-write_bitstream: Time (s): cpu = 00:00:43 ; elapsed = 00:00:39 . Memory (MB): peak = 3836.398 ; gain = 91.383 ; free physical = 1545 ; free virtual = 7970
+write_bitstream: Time (s): cpu = 00:00:45 ; elapsed = 00:00:28 . Memory (MB): peak = 3835.047 ; gain = 98.312 ; free physical = 2396 ; free virtual = 7794
 # file copy -force "$build_dir/$proj.gen/sources_1/bd/$bd/hw_handoff/$bd.hwh" "$out_dir/svdd_pl.hwh"
 # report_utilization -file $out_dir/utilization.rpt
 # report_timing_summary -file $out_dir/timing.rpt
 INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
 INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
-report_timing_summary: Time (s): cpu = 00:00:15 ; elapsed = 00:00:09 . Memory (MB): peak = 3836.398 ; gain = 0.000 ; free physical = 1509 ; free virtual = 7945
+report_timing_summary: Time (s): cpu = 00:00:19 ; elapsed = 00:00:11 . Memory (MB): peak = 3835.047 ; gain = 0.000 ; free physical = 2415 ; free virtual = 7796
 # report_timing -max_paths 30 -nworst 1 -sort_by slack -file $out_dir/timing_paths.rpt
 INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: max.
 INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
 INFO: [Timing 38-78] ReportTimingParams: -max_paths 30 -nworst 1 -delay_type max -sort_by slack.
+# report_power -file $out_dir/power.rpt
+Command: report_power -file {/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/overlay/zedboard/power.rpt}
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+WARNING: [Power 33-332] Found switching activity that implies high-fanout reset nets being asserted for excessive periods of time which may result in inaccurate power analysis.
+Resolution: To review and fix problems, please run Power Constraints Advisor in the GUI from Tools > Power Constraints Advisor or run report_power with the -advisory option to generate a text report.
+0 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+report_power: Time (s): cpu = 00:00:20 ; elapsed = 00:00:11 . Memory (MB): peak = 3843.051 ; gain = 8.004 ; free physical = 2332 ; free virtual = 7780
 # set wns [get_property SLACK [get_timing_paths -max_paths 1 -nworst 1 -setup]]
 # set whs [get_property SLACK [get_timing_paths -max_paths 1 -nworst 1 -hold]]
 # puts "INFO: worst setup slack = $wns ns, worst hold slack = $whs ns"
@@ -3752,4 +3774,4 @@ INFO: worst setup slack = 0.080 ns, worst hold slack = 0.016 ns
 # if {$wns < 0 || $whs < 0} { puts "WARNING: timing NOT met; the overlay may misbehave." }
 # puts "INFO: overlay written to $out_dir"
 INFO: overlay written to /home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/overlay/zedboard
-INFO: [Common 17-206] Exiting Vivado at Sun Nov 22 23:39:38 2026...
+INFO: [Common 17-206] Exiting Vivado at Mon Nov 23 03:25:55 2026...

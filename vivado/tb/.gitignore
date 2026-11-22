@@ -2,3 +2,5 @@
 build_*/
 results/*/.Xil/
 results/*/NA/
+# switching activity for the power test (SAIF=1), tens of MB
+results/*/*.saif

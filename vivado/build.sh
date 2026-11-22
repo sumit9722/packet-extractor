@@ -26,8 +26,15 @@ rm -rf ../hls/ip/svdd_flow_pl                 # the earlier single-IP version
 
 # shellcheck disable=SC1090
 source "$VIVADO_SETTINGS"
+if systemd-run --user --scope --quiet -p MemoryMax="$MEM" -p MemorySwapMax=0 true >/dev/null 2>&1; then
+    cap_note="with a ${MEM} memory cap"
+    capped() { systemd-run --user --scope --quiet -p MemoryMax="$MEM" -p MemorySwapMax=0 "$@"; }
+else
+    echo "warning: user systemd scope unavailable; running without the $MEM memory cap" >&2
+    cap_note="without a memory cap"
+    capped() { "$@"; }
+fi
 for b in "${boards[@]}"; do
-    echo "Building $b with a ${MEM} memory cap. Log: $(pwd)/build_$b.log"
-    systemd-run --user --scope --quiet -p MemoryMax="$MEM" -p MemorySwapMax=0 \
-        vivado -mode batch -nojournal -log "build_$b.log" -source build_overlay.tcl -tclargs "$b"
+    echo "Building $b $cap_note. Log: $(pwd)/build_$b.log"
+    capped vivado -mode batch -nojournal -log "build_$b.log" -source build_overlay.tcl -tclargs "$b"
 done

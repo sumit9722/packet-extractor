@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Sun Nov 22 23:30:09 2026
+//Date        : Mon Nov 23 03:13:53 2026
 //Host        : chilsu running 64-bit Arch Linux
 //Command     : generate_target svdd_pl.bd
 //Design      : svdd_pl
@@ -1420,8 +1420,7 @@ module svdd_pl
         .S_AXI_HP0_WREADY(axi_mem_intercon_M00_AXI_WREADY),
         .S_AXI_HP0_WRISSUECAP1_EN(1'b0),
         .S_AXI_HP0_WSTRB(axi_mem_intercon_M00_AXI_WSTRB),
-        .S_AXI_HP0_WVALID(axi_mem_intercon_M00_AXI_WVALID),
-        .USB0_VBUS_PWRFAULT(1'b0));
+        .S_AXI_HP0_WVALID(axi_mem_intercon_M00_AXI_WVALID));
   svdd_pl_ps7_0_axi_periph_0 ps7_0_axi_periph
        (.ACLK(processing_system7_0_FCLK_CLK0),
         .ARESETN(rst_ps7_0_100M_peripheral_aresetn),
