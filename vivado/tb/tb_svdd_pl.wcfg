@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_svdd_pl_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="\$unit_xpm_cdc_sv_220102727 " />
+            <top_module name="axi_dma_pkg" />
+            <top_module name="axi_vip_pkg" />
+            <top_module name="glbl" />
+            <top_module name="lib_pkg" />
+            <top_module name="std" />
+            <top_module name="tb_svdd_pl" />
+            <top_module name="vcomponents" />
+            <top_module name="xil_common_vip_pkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+   </zoom_setting>
+   <column_width_setting>
+   </column_width_setting>
+   <WVObjectSize size="10" />
+   <wvobject type="group" fp_name="group1">
+      <obj_property name="label">PL clock and reset (FCLK_CLK0, proc_sys_reset)</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/clk">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/rst_n">
+         <obj_property name="ElementShortName">rst_n</obj_property>
+         <obj_property name="ObjectShortName">rst_n</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group4">
+      <obj_property name="label">1. AXI DMA MM2S -&gt; svdd_flow_extract: pcap chunks, 64-bit</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/in_tvalid">
+         <obj_property name="ElementShortName">in_tvalid</obj_property>
+         <obj_property name="ObjectShortName">in_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/in_tready">
+         <obj_property name="ElementShortName">in_tready</obj_property>
+         <obj_property name="ObjectShortName">in_tready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/in_tlast">
+         <obj_property name="ElementShortName">in_tlast</obj_property>
+         <obj_property name="ObjectShortName">in_tlast</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/in_tdata">
+         <obj_property name="ElementShortName">in_tdata[63:0]</obj_property>
+         <obj_property name="ObjectShortName">in_tdata[63:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group9">
+      <obj_property name="label">2. svdd_flow_extract m_axis_features: 8 raw features per flow (spec section 2)</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/feat_tvalid">
+         <obj_property name="ElementShortName">feat_tvalid</obj_property>
+         <obj_property name="ObjectShortName">feat_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/feat_tready">
+         <obj_property name="ElementShortName">feat_tready</obj_property>
+         <obj_property name="ObjectShortName">feat_tready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/feat_tlast">
+         <obj_property name="ElementShortName">feat_tlast</obj_property>
+         <obj_property name="ObjectShortName">feat_tlast</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/feat_tuser">
+         <obj_property name="ElementShortName">feat_tuser[0:0]</obj_property>
+         <obj_property name="ObjectShortName">feat_tuser[0:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/feat_tkeep">
+         <obj_property name="ElementShortName">feat_tkeep[3:0]</obj_property>
+         <obj_property name="ObjectShortName">feat_tkeep[3:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/feat_tdata">
+         <obj_property name="ElementShortName">feat_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">feat_tdata[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/feat_flow">
+         <obj_property name="ElementShortName">feat_flow[31:0]</obj_property>
+         <obj_property name="ObjectShortName">feat_flow[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/feat_beat">
+         <obj_property name="ElementShortName">feat_beat[31:0]</obj_property>
+         <obj_property name="ObjectShortName">feat_beat[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group18">
+      <obj_property name="label">3. svdd_preprocess -&gt; deep_svdd_axis: 8 Q24 codes per flow</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/q24_tvalid">
+         <obj_property name="ElementShortName">q24_tvalid</obj_property>
+         <obj_property name="ObjectShortName">q24_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/q24_tready">
+         <obj_property name="ElementShortName">q24_tready</obj_property>
+         <obj_property name="ObjectShortName">q24_tready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/q24_tlast">
+         <obj_property name="ElementShortName">q24_tlast</obj_property>
+         <obj_property name="ObjectShortName">q24_tlast</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/q24_tdata">
+         <obj_property name="ElementShortName">q24_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">q24_tdata[31:0]</obj_property>
+         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/q24_flow">
+         <obj_property name="ElementShortName">q24_flow[31:0]</obj_property>
+         <obj_property name="ObjectShortName">q24_flow[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group24">
+      <obj_property name="label">4. deep_svdd_axis m_axis_score: score code (32 fraction bits)</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/score_tvalid">
+         <obj_property name="ElementShortName">score_tvalid</obj_property>
+         <obj_property name="ObjectShortName">score_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/score_tready">
+         <obj_property name="ElementShortName">score_tready</obj_property>
+         <obj_property name="ObjectShortName">score_tready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/score_tdata">
+         <obj_property name="ElementShortName">score_tdata[63:0]</obj_property>
+         <obj_property name="ObjectShortName">score_tdata[63:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/score_flow">
+         <obj_property name="ElementShortName">score_flow[31:0]</obj_property>
+         <obj_property name="ObjectShortName">score_flow[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group29">
+      <obj_property name="label">5. svdd_flow_extract m_axis_meta: flow identity for the join</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/meta_tvalid">
+         <obj_property name="ElementShortName">meta_tvalid</obj_property>
+         <obj_property name="ObjectShortName">meta_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/meta_tready">
+         <obj_property name="ElementShortName">meta_tready</obj_property>
+         <obj_property name="ObjectShortName">meta_tready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/meta_tlast">
+         <obj_property name="ElementShortName">meta_tlast</obj_property>
+         <obj_property name="ObjectShortName">meta_tlast</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/meta_tdata">
+         <obj_property name="ElementShortName">meta_tdata[63:0]</obj_property>
+         <obj_property name="ObjectShortName">meta_tdata[63:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group34">
+      <obj_property name="label">6. svdd_preprocess m_axis_codes: copy of the codes for the join</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/codes_tvalid">
+         <obj_property name="ElementShortName">codes_tvalid</obj_property>
+         <obj_property name="ObjectShortName">codes_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/codes_tready">
+         <obj_property name="ElementShortName">codes_tready</obj_property>
+         <obj_property name="ObjectShortName">codes_tready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/codes_tlast">
+         <obj_property name="ElementShortName">codes_tlast</obj_property>
+         <obj_property name="ObjectShortName">codes_tlast</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/codes_tdata">
+         <obj_property name="ElementShortName">codes_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">codes_tdata[31:0]</obj_property>
+         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group39">
+      <obj_property name="label">7. svdd_record_join -&gt; AXI DMA S2MM: 128-byte records, 64-bit</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/out_tvalid">
+         <obj_property name="ElementShortName">out_tvalid</obj_property>
+         <obj_property name="ObjectShortName">out_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/out_tready">
+         <obj_property name="ElementShortName">out_tready</obj_property>
+         <obj_property name="ObjectShortName">out_tready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/out_tlast">
+         <obj_property name="ElementShortName">out_tlast</obj_property>
+         <obj_property name="ObjectShortName">out_tlast</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/out_tdata">
+         <obj_property name="ElementShortName">out_tdata[63:0]</obj_property>
+         <obj_property name="ObjectShortName">out_tdata[63:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group44">
+      <obj_property name="label">Test 2: spec bring-up vector -&gt; second svdd_preprocess + deep_svdd_axis</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/bu_tvalid">
+         <obj_property name="ElementShortName">bu_tvalid</obj_property>
+         <obj_property name="ObjectShortName">bu_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/bu_tready">
+         <obj_property name="ElementShortName">bu_tready</obj_property>
+         <obj_property name="ObjectShortName">bu_tready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/bu_tlast">
+         <obj_property name="ElementShortName">bu_tlast</obj_property>
+         <obj_property name="ObjectShortName">bu_tlast</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/bu_tuser">
+         <obj_property name="ElementShortName">bu_tuser[0:0]</obj_property>
+         <obj_property name="ObjectShortName">bu_tuser[0:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/bu_tkeep">
+         <obj_property name="ElementShortName">bu_tkeep[3:0]</obj_property>
+         <obj_property name="ObjectShortName">bu_tkeep[3:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/bu_tdata">
+         <obj_property name="ElementShortName">bu_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bu_tdata[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/bu_q_tvalid">
+         <obj_property name="ElementShortName">bu_q_tvalid</obj_property>
+         <obj_property name="ObjectShortName">bu_q_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/bu_q_tlast">
+         <obj_property name="ElementShortName">bu_q_tlast</obj_property>
+         <obj_property name="ObjectShortName">bu_q_tlast</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/bu_q_tdata">
+         <obj_property name="ElementShortName">bu_q_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bu_q_tdata[31:0]</obj_property>
+         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_svdd_pl/bu_s_tvalid">
+         <obj_property name="ElementShortName">bu_s_tvalid</obj_property>
+         <obj_property name="ObjectShortName">bu_s_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/bu_s_tdata">
+         <obj_property name="ElementShortName">bu_s_tdata[63:0]</obj_property>
+         <obj_property name="ObjectShortName">bu_s_tdata[63:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group56">
+      <obj_property name="label">Progress</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="array" fp_name="/tb_svdd_pl/chunks">
+         <obj_property name="ElementShortName">chunks[31:0]</obj_property>
+         <obj_property name="ObjectShortName">chunks[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/flows">
+         <obj_property name="ElementShortName">flows[31:0]</obj_property>
+         <obj_property name="ObjectShortName">flows[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_svdd_pl/errors">
+         <obj_property name="ElementShortName">errors[31:0]</obj_property>
+         <obj_property name="ObjectShortName">errors[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

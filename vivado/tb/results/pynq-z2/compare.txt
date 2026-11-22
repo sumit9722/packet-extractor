@@ -1,0 +1,7 @@
+298 flow records, 6 markers
+PL counters: 6 chunks, 2000 frames (1992 IPv4, 8 other, 0 malformed), 298 flows, 0 evicted, peak 285 open flows
+PL flows 298, reference flows 298
+identical in every column (except END_REASON): 298
+only in PL output: 0   only in reference: 0
+END_REASON differs on matched flows: 0
+RESULT: MATCH

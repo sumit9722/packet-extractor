@@ -1,0 +1,83 @@
+#-----------------------------------------------------------
+# xsim v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Mon Nov 23 01:54:48 2026
+# Process ID: 203462
+# Current directory: /home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/tb/build_pynq-z2/svdd_pl_overlay.sim/sim_1/behav/xsim
+# Command line: xsim -log simulate.log -mode tcl -source {xsim.dir/tb_svdd_pl_behav/xsim_script.tcl}
+# Log file: /home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/tb/build_pynq-z2/svdd_pl_overlay.sim/sim_1/behav/xsim/simulate.log
+# Journal file: /home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/tb/build_pynq-z2/svdd_pl_overlay.sim/sim_1/behav/xsim/xsim.jou
+# Running On: chilsu, OS: Linux, CPU Frequency: 3999.975 MHz, CPU Physical cores: 14, Host memory: 16442 MB
+#-----------------------------------------------------------
+source xsim.dir/tb_svdd_pl_behav/xsim_script.tcl
+# xsim {tb_svdd_pl_behav} -testplusarg dma_base=41e00000 -testplusarg max_chunks=0 -autoloadwcfg -tclbatch {run_all.tcl}
+Time resolution is 1 ps
+source run_all.tcl
+## run all
+XilinxAXIVIP: Found at Path: tb_svdd_pl.dut.svdd_pl_i.processing_system7_0.inst.M_AXI_GP0.master
+[0] : *ZYNQ_VIP_INFO : M_AXI_GP0 : Port is ENABLED.
+XilinxAXIVIP: Found at Path: tb_svdd_pl.dut.svdd_pl_i.processing_system7_0.inst.M_AXI_GP1.master
+[0] : *ZYNQ_VIP_INFO : M_AXI_GP1 : Port is DISABLED.
+XilinxAXIVIP: Found at Path: tb_svdd_pl.dut.svdd_pl_i.processing_system7_0.inst.S_AXI_GP0.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_GP0 : Port is DISABLED.
+XilinxAXIVIP: Found at Path: tb_svdd_pl.dut.svdd_pl_i.processing_system7_0.inst.S_AXI_GP1.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_GP1 : Port is DISABLED.
+XilinxAXIVIP: Found at Path: tb_svdd_pl.dut.svdd_pl_i.processing_system7_0.inst.S_AXI_HP0.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP0 : Port is ENABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: tb_svdd_pl.dut.svdd_pl_i.processing_system7_0.inst.S_AXI_HP1.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP1 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: tb_svdd_pl.dut.svdd_pl_i.processing_system7_0.inst.S_AXI_HP2.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP2 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: tb_svdd_pl.dut.svdd_pl_i.processing_system7_0.inst.S_AXI_HP3.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP3 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: tb_svdd_pl.dut.svdd_pl_i.processing_system7_0.inst.S_AXI_ACP.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_ACP : Port is DISABLED.
+[tb] stream stream.bin, expected expect.bin, DMA registers at 0x41e00000
+[tb] expected: 304 records, 298 flows (expect.bin)
+[0] : *ZYNQ_VIP_INFO : Setting Debug Level Info as 0
+[0] : *ZYNQ_VIP_INFO : Setting Stop On Error as 1
+                   0 else checking line ......0
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_svdd_pl.dut.svdd_pl_i.axi_dma.U0.I_PRMRY_DATAMOVER.gen_s2mm_full.I_S2MM_FULL_WRAPPER.gen_enable_indet_btt_sf.I_INDET_BTT.I_XD_FIFO.non_blk_mem.I_SYNC_FIFOGEN_FIFO.xpm_fifo_instance.xpm_fifo_sync_inst.xpm_fifo_base_inst.\gen_sdpram.xpm_memory_base_inst .config_drc
+Time: 1 ps  Iteration: 0  Process: /tb_svdd_pl/dut/svdd_pl_i/axi_dma/U0/I_PRMRY_DATAMOVER/gen_s2mm_full/I_S2MM_FULL_WRAPPER/gen_enable_indet_btt_sf/I_INDET_BTT/I_XD_FIFO/non_blk_mem/I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance/xpm_fifo_sync_inst/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial302_512  Scope: tb_svdd_pl.dut.svdd_pl_i.axi_dma.U0.I_PRMRY_DATAMOVER.gen_s2mm_full.I_S2MM_FULL_WRAPPER.gen_enable_indet_btt_sf.I_INDET_BTT.I_XD_FIFO.non_blk_mem.I_SYNC_FIFOGEN_FIFO.xpm_fifo_instance.xpm_fifo_sync_inst.xpm_fifo_base_inst.\gen_sdpram.xpm_memory_base_inst .config_drc  File: /home/chilsu/tools/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 506
+                 395 else checking line ......1
+[tb] PL out of reset at 1535 ns
+[tb] test 2, bring-up vector: codes and score 51193 exact
+[tb] test 2, bring-up vector after two bad frames: codes and score 51193 exact
+[tb] test 2: the frame with an early TLAST and the one with TKEEP = 7 were dropped
+[tb] test 2, all fields unknown (TUSER = 1) -> medians: codes and score 726422 exact
+[tb] chunk 0: 65568 bytes in, 1 records out, 0 flows so far, t = 560855 ns
+[tb] chunk 1: 65568 bytes in, 4 records out, 3 flows so far, t = 1124145 ns
+[tb] chunk 2: 65568 bytes in, 8 records out, 10 flows so far, t = 1654775 ns
+[tb] chunk 3: 65568 bytes in, 3 records out, 12 flows so far, t = 1927815 ns
+[tb] chunk 4: 65568 bytes in, 1 records out, 12 flows so far, t = 2107395 ns
+[tb] chunk 5: 53920 bytes in, 287 records out, 298 flows so far, t = 5034275 ns
+[tb] test 1 (full PL): 6 chunks, 298 flows, 6 markers, 7 S2MM transfers, 179 anomalies
+[tb]   last marker: frames 2000, IPv4 1992, other 8, malformed 0, flows 298, evicted 0, peak open 285
+[tb]   503174 clocks of FCLK0 including the PS polling, 251.6 clocks per packet
+[tb]   stream monitors: 298 feature frames, 298 Q24 frames, 298 scores
+[tb] AXI4-Stream beats: in 47720, features 2384, meta 4864, q24 2384, codes 2384, score 298, out 4864
+TEST PASSED
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+$finish called at time : 5034275 ns : File "/home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/tb/tb_svdd_pl.sv" Line 579
+run: Time (s): cpu = 00:00:00.79 ; elapsed = 00:06:33 . Memory (MB): peak = 1319.781 ; gain = 0.000 ; free physical = 324 ; free virtual = 5402
+## quit
+INFO: xsimkernel Simulation Memory Usage: 1655972 KB (Peak: 1655972 KB), Simulation CPU Usage: 391460 ms
+INFO: [Common 17-206] Exiting xsim at Mon Nov 23 02:01:23 2026...

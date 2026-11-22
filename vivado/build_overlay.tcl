@@ -33,6 +33,9 @@ set build_dir  "$script_dir/build_$board"
 set out_dir    "$root/overlay/$board"
 set proj       svdd_pl_overlay
 set bd         svdd_pl
+# tb/sim_overlay.tcl sources this file with ::svdd_sim_build set. It needs only the project
+# and the block design, in its own folder, so the script stops after save_bd_design.
+if {[info exists ::svdd_sim_build]} { set build_dir $::svdd_sim_build }
 
 set svdd_ip    [file normalize "$root/../svdd_inference/inference_axis_ip/solution1/impl/ip"]
 set our_ips    {svdd_flow_extract svdd_preprocess svdd_record_join}
@@ -143,6 +146,7 @@ foreach cell {svdd_flow_extract_0 svdd_preprocess_0 deep_svdd_axis_0 svdd_record
 assign_bd_address
 validate_bd_design
 save_bd_design
+if {[info exists ::svdd_sim_build]} { return }
 
 set bd_file [get_files $bd.bd]
 set_property synth_checkpoint_mode None $bd_file

@@ -1,0 +1,4 @@
+xvlog --incr --relax -L uvm -L axi_vip_v1_1_15 -L processing_system7_vip_v1_0_17 -L xilinx_vip -prj tb_svdd_pl_vlog.prj
+xvhdl --incr --relax -prj tb_svdd_pl_vhdl.prj
+Waiting for jobs to finish...
+No pending jobs, compilation finished.
