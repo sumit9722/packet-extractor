@@ -1,0 +1,20 @@
+#-----------------------------------------------------------
+# xsim v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Mon Nov 23 03:27:34 2026
+# Process ID: 527
+# Current directory: /home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/tb/build_pynq-z2/svdd_pl_overlay.sim/sim_1/behav/xsim
+# Command line: xsim -log simulate.log -mode tcl -source {xsim.dir/tb_svdd_pl_behav/xsim_script.tcl}
+# Log file: /home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/tb/build_pynq-z2/svdd_pl_overlay.sim/sim_1/behav/xsim/simulate.log
+# Journal file: /home/chilsu/Documents/FPGA Project/Deep SVDD/pynq-pl/vivado/tb/build_pynq-z2/svdd_pl_overlay.sim/sim_1/behav/xsim/xsim.jou
+# Running On: chilsu, OS: Linux, CPU Frequency: 2479.799 MHz, CPU Physical cores: 14, Host memory: 16440 MB
+#-----------------------------------------------------------
+source xsim.dir/tb_svdd_pl_behav/xsim_script.tcl
+# xsim {tb_svdd_pl_behav} -testplusarg dma_base=41e00000 -testplusarg max_chunks=0 -autoloadwcfg -tclbatch {run_all.tcl}
+ERROR: unexpected exception when evaluating tcl command
+    while executing
+"xsim {tb_svdd_pl_behav} -testplusarg dma_base=41e00000 -testplusarg max_chunks=0 -autoloadwcfg -tclbatch {run_all.tcl}"
+    (file "xsim.dir/tb_svdd_pl_behav/xsim_script.tcl" line 1)
+INFO: [Common 17-206] Exiting xsim at Mon Nov 23 03:27:36 2026...

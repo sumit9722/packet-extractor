@@ -1,0 +1,4 @@
+Running: xsim.dir/tb_svdd_pl_behav/xsimk -simmode gui -testplusarg dma_base=41e00000 -testplusarg max_chunks=0 -wdb tb_svdd_pl_behav.wdb -simrunnum 0 -socket 50407
+Design successfully loaded
+Design Loading Memory Usage: 75436 KB (Peak: 75628 KB)
+Design Loading CPU Usage: 140 ms
